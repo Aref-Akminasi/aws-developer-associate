@@ -17,7 +17,7 @@
 ### Pay per duration
 
 - Pay per **compute duration**, based on RAM used in that duration
-- 400.000 GB-seconds of compute time per month is free (based on the function has 1GB RAM)
+- 400.000 seconds of compute time per month is free (based on the function has 1GB RAM)
 - 3.200.000 seconds if the function has 128 MB RAM
 
 ## Lambda - IAM
@@ -81,8 +81,9 @@ return user
 #### /tmp
 
 - It is a directory to store files temporarily (ephemeral)
-- Storage: 512 MB to 10GB
-- `/tmp` may persist temporarily between invocations to the same lambda function, **not** shared across all invocations of other lambda functions
+- Storage: Min 512 MB - Max 10GB
+- `/tmp` may persist temporarily between invocations to the same lambda function,
+- **Not** shared across all invocations of other lambda functions
 - When the lambda function is stopped data in `/tmp` directory is deleted
 - Use case: if a lambda function needs to download a large file
 
@@ -90,7 +91,7 @@ return user
 
 - We can add environment variables in the lambda configuration
 - Environment variable = key/value pair in "string" form
-- Max size = 4KB
+- Max size: 4KB of all environment variables
 
 ## Lambda Logging & Monitoring
 
@@ -109,7 +110,7 @@ return user
 
 ### Deploying in a VPC
 
-- When a Lambda function is deployed in a VPC, in a subnet it creats an Elastic Network Interface (ENI) with a security group around the ENI in order to connect to AWS resources
+- When a Lambda function is deployed in a VPC, in a subnet, it creats an Elastic Network Interface (ENI) with a security group around the ENI in order to connect to AWS resources
 - It can not access the internet by default when deployed in your VPC
 - Even deploying a Lambda function in a public subnet doesn't give it internet access or a public IP (For EC2 it does)
 - In order for a Lambda function to connect to the internet, it has to happen via NAT Gateway or a NAT Instance placed in a public subnet
@@ -118,20 +119,20 @@ return user
 
 - **Note:** EBS is not a valid type of a storage for a Lambda function
 
-|                                | Ephemeral /tmp | Lambda Layers                     | Amazon S3 | Amazon EFS |
-| ------------------------------ | -------------- | --------------------------------- | --------- | ---------- |
-| Max. Size                      | 10240MB        | 5 Layers per function up to 250MB | Elastic   | Elastic    |
-| Persistence                    | Ephemeral      | Durable                           | Durable   | Durable    |
-| Shared across alll invocations | No             | Yes                               | Yes       | Yes        |
+|                               | Ephemeral /tmp | Amazon S3 | Amazon EFS |
+| ----------------------------- | -------------- | --------- | ---------- |
+| Max. Size                     | 10240MB        | Elastic   | Elastic    |
+| Persistence                   | Ephemeral      | Durable   | Durable    |
+| Shared across all invocations | No             | Yes       | Yes        |
 
 ## Lambda - Concurrency and Throttling
 
 - Concurrency limit: up to 1000 concurrent executions on all functions per region per account
 - Can set a **reserved concurrency** at the function level (limit for one function)
-- Each invocation over the concurrency limit will trigger a throttle
+- Each invocation over the concurrency limit will trigger a **throttle**
 - Throttle behavior:
   - If sync invocation => return ThrottleError - 429
-  - If async invocation => lambda return the event to the internal **Event Queue** retry automatically and then go to DLQ (this is other kind of retries than the retry on errors)
+  - If async invocation => lambda return the event to the internal **Event Queue** retry automatically and then send event to DLQ (this is other kind of retries than the retry on errors)
 - If you need a higher account limit, open a support ticket
 
 ## Lambda - Starting types
@@ -152,6 +153,7 @@ return user
 - You need to install the packages alongside your code and zip it together
 - Upload the zip stright to lambda if less than 50MB, else to S3 first and reference it from lambda
 - AWS SDK comes by default with every lambda function
+- The dependencies can only be used by that specific lambda function if this way is used
 
 ## Lambda - Layers
 
@@ -189,10 +191,11 @@ return user
 - Maximum execution time: 900 sec (15 min)
 - Environment variables (4 KB)
 - /tmp: 512 MB to 10GB
-- Concurrency execution: 1000
+- Concurrency: 1000
 - Max Lambda function deployment size (compressed .zip): 50MB
 - Max Lambda function uncompressed size: 250MB
 - 5 Layers per function up to 250MB
+- Lambda Container Images: max image size 10GB
 
 ## Lambda - Best Practicies
 
