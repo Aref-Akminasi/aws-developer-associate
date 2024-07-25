@@ -236,7 +236,9 @@ return user
 - The result is not sent back to the caller
 - The events are placed in an internal **Event Queue** in Lambda Serivce
 - Lambda attempts to retry on **errors** (3 tries total)
+- Failed tasks might be sent to a destination
 - Tasks that couldn't be processed might be moved to SQS DLQ or SNS DLQ **via Lambda and not via SQS** (requires IAM execution role)
+- Use case: use it if you are handling too many requests
 
 ## Lambda - Event Source Mapping
 
@@ -259,7 +261,7 @@ return user
 
 #### Scaling
 
-- One Lambda function per shard
+- One Lambda function per shard by default
 - Up to 10 batches per shard
 - In-order processing is still guaranteed for each partition key at the batch level
   ![Kinesis Event Source Mapping](./assets/45.png)
@@ -294,8 +296,8 @@ return user
 
 #### Error Handling
 
-- To use a DLQ: set up on the SQS queue not on lambda **(DLQ via lambda is only for async invocations)**
 - When an error occurs, batches are returned to the queue as individual messeges and might be processed in different grouping than the original batch
+- To use a DLQ: set up on the SQS queue not on lambda **(DLQ via lambda is only for async invocations)**
 
 # Lambda Integrations
 
@@ -305,16 +307,48 @@ return user
 
 - Use the Code:ZipFile property for inline functions in the template
 - Inline functions are used for simple functions
-- You **can't** use or include function dependencies with inline functions
+- You **can't** include function dependencies with inline functions
+
+```yaml
+MyLambdaFunction:
+  Type: AWS::Lambda::Function
+  Properties:
+    FunctionName: my-inline-function
+    Handler: index.handler
+    Runtime: python3.8
+    Code:
+      ZipFile: |
+        import json
+        def handler(event, context):
+            return {
+                'statusCode': 200,
+                'body': json.dumps('Hello from Lambda!')
+            }
+    Role: arn:aws:iam::123456789012:role/execution_role
+```
 
 ### S3
 
 - Store Lambda zip in S3
 - Refer the S3 Zip location in the CloudFormaiton code
 - You need to provide the following in CloudFormation:
-  - S3BucketParam = Bucket name
-  - S3KeyParam = Name of the file
-  - S3ObjectVersionParam = Verion ID of the Object
+  - S3Bucket = Bucket name
+  - S3Key = Name of the file
+  - S3ObjectVersion = Verion ID of the Object
+
+```yaml
+MyLambdaFunction:
+  Type: AWS::Lambda::Function
+  Properties:
+    FunctionName: my-function
+    Handler: index.handler
+    Runtime: nodejs14.x
+    Code:
+      S3Bucket: my-bucket
+      S3Key: my-function.zip
+      S3ObjectVersion: "Some String"
+    Role: arn:aws:iam::123456789012:role/execution_role
+```
 
 ## Lambda - Lambda Container Images
 
@@ -326,7 +360,7 @@ return user
 
 - Use AWS-provided Base Images
 - **Use Multi-Stage Builds:** Create smaller, more efficient images by only including necessary artifacts in the final image.
-- **Build from stable to frequently changing:** make your most frequently occuring changes as late in your Dockerfile as possible
+- **Build from stable to frequently changing in your docker file:** make your most frequently occuring changes as late in your Docker file as possible
 - **Use a single repository for Functions with Large Layers:** ECR compares each layer of a container image when it is pushed to avoid uploading and storing duplicates
 
 ## Lambda - Function URL
@@ -344,7 +378,7 @@ return user
 
 ## Lambda Integration with ALB
 
-- To use your lambda function with ALB the lambda function must be registered with a target group
+- To use your lambda function with ALB the lambda function must be registered with a **target group**
 - Request is converted from HTTP (headers and body and query string parameters) to JSON in order to send it to the lambda function
 - Response is converted from JSON to HTTP
 
