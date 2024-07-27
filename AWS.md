@@ -1,4 +1,4 @@
-[Home](../index.md)
+[Terms](./terms.md)
 
 [Scoping](./Scoping.md)
 

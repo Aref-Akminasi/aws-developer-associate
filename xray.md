@@ -137,7 +137,7 @@
   - Standardize with open-source APIs
   - Send trace data to multiple destinations simultaneously
 
-## Sending trace date to destinations
+## Sending trace data to destinations
 
 - AWS X-Ray
 - Amazon CloudWatch

@@ -36,11 +36,11 @@
 - SFTP = Secure File Transfer Protocol
 - VPC = Virtual Private Cloud
 - ENI = Elastic Network Interface
-- NACL = Network ACL
+- NACL = Network Access Control List
+- ACL = Access Control List
 - NAT = Network Address Translation
 - CRR = Cross Region Replication
 - SRR = Same Region Replication
-- ACL = Access Control List
 - KMS = Key Management Service
 - CORS = Cross-Origin Resource Sharing
 - OAC = Origin Access Control

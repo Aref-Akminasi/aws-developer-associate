@@ -12,6 +12,13 @@
 - You have the ability to clone an environment and it's configuration
 - Elastic Beanstalk uses CloudFromation under the hood
 
+## Elastic Beanstalk - Deployment Process
+
+1. Describe dependencies (requirements.txt / package.json)
+2. Package code as zip
+3. Upload zip file (console or CLI)
+4. Elastic Beanstalk will deploy the zip on each EC2 instance, resolve dependencies and start the application
+
 ## Elastic Beanstalk - Components
 
 - Application: collection of Elastic Beanstalk components (environments, versions, configurations)
@@ -90,14 +97,12 @@
 ### Traffic Splitting
 
 - Automated
-- Is used for **canary testing**
+- Is used for **canary testing**: a new version of an application to a small subset of users before deploying it to the entire user base.
 - ELB sends a small % of traffic to new deployment
 - New application version is deployed to a temporary ASG with the same capacity
 - New instances are migrated from the temporary ASG to the original ASG
 - Automated rollback on failure
 - Code is deployed on new instances
-
-- Canary testing: a new version of an application to a small subset of users before deploying it to the entire user base.
 
 ![Traffic Splitting](./assets/27.png)
 
@@ -131,13 +136,6 @@ option_settings:
     ENVIRONMENT: production
     DEBUG_MODE: false
 ```
-
-## Elastic Beanstalk - Deployment Process
-
-1. Describe dependencies (requirements.txt / package.json)
-2. Package code as zip
-3. Upload zip file (console or CLI)
-4. Elastic Beanstalk will deploy the zip on each EC2 instance, resolve dependencies and start the application
 
 ## Elastic Beanstalk - Migrations
 

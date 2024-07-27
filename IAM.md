@@ -63,7 +63,7 @@
 ## IAM CLI & SDK
 
 - AWS CLI: manage your AWS services using the command-line
-  - AWS CLI requires Python as its runtime
+  - AWS CLI requires **Python** as its runtime
 - AWS SDK: manage your AWS services using a programming language
   - if you don't specify or configure a default region, then us-east-1 will be chosen by default
 
@@ -79,7 +79,6 @@
 - To enable AWS services to perform actions on your behalf, assign permissions to these services using IAM Roles.
 - You **cannot** directly assign an IAM role to an on-premises server. IAM roles are specifically designed for AWS resources.
 - When we use an IAM Role the instance uses the **instance metadata** to get **temporarily** credentials
-- Note: IAM role can **NOT** be assigned as a principal to a policy
 
 ## IAM Security Tools
 

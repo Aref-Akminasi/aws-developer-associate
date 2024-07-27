@@ -30,7 +30,7 @@
 
 ## ECS - Data Volumes
 
-### S3
+### S3 (Can't)
 
 - Amazon S3 cannot be mounted as a file system for ECS Tasks, but it can be used for Get Object
 
@@ -78,6 +78,22 @@
   - Manages the interaction between ECS and the ASG, ensuring there’s enough EC2 capacity.
   - ECS Cluster Capacity Provider It's **NOT** used with **ECS Fargate**
 
+## ECS Tasks Placement (EC2 Launch Type only)
+
+- When a task of launch type EC2 is launched, ECS must determine where to place it
+- Strategies and Constraints are written in JSON
+
+### Strategies
+
+- Binpack: Place tasks based on the least available amount of CPU or memory (to minimizes the number of running EC2 - cost savings)
+- Randomly: place randomly
+- Spread: spread tasks for EC2s
+
+### Constraints
+
+- distinitInstance: place each task on a different instance
+- memberOf: place task on instances that satisfy and expression (ex: t2.\*)
+
 ## ECS Rolling Update
 
 - Update tasks from v1 to v2
@@ -102,7 +118,7 @@
   - Environment variables (Hardcoded, reference to SSM Parameter store or AWS secrets manager)
   - Memory and CPU required
   - Networking information
-  - Loggin configuration (ex: CloudWatch)
+  - Logging configuration (ex: CloudWatch)
 
 ## ECS - Load Balancing
 
@@ -120,25 +136,9 @@
 - We have to define only the container port (host port is not applicable)
 - On the SG of the task allow port 80 from the ALB SG
 
-## ECS Tasks Placement (EC2 Launch Type only)
-
-- When a task of launch type EC2 is launched, ECS must determine where to place it
-- Strategies and Constraints are written in JSON
-
-### Strategies
-
-- Binpack: Place tasks based on the least available amount of CPU or memory (to minimizes the number of running EC2 - cost savings)
-- Randomly: place randomly
-- Spread: spread tasks for EC2s
-
-### Constraints
-
-- distinitInstance: place each task on a different instance
-- memberOf: place task on instances that satisfy and expression (ex: t2.\*)
-
 ## AWS Copilot
 
-- CLI tool to simplifies build, release, set up infrastructure, and operate production-ready containerized apps
+- AWS Copilot is a CLI tool to simplifies build, release, set up infrastructure, and operate production-ready containerized apps
 
 ## Elastic Kubernetes Service (EKS)
 
@@ -179,5 +179,5 @@
 
 #### Steps explained
 
-1. Authenticate Docker to ECR (this actually involves two steps in one command: Retrieve a temporary password, Authenticate Docker with ECR)
+1. Authenticate Docker to ECR (this actually involves two steps in one command: Retrieve a temporary password)
 2. Pull Docker image from ECR

@@ -126,4 +126,4 @@
 - Monitor, analyze, and take actions based on content delivery performance
 - Real time logs allows you to choose:
   - Sampling Rate: percentage of requests for which you want to receive (if you are having lots of traffic but want to recieve a part of it)
-  - Specific fields and specific Cache Behaviours (path patterns)
+  - Specific Cache Behaviours (path patterns)

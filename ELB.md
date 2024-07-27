@@ -5,6 +5,7 @@
 ## What is load balancing?
 
 - Load balancers are **servers** that forward traffic to multiple servers (ex: EC2 instances)
+- You cannot change the Elastic Load Balancer type after deployment (you can only change the configuration)
 
 ## Why to use a load balancer?
 
