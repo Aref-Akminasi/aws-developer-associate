@@ -7,6 +7,7 @@
 - There are two patterns of application communication
   ![Communication](./assets/32.png)
 - Synchronous communication between applications can be problematic if there are sudden spikes of traffic
+- SQS communication is **Async**
 
 ## General
 
@@ -24,7 +25,7 @@
 | ---------------------------- | ---------------------------------------------- | ------------------------------------------------------------------ |
 | **Message Order**            | Best-effort ordering (order is not guaranteed) | First-in-First-out                                                 |
 | **Throughput**               | Unlimited                                      | 300 msgs/s (no batching), 3000 msgs/s (with batching)              |
-| **Duplicates**               | Possible                                       | No Duplication wihtin 5 min (based on content or deduplication ID) |
+| **Duplicates**               | Might happen                                   | No Duplication wihtin 5 min (based on content or deduplication ID) |
 | **Queue Naming**             | -                                              | Must end with `.fifo`                                              |
 | **Message goruping support** | No Support                                     | Yes                                                                |
 | **Delivery Type**            | At least once delivery                         | Exactly once delivery (within the timeframe of deduplication)      |
@@ -132,7 +133,7 @@
 - SNS Push data to subscribers
 - Each subscriber to the topic will get all the messages by default
 - SNS has both standard type and FIFO
-- **Cross-Region Delivery:** works with SQS Queues in other regions
+- **Cross-Region Delivery:** works with SQS Queues and Lambda Functions in other regions
 - Types of subscribers:
 
   - Emails
