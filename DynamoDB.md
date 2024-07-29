@@ -99,7 +99,7 @@
 - If Burst Capacity has been consumed, you'll get a **ProvisionedThroughputExceededException**
 - Reasons for throttling:
   - Hot Keys, one partition key is being read too many times
-  - Hot Partitions, remember WCUs and RCUs are spread evenly across partitions (this throttling might happen even if you didn't exceed the total number of WCU/RCU)
+  - Hot Partitions, remember WCUs and RCUs are spread evenly across partitions (throttling might happen even if you didn't exceed the total number of WCU/RCU)
   - Very Large Items, remember RCU and WCU depends on size of items
 - Solutions:
   - Exponential backoff
@@ -164,7 +164,8 @@
 
 ## DynamoDB - Local Secondary Index (LSI)
 
-- Alternative Sort Key for your table (same partition key as the sort table)
+- Alternative Sort Key for your table
+- Has same partition key as the sort table
 - Up to 5 LSI's per table
 - Must be defined at table creation time
 - Use a Local Secondary Index (LSI) when you need to query with a different sort key but share the same partition key as the primary key.
