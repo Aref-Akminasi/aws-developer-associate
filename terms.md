@@ -55,3 +55,7 @@
 - KPL = Kinesis Producer Library
 - IMDS = Instance Meta Data
 - ARN = Amazon Resource Name
+- WCU = Write Capacity Unit
+- RCU = Read Capacity Unit
+- LSI = Local Secondary Index
+- GSI = Global Secondary Index
