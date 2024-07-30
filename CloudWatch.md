@@ -121,6 +121,8 @@
 
 **\*NOTE: We can use both Unified Agent and Custom Metrics to send some metrics such as RAM usage**
 
+**\*NOTE: For application-specific metrics like the number of logged-in users, custom metrics**
+
 ## CloudWatch - Logs Metric Filter
 
 - Logs metric filter is **creating** a **metric** based on **logs**
@@ -150,6 +152,7 @@
 - EC2 Instances (trigger stop, trigger terminate, trigger reboot)
 - ASG (Trigger Auto Scaling)
 - SNS
+- Trigger a lambda function
 
 ### Alarms - Composite Alarms
 
