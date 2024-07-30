@@ -252,6 +252,7 @@ return user
 - Your Lambda function is invoked **synchronously**
 - An **event source mapping** is created internally in Lambda
 - The event source mapping polls the service and returns a batch
+- Requires an appropriate IAM execution role to pull
 
 ### Kinesis & DynamoDB
 
@@ -299,7 +300,7 @@ return user
 - When an error occurs, batches are returned to the queue as individual messeges and might be processed in different grouping than the original batch
 - To use a DLQ: set up on the SQS queue not on lambda **(DLQ via lambda is only for async invocations)**
 
-# Lambda Integrations
+# Lambda with other Services
 
 ## Lambda - CloudFromation
 
