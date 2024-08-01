@@ -141,3 +141,5 @@ AWS edge locations are data centers located worldwide that help deliver content 
 [Lambda](./Lambda.md)
 
 [DynamoDB](./DynamoDB.md)
+
+[API Gateway](./APIGateway.md)

@@ -4,17 +4,23 @@
 
 ## NoSQL Databases
 
+### Definition
+
 - NoSQL databases are non-relational databases
 - NoSQL databases include MongoDB, DynamoDB...
+
+### Limitations
+
 - NoSQL databases do not support query joins
 - NoSQL databases do not support aggregation such as "SUM", "AVG"
-- All the data that is needed for a query is present in one row
+
+### Scaling
+
 - RDS databases are limited for horizontal scaling (we scale reads by adding read replicas, we can't scale writes), while NoSQL databases scale horizontally by adding RCUs, WCUs
 
 ## DynamoDB - Basics
 
 - Standard & Standard-IA Table Classes
-- DynamoDB is made of Tables
 - Each table has a primary key, must be decided at creation time
 - Each table can have an infinite number of items (= rows)
 - Each item can have attributes (can be added over time - can be null)
@@ -22,9 +28,18 @@
 
 ### Supported Data types
 
-- Scalar Types: String, Boolean, Binary, Number...
-- Document Types: List, Map
-- Set Types: String Set, Number Set
+- Scalar Types:
+  - String
+  - Boolean
+  - Binary (0101011)
+  - Number
+  - etc...
+- Document Types:
+  - List (collection of items)
+  - Map (key/value pairs)
+- Set Types (Sets are a collection of unique values, no two values can be the same):
+  - String Set
+  - Number Set
 
 ## DynamoDB - Primary Key
 
@@ -34,23 +49,28 @@
 
 - Partiton key must be unique for each item
 - Partition key might not be null
-- Partition key must be "diverse" so that the data is distributed (ex: user ID)
+- Partition key must be "diverse" so that the data is distributed (ex: user_id)
 
 ### Option 2: Parititon Key + Sort Key (HASH + RANGE)
 
 - The combination must be unique for each item
 - Parition Key or Sort Key might not be null
-- Data is grouped by parititon key for searching
 - While the same partition key or sort key may appear multiple times in the table, the same combination of both cannot be duplicated.
 
-## DynamoDB - Read/Write Capacity Modes
+### Write Sharding
+
+- Imagine we have a voting application with two candidates, candidate A and candidate B
+- If Partition Key is Candidate ID this results into two partitions, which will generate issues (ex: Hot Partition)
+- A strategy that allows better distribution of items evenly across parititons: add a suffix or a prefix to a partition key value (ex: candidate_A-11, candidate_A-20)
+
+## DynamoDB - Capacity Modes
 
 - You can switch between modes once every 24 hours
-- Has two options:
+- Has two modes:
 
 ### Provisioned Mode (Default)
 
-- You specify the number of read/writes per second
+- You specify the number of WCUs/RCUs
 - You need to plan capacity beforehand
 - Support for **auto scaling** to dynamically adjusts the provisioned throughput capacity (define min, max capacity units)
 
@@ -62,125 +82,142 @@
 - Use case: unknown workloads, unpredictable application traffic
 - Pay for reads/writes, more expensive ($$$)
 
-## DynamoDB - Read/Write Capacity Units
+## DynamoDB - WCUs/RCUs
 
-- WCU and RCU are decoupled you don't need to increase both if you just need to increase one of them
-
-### Write Capacity Units (WCU)
+### WCU/RCU
 
 - One Write Capacity Unit (WCU) represents one write per second for an item up to 1KB in size
-- If the item is larger than 1KB, more WCUs are consumed
+- One Read Capacity Unit (RCU) represents one read per second for an item up to 4KB in size
+- If item size exceeds the limit, more WCU or RCU is consumed
 
-- Example 1: we write 10 items per second, with item size 2KB: we need 20WCUs
-- Example 2: we write 6 items per second, with item size 4.5KB: we need 30WCUs
+### Read modes
 
-### Read Capacity Units (RCU)
+- Eventual Consistency (2x less the RCUs is consumed)
+  - If we read just after a write, it's possible we'll get some stale data
+- Strong Consistency (1x times the RCUs is consumed)
+  - If we read just after a write, we will get the correct data
+  - Set **ConsistentRead** parameter to **True** in API calls
+- Transactional (2x more the RCUs is consumed)
+  - You can group multiple actions together and submit them as a single all-or-nothing operation
+  - On multiple items or multiple tables
 
-- One Read Capacity Unit (RCU) represents **one Strongly Consistent Read** per second or **two Eventually Consistent Reads** per second, for an items up to 4KB in size
-- If the items are larger than 4KB, more RCUs are consumed
+### Write modes
 
-### Read/Write Modes
+- Standard (1x times the WCUs is consumed)
+- Trasactional (2x times the WCU is consumed)
+  - You can group multiple actions together and submit them as a single all-or-nothing operation
+  - On multiple items or multiple tables
 
-#### Read modes
+### Examples
 
-- Eventual Consistency
-- Strong Consistency
-- Transactional
+- Example: we write 10 items per second, with item size 2KB = 20WCUs
+- Example: we write 6 items per second, with item size 4.5KB = 30WCUs
+- Example: 10 Strongly Consistent Reads per second with item size 4KB = 4 RCUs
+- Example: 16 Eventually Consistent Reads per second, with item size 12KB = 24 RCUs
+- Example: 10 Strongly Consistent Reads per second, with item size 6KB = 20 RCUs
+- Example: 3 Transactional writes per second, with item size 5KB = 30 WCUs
+- Example: 5 Transactional reads per second, with item size 5KB = 20 RCUs
 
-#### Write modes
-
-- Standard
-- Trasactional
-
-#### Eventually Consistent Read VS Strongly Consistent Read
-
-- Eventually consistent Read (default): If we read just after a write, it's possible we'll get some stale data
-- Strongly Consitent Read: If we read just after a write, we will get the correct data
-- Set **ConsistentRead** parameter to **True** in API calls
-- Consumes twice the RCU
-
-### Partitions
+## DynamoDB - Partitions
 
 - Data is stored in partitions
 - Partition Keys go through a hashing algorithm to know to which partition they go to
 - Data with same partition key goes to the same partition
 - WCUs and RCUs are spread evenly across partitions
 
-### Throttling
+## DynamoDB - Throttling
 
 - Throughput can be exceeded temporarily using **Burst Capacity**
 - If Burst Capacity has been consumed, you'll get a **ProvisionedThroughputExceeded**
-- Reasons for throttling:
-  - Hot Keys, one partition key is being read too many times
-  - Hot Partitions, Remember RCUs and WCUs are spread across all the table's partitions.
-    (throttling might happen even if you didn't exceed the total number of WCU/RCU)
-  - Very Large Items, remember RCU and WCU depends on size of items
-- Solutions:
-  - Exponential backoff
-  - Use distribute parition keys
-  - If it is RCU issue, we can use **DynamoDB Accelerator (DAX)**
 
-## DynamoDB - API Calls
+### Reasons for throttling
 
-- Note: Filter Expressions filters the results of **read** queries, while condition expressions are for **write** operations
+- Hot Keys: one partition key is being read too many times
+- Hot Partitions: Remember RCUs and WCUs are spread across all the table's partitions.
+  (throttling might happen even if you didn't exceed the total number of WCU/RCU)
+- Very Large Items: remember RCU and WCU depends on size of items
 
-### Writing Data
+### Solutions
+
+- Exponential backoff
+- Use distribute parition keys
+- If it is RCU issue, we can use **DynamoDB Accelerator (DAX)**
+
+## DynamoDB - Writing Operations
+
+### Writing techniques
+
+- Concurrent Writes: the second write might overwrite the first write (ex: update value to 1, then update value to 2. value will be 2)
+- Conditional Writes: Accept a **write/update/delete** only if a condition is met (attribute_exists, attribute_not_exists, categories, prices, etc...), Use case: change price of an item if it's price falls in the 'discount' category
+- Optimistic Locking: each item has an attribute that acts as a version number, a strategy to ensure an item hasn't changed before you update/delete it, it is handy for scenarios where two users are updating the same item at the same time
+- Atomic Writes: ensure that a single write operation (like updating or deleting an item) is applied completely or not at all (roll back), without leaving the item in a partially updated state (it is like Transactions, but atomic writes is for one item operation, while transactions are for multiple operations)
+
+### Writing APIs
 
 - PutItem: Creates a new item or fully replace an old item (same Primary Key)
 - UpdateItem: Edits an existing item's attributes or adds a new item if it doesn't exist
-- Concurrent Writes: the second write overwrites the first write (ex: update value to 1, then update value to 2. value will be 2)
-- Conditional Writes: Accept a **write/update/delete** only if a condition is met (attribute_exists, attribute_not_exists, categories, prices, etc...)
-  - Note: it is also used for deletes
-  - We can pass a json file as a map for values
-  - Use case: change price of an item if it's price falls in the 'discount' category
-  - Use case: Delete an item if it has no price
-  - Use case: Prevent from writing simultanously with others, (ex: update value = 1 only if value = 0), if two writes from the same type are sent, the first write is accepted, the second write fails
-- Optimistic Locking: each item has an attribute that acts as a version number, a strategy to ensure an item hasn't changed before you update/delete it, it is handy for scenarios where two users are updating the same item at the same time
+- BatchWriteItem
+  - Up to 25 PutItem and/or DeleteItem in one call
+  - Up to 16MB of data
+  - Can't use (UpdateItem)
+  - If some operations fails (ex: we can't write because lack of capacity) we will get back the **UnprocessedItems** and thereafter we can use exponential backoff or add WCU
 
-### Reading Data
+## DynamoDB - Reading Operations
 
 - GetItem: read **one item** based on primary key (HASH or HASH + RANGE)
 
   - Use ProjectionExpression: can be specified to retrieve only certain attributes
 
+- BatchGetItem
+
+  - Return items from one or more tables
+  - Up to 100 items, up to 16MB of data
+  - **UnprocessedKeys** for failed read operations (Exponential backoff or add RCU)
+
 - Query: returns items based on Partition key and (optionaly) Sort Key
 
-  - Use the KeyConditionExpression parameter to provide a specific value for the partition key.
+  - Use the KeyConditionExpression parameter to provide:
+    - Partition Key Value (must be = operator) - required
+    - Sort Key Value (=, >, <, =>, <=, between, begins with) - optional
   - Returns up to 1MB of data - use pagination to keep on reading
 
 - Scan: scan the entire table and then filter out data client side
 
   - Returns up to 1MB of data - use pagination to keep on reading
   - Consumes a lot of RCU
-  - You can have a limit parameter
-  - You can have parralel scans to speed up the scan
+  - You can have a **Limit** parameter
+  - You can have **parralel scans** to speed up the scan (consumes more RCU)
 
-- FilterExpression (optional): A filter expression is applied after a Query/Scan finishes, used only with non-key attributes.
-- Use pagination to keep on reading for both Query and Scan
+- FilterExpression (optional): A filter expression is applied after a Query/Scan finishes, used only with non-key attributes. (can't be applied for BatchGetItem)
 
-### Delete Data
+## DynamoDB - Deleting Operations
+
+### Delete techniques
+
+- The best way to erase all data in a DynamoDB table is to DeleteTable and then create the table again **it is not recommended to use scan and delete items there after**
+
+### Delete APIs
 
 - DeleteItem
 - DeleteTable
-- The best way to erase all data in a DynamoDB table is to DeleteTable and then create the table again **it is not recommended to use scan and delete items there after**
 
-## Batch Operations
+## DynamoDB - CLI
 
-- Allows you to save in latency by reducing the number of API calls
-- BatchWriteItem
-  - Up to 25 PutItem and/or DeleteItem in one call
-  - Up to 16MB of data
-  - Can't use (UpdateItem)
-  - If some operations fails (ex: we can't write because lack of capacity) we will get back the **UnprocessedItems** and thereafter we can use exponential backoff or add WCU
-- BatchGetItem
-  - Return items from one or more tables
-  - Up to 100 items, up to 16MB of data
-  - **UnprocessedKeys** for failed read operations (Exponential backoff or add RCU)
+- `--projection-expression` one or more attributes to retrieve
+- `--filter-expression` filter items
+- `--page-size: 10` Defines the number of items to retrieve per page. This parameter does not limit the total number of items retrieved; instead, it controls how many items are retrieved per individual API call. (handy to avoid timeout)
+- `--max-items: 100` Limits the total number of items returned in the response. (returns NextToken) It controls the total count of items regardless of pagination.
+- `--starting-token: eyJFeGNsdXN...` specify the last NextToken to retrieve the next set of items (works in combination with max-items) will get items 101-200
+
+---
+
+- Note: you can use `--max-items` without using page size, just to scan items in one API call without pagination.
+- Note: If you only use `--page-size`, the AWS CLI will retrieve items in pages of the size specified by `--page-size`. You will receive paginated results for all items
 
 ## DynamoDB - Local Secondary Index (LSI)
 
 - Alternative Sort Key for your table
-- Has same partition key as the sort table
+- Has same partition key as the table
 - Up to 5 LSI's per table
 - Must be defined at table creation time
 - Use a Local Secondary Index (LSI) when you need to query with a different sort key but share the same partition key as the primary key.
@@ -191,13 +228,9 @@
 - Alternative Primary Key (HASH or HASH+RANGE)
 - Can be added/modified after table creation
 - You can see it as if you are creating a new table
-- If the GSI is throttled, the main table will be throttled
+- If the WCUs/RCUs in the GSI are throttled, the WCUs/RCUs in the main table will be throttled
 - Use a Global Secondary Index (GSI) when you need to query a DynamoDB table using an attribute that is not part of the primary key.
   ![GSI](./assets/47.png)
-
-## DynamoDB - PartiQL
-
-- SQL-compatible query language for DynamoDB
 
 ## DynamoDB - DAX
 
@@ -209,7 +242,17 @@
 - Support for Multi-AZ (3 nodes required for high availability)
 - DAX can be combined with ElastiCache in an architecture
 - Has encryption capabilites (at rest, in transit)
-- IAM Service role for DynamoDB access
+- IAM Service role required for DynamoDB access
+
+## DynamoDB - TTL
+
+- Automatically delete items after an expiry **timestamp (Unix time)**
+- you have to add an attribute as type **Number** with a value of **Unix time**
+- When enabling TTL you have to add a custom name for the expire attribute (ex:expires_on)
+- Doesn't consumer any WCUs
+- Expired items deleted within 48 hours of expiration (it is not immediately)
+- Expired items are deleted from both LSIs and GSIs
+- A delete operation for each expired item enters the DynamoDB streams (can help recover expired items)
 
 ## DynamoDB - Streams
 
@@ -231,66 +274,12 @@
 
 ### Ability to choose the information that will be written to the stream
 
-- Key attributes only: only the key attribute of the modified item
+- Key attributes: only the key attribute of the modified item
 - New Image: the entire item, as it appears after it is modified
 - Old image: the entire item, as it appeared before it was modified
 - New and old images: both the new and the old images of the item
 
-## DynamoDB - TTL
-
-- Automatically delete items after an expiry timestamp (Unix time)
-- you have to add an attribute as type **Number** with a value of **Unix time**
-- When enabling TTL you have to add a custom name for the expire attribute (ex:expires_on)
-- Doesn't consumer any WCUs
-- Expired items deleted within 48 hours of expiration (it is not immediately)
-- Expired items are deleted from both LSIs and GSIs
-- A delete operation for each expired item enters the DynamoDB streams (can help recover expired items)
-
-## DynamoDB - Transactions
-
-- DynamoDB Transactions: You can group multiple actions together and submit them as a single all-or-nothing **TransactWriteItems** or **TransactGetItems** operation.
-- Example: do an **UpdateItem** in an **AccountBalance** table, and **PutItem** in **BankTransactions** table
-- Consumes 2x WCUs & RCUs
-- Example 1: 3 Transactional writes per second, with item size 5KB = 30 WCUs
-- Example 2: 5 Transactional reads per second, with item size 5KB = 20 RCUs
-- Use cases:
-  - Financial transactions
-  - Managing orders
-  - Multiplayer games
-
-## DynamoDB - Session State Cache
-
-- It's common to use DynamoDB to store session state
-- vs ElastiCache: ElastiCache is in-memory, but DynamoDB is serverless
-- vs EFS: EFS must be attached to EC2 instances as a network drive
-- vs EBS & Instance store: EBS & Instance store can only be used for local caching, not shared caching
-- vs S3: S3 is higher latency, and not meant for small objects
-
-## DynamoDB - Write Sharding
-
-- Imagine we have a voting application with two candidates, candidate A and candidate B
-- If Partition Key is Candidate ID this results into two partitions, which will generate issues (ex: Hot Partition)
-- A strategy that allows better distribution of items evenly across parititons: add a suffix to a partition key value (ex: candidate_A-11, candidate_A-20)
-
-## DynamoDB - Working with S3
-
-- Large Objects Pattern: store a reference to S3 bucket (ex: Image URL), the client will get the item from DynamoDB and download from S3
-- Indexing S3 Objects Metadata: store object's metadata through a lambda function in a DynamoDB Table
-
-## DynamoDB - Operations
-
-- Table Cleanup:
-  - Option 1: Scan + DeleteItem
-    - Very slow, consumes RCU & WCU, expensive
-  - Option 2: Drop Table + Recreate Table
-    - Fast, efficient, cheap
-- Copying a DynamoDB Table
-  - Option 1: Using AWS Data Pipeline
-  - Option 2: Backup and restore into a new Table
-  - Option 3: Scan + PutItem or BatchWriteItem
-    - Write your own code
-
-## DynamoDB - Securiy & Other Features
+## DynamoDB - Securiy
 
 ### Security
 
@@ -302,6 +291,25 @@
 
 - Point-in-time recovery
 
+## DynamoDB - Additional Features
+
+### PartiQL
+
+- SQL-compatible query language for DynamoDB
+
+### Session State Cache
+
+- It's common to use DynamoDB to store session state
+- vs ElastiCache: ElastiCache is in-memory, but DynamoDB is serverless
+- vs EFS: EFS must be attached to EC2 instances as a network drive
+- vs EBS & Instance store: EBS & Instance store can only be used for local caching, not shared caching
+- vs S3: S3 is higher latency, and not meant for small objects
+
+### Working with S3
+
+- Large Objects Pattern: store a reference to S3 bucket (ex: Image URL), the client will get the item from DynamoDB and download from S3
+- Indexing S3 Objects Metadata: store object's metadata through a lambda function in a DynamoDB Table
+
 ### Global Tables
 
 - Multi-region, high performance
@@ -310,22 +318,13 @@
 
 - Develop and test apps locally without accessing the DynamoDB web service (without internet)
 
-### Migrate to DynamoDB
+### Migrate to DynamoDB (AWS DMS)
 
 - AWS Database Migration Service (AWS DMS) can be used to migrate to DynamoDB (from Oracle, MySQL, etc...)
 
-## DynamoDB - Users interact with DynamoDB Directly
+### Users interact with DynamoDB Directly
 
 1. User Login: Users authenticate using identity providers like Amazon Cognito User Pool.
 2. Temporary AWS Credentials: After authentication, users receive temporary AWS credentials associated with an IAM role.
 3. IAM Role Conditions: The IAM role includes conditions, such as LeadingKey, to restrict users' access to data based on the primary key, ensuring users can only access their own data.
 4. Attribute-Level Access Control: Additional conditions can be set on attributes to limit which specific attributes a user can view or modify.
-
-## DynamoDB - CLI
-
-- `--projection-expression` one or more attributes to retrieve
-- `--filter-expression` filter items
-- `--page-size: 10` specify that AWS CLI retrieves the **full list** of items but with a larger number of API calls instead of one API call
-- `--max-items: 100` max number of items to show in the CLI (returns NextToken) **max-items** is not the max total items, it will not keep making the calls like --page-size
-- `--starting-token: eyJFeGNsdXN...` specify the last NextToken to retrieve the next set of items
-- Note: you can use max-items without using page size, just to scan items in one API call without pagination
