@@ -59,3 +59,4 @@
 - RCU = Read Capacity Unit
 - LSI = Local Secondary Index
 - GSI = Global Secondary Index
+- VTL = Velocity Template Language
