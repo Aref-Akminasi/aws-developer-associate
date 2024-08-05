@@ -24,7 +24,7 @@
 - Application: collection of Elastic Beanstalk components (environments, versions, configurations)
 - Application version: an iteration of your application code
 - Environment:
-  - Collection of **AWS resources** running an **application version** (only one application version at a time)
+  - Collection of **AWS resources** running an **application version** (only one application version at a time), environments ex: dev, prod
   - Environment Tiers:
     - Web Server Tier (ELB in front of an ASG)
     - Worker Tier (SQS in front of an ASG)
