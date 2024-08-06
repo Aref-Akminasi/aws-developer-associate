@@ -5,7 +5,7 @@
 ## CodeCommit - Basics
 
 - CodeCommit Provides Version Control (Git)
-- No size limit on repositories (scale seamlessly)
+- No size limit on repositories
 - Code Commit is deprecated on AWS
 
 ## CodeCommit - Security
@@ -32,10 +32,10 @@
 
 ## CodePipeline - Basics
 
-- Visual Workflow to orchestrate your CICD
-- Consists of stages
-  - Stage example: Build > Test > Deploy > Invoke (lambda, step functions)
-  - Each stage can have squential action groups and/or parallel action groups
+- Visual Workflow to **orchestrate** your CICD
+- Pipeline consists of stages
+  - Stage example: Build > Test > Deploy
+  - Each stage can have **squential action groups** and/or **parallel action groups**
   - Action group example: CodeBuild, Manual approval, etc...
 - Elastic Beanstalk has direct integration with CodePipeline, and doesn't require CodeDeploy
 
@@ -43,7 +43,7 @@
 
 ## CodePipeline - Artifacts
 
-- Each pipeline stage creates **artifacts**
+- Each stage creates **artifacts**
 - Artifacts are stored in an S3 bucket and passed on the next stage
 
 ![CodePipeline Artifacts](./assets/59.png)
@@ -59,8 +59,7 @@
 
 ## CodeBuild - Basics
 
-- Build instructions: Code file **buildspec.yml** or insert manually in console at the root level of the code files
-- Build projects can be defined within CodePipeline or CodeBuild (build is triggered through CodePipeline or Codebuild)
+- Build instructions: Code file **buildspec.yml** at the root level of the code files, or insert manually in console
 
 ## CodeBuild - How it works
 
@@ -133,15 +132,24 @@ cache:
 
 - Output logs can be stored in **Amazon S3 & CloudWatch Logs**
 - Use CloudWatch Metrics to monitor build statistics
-- Use CloudWatch Alarms to notify if you need "Thresholds" for failures
+- Use CloudWatch Alarms to notify you if you need "Thresholds" for failures
 - Use EventBridge to detect failed builds and trigger notifications
 
 # CodeDeploy
 
 ## CodeDeploy - Basics
 
-- A file names **appspec.yml** defines how the deployment happens
-- CodeDeploy lifecycle: ApplicationStop, DownloadBundle, BeforeInstall, Install, AfterInstall, ApplicationStart, ValidateService
+- A file names **appspec.yml** defines how the deployment happens, at the root level of the code files
+- CodeDeploy lifecycle:
+
+  1. ApplicationStop
+  2. DownloadBundle
+  3. BeforeInstall
+  4. Install
+  5. AfterInstall
+  6. ApplicationStart
+  7. ValidateService
+
 - Deploy new applications versions to:
 
   - EC2 Instances
@@ -149,44 +157,40 @@ cache:
   - ECS
   - Lambda functions
 
-## CodeDeploy - Rollback
-
-- Automated Rollback capability in case of failed deployments or trigger CloudWatch Alarm
-- If a rollback happens, CodeDeploy redeploys the last known good revision as a **new deployment (not a restored version)**
-
 ## CodeDeploy - EC2/On-premises Platform
 
 - Perform **in-place deployments** or **blue/green deployments**
+- In place uses the same instances, while blue/green creates new instances
 - Must run the **CodeDeploy Agent** on the target instances
 - The EC2 Instances must have sufficient permissions to access S3 to get deployment bundles
-- Define Deployment speeds for In-place:
+- Define Deployment speeds for in-place:
   - AllAtOnce
   - HalfAtATime
   - OneAtATime
   - Custom %
-
-### CodeDeploy Agent
-
-- The CodeDeploy Agent must be running on the EC2 instances
-- It can be installed and updated automatically if you're using Systems Manager
 
 ## CodeDeploy - Lambda
 
 - CodeDeploy can help you automate traffic shift for lambda aliases
 - Feature is integrated within the SAM framework
 - Strategies:
+  - AllAtOnce: immediate
   - Linear: grow traffic every N minutes until 100%
   - Canary: Try X percent then 100%
-  - AllAtOnce: immediate
 
 ## CodeDeploy - ECS Platform
 
-- CodeDeploy can help you automate the deployment of a new ECS Task Definition
 - Only Blue/Green Deployments
+- CodeDeploy can help you automate the deployment of a new ECS Task Definition
 - Strategies:
+  - AllAtOnce: immediate
   - Linear: grow traffic every N minutes until 100%
   - Canary: Try X percent then 100%
-  - AllAtOnce: immediate
+
+## CodeDeploy - Troubleshooting
+
+- **Automated Rollback** capability in case of failed deployments or trigger a **CloudWatch Alarm**
+- If a rollback happens, CodeDeploy redeploys the last known good revision as a **new deployment (not a restored version)**
 
 # CodeArtifact
 
