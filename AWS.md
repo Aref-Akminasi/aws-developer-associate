@@ -51,6 +51,7 @@
 
 - To use MFA with the CLI, you must create a temporary session
 - To do so, you must run the `STS GetSessionToken` API call, in the terminal `aws sts get-session-token`
+- If an IAM policy has the condition `aws:MultiFactorAuthPresent:true` it will require MFA to assume the role
 
 ## AWS Limits (Service Quotas)
 
@@ -147,3 +148,7 @@ AWS edge locations are data centers located worldwide that help deliver content 
 [CICD](./CICD.md)
 
 [SAM](./SAM.md)
+
+[CDK](./CDK.md)
+
+[Cognito](./Cognito.md)

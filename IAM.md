@@ -17,6 +17,23 @@
 - If a user doesn't belong to a group you could provide **inline policy** which is a policy only attached to a user
 - Premissions are inherited from the group, example: if a user is part of the group 'admin' it will get the admin permissions (Policies inheritance)
 
+## IAM - Policies
+
+### AWS Managed Policy
+
+- Maintained by AWS
+- Updated in case of new services/new APIs
+
+### Customer Managed Policy
+
+- Best practice, re-usable can be applied to many principals
+- Version Controlled, able to see all versions of a policy
+
+## IAM - Trust Relationship
+
+- Trust relationship is a policy on the role that defines which services might issume this role
+- This is to prevent adding Lambda role for DynamoDB on EC2 instance as example
+
 ## IAM Policies Structure
 
 ```json
@@ -95,11 +112,74 @@
 |                                          | Use IAM tools to apply appropriate permissions           |
 |                                          | Analyze access patterns & review permissions             |
 
-## IAM Tips
+## IAM - Authorization Model
 
-- Don't use the **root** account except for AWS account setup
-- Assign users to groups and assign permissions to groups
-- Policies: JSON document that outlines permissions for users or groups
-- Create and use **Roles** for giving permissions to AWS services
-- Access Keys: access AWS using the CLI or SDK
-- Audit permissions of your account using IAM Credentials Report & IAM Access Advisor
+- \***Note**: an IAM user/role can access an S3 object if:
+
+  - The user IAM permissions **ALLOW** it **OR** the resource policy **ALLOWS** it
+  - **AND** there's no explicit **DENY** in IAM or in the S3 Policy
+  - For cross account access, both the resource policy and the IAM permission should **ALLOW** the access
+
+## IAM - Pass Role
+
+- In the policy below we are allowed to pass the role 'S3Access'
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::123456789012:role/S3Access"
+    }
+  ]
+}
+```
+
+## IAM - Dynamic Policy
+
+- You can partition you users acess using **policy variables**
+- Example: giving access to users access to their own files in a prefix in an S3 bucket or DynamoDB LeadingKey
+
+![policy variable](./assets/67.png)
+
+# AWS STS
+
+- STS Allows to grant limited and remporary access to AWS resources (up to 1 hour)
+
+## STS - APIs
+
+- AssumeRole: Assume roles within your account or cross account
+- GetSesstionToken: for MFA
+- GetCallerIdentity: return details about the IAM user or role used in the API call
+- DecodeAuthorizationMessage: decode error message when an AWS API is denied
+
+## STS - Assume Role
+
+1. Define an IAM Role within your account or cross account
+2. Define which principals can access this IAM Role
+3. Use AWS STS to retrieve temporary credentials
+
+# Active Directory
+
+- Database of objects, user accounts, computers, printers, file shares
+- Centralized security management, create account, assign permissions
+
+## AWS Managed Microsoft AD
+
+- Create your own AD in AWS
+- Establisch trust connections with your on-premise AD
+- Supports MFA
+
+## AD Connector
+
+- Proxy to redirect to on-premise AD
+- Supports MFA
+
+## Simple AD
+
+- Managed Directory on AWS
+- Cannot be joined with on-premise AD
+
+![AD](./assets/70.png)

@@ -55,7 +55,7 @@ MyFunction:
 
 ## SAM - Local Capabilities
 
-- SAM CLI + AWS Toolkits allows you to debug your Lambda functions locally, inspect variables, and execute code line-by-line.
+- **SAM CLI + AWS Toolkits** allows you to debug your Lambda functions locally, inspect variables, and execute code line-by-line.
 
 ### Locally start AWS Lambda
 

@@ -218,6 +218,7 @@ return user
   - API Gateway
   - Application Load Balancer
   - CloudFront (Lambda@Edge)
+  - Cognito User Pool
   - and more...
 - Results is returned to the caller
 - Error handling must happen client side (click on retry button, exponential backoff, etc...)

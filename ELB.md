@@ -79,6 +79,12 @@
   - **X-Forwarded-Port** This header specifies the port number that the client used to connect to the ALB.
   - **X-Forwarded-Proto** This header specifies the protocol (HTTP or HTTPS) that the client used to connect to the ALB.
 
+### Authenticate Users
+
+- Authenticate users through:
+  - Identity Provder (IdP): OpenID Connect (OIDC) compliant
+  - Cognito User Pools
+
 ## Network Load Balancer
 
 - Network Load Balancer (Layer 4)
