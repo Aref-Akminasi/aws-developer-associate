@@ -131,7 +131,7 @@
     {
       "Effect": "Allow",
       "Action": "iam:PassRole",
-      "Resource": "arn:aws:iam::123456789012:role/S3Access"
+      "Resource": "arn:aws:iam::123456789012:role/S3Access" //the name of the role we are allowed to pass
     }
   ]
 }
