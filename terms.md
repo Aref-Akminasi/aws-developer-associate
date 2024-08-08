@@ -61,3 +61,5 @@
 - GSI = Global Secondary Index
 - VTL = Velocity Template Language
 - SAM = Serverless Aplication Model
+- STS = Security Token Service
+- CDK = Cloud Development Kit

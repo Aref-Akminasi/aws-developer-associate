@@ -81,9 +81,15 @@
 
 ### Authenticate Users
 
+- Your application load balancer can securely authenticate users
 - Authenticate users through:
-  - Identity Provder (IdP): OpenID Connect (OIDC) compliant
+  - Identity provider (IdP): OpenID Connect (OIDC) compliant
   - Cognito User Pools
+- Must use an HTTPS listener
+- **OnUanauthenticatedRequest** options:
+  - authenticate (default): ask the user to authenticate
+  - deny
+  - allow
 
 ## Network Load Balancer
 

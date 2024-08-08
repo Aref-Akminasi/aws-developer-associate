@@ -31,8 +31,8 @@
 
 ## IAM - Trust Relationship
 
-- Trust relationship is a policy on the role that defines which services might issume this role
-- This is to prevent adding Lambda role for DynamoDB on EC2 instance as example
+- Trust relationship is a **policy** on the **role** that defines which services might issume this role
+- This is to prevent adding Lambda role meant for DynamoDB on EC2 instance as example
 
 ## IAM Policies Structure
 
@@ -122,7 +122,7 @@
 
 ## IAM - Pass Role
 
-- In the policy below we are allowed to pass the role 'S3Access'
+- In the policy below we are allowed to pass the role named **S3Access**
 
 ```json
 {
@@ -146,7 +146,7 @@
 
 # AWS STS
 
-- STS Allows to grant limited and remporary access to AWS resources (up to 1 hour)
+- STS Allows to grant limited and temporary access to AWS resources (up to 1 hour)
 
 ## STS - APIs
 
@@ -168,7 +168,7 @@
 
 ## AWS Managed Microsoft AD
 
-- Create your own AD in AWS
+- Managed Directory on AWS
 - Establisch trust connections with your on-premise AD
 - Supports MFA
 

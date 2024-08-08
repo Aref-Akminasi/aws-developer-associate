@@ -5,7 +5,7 @@
 ## SAM - Basics
 
 - SAM = Serverless Application Model
-- All the configuration is YAML code
+- All the configuration is YAML code or JSON
 - Supports anything from CloudFormation: Outputs, Mappings, Parameters, Resources
 
 ## SAM - Structure
@@ -26,7 +26,7 @@
 
 ### Examples
 
-- `sam sync` synchronize code and infrastructure
+- `sam sync` synchronize code and infrastructure configuration
 - `sam sync --code` synchronize code changes without updating infrastructure (bypass CloudFromation, fast update)
 - `sam sync --code --resource AWS::Serverless::Function` synchronize only all Lambda functions and their dependencies
 - `sam sync --code --resource-id HelloWorldLambdaFunction` synchronize only a specific resource by its ID
@@ -52,30 +52,21 @@ MyFunction:
 ## SAM and CodeDeploy
 
 - SAM Framework natively uses CodeDeploy to update Lambda functions
+- In the SAM Template we can add:
+  - `AutoPublishAlias: live` specify the name of the alias
+  - `DeploymentPreference` Canary, Linear, AllAtOnce
+  - `Alarms` Alarms that can trigger a rollback
+  - `Hooks` Validation Lambda function that are run before & after traffic shifting
+
+![SAM & CodeDeploy](./assets/71.png)
 
 ## SAM - Local Capabilities
 
 - **SAM CLI + AWS Toolkits** allows you to debug your Lambda functions locally, inspect variables, and execute code line-by-line.
-
-### Locally start AWS Lambda
-
-- `sam local start-lambda`
-- Start a local endpoint that emulates AWS Lambda service
-
-### Locally Invoke Lambda Function
-
-- `sam local invoke`
-- Invoke lambda function with payload once and quit after invocation completes
-
-### Generate AWS Events for Lambda Functions
-
-- `sam local generate-event`
-- Generate sample payloads for event sources (S3, SQS, etc...)
-
-### Locally start an API Gateway Endpoint
-
-- `sam local start-api`
-- Start a local HTTP server that hosts all your functions
+- `sam local start-lambda` Start a local endpoint that emulates AWS Lambda service
+- `sam local invoke` Invoke lambda function with payload once and quit after invocation completes
+- `sam local generate-event` Generate sample payloads for event sources (S3, SQS, etc...)
+- `sam local start-api` Start a local HTTP server that hosts all your functions
 
 ## SAM - Multiple Environments
 
