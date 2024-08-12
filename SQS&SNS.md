@@ -29,6 +29,7 @@
 | **Queue Naming**             | -                                              | Must end with `.fifo`                                              |
 | **Message goruping support** | No Support                                     | Yes                                                                |
 | **Delivery Type**            | At least once delivery                         | Exactly once delivery (within the timeframe of deduplication)      |
+| **Idempotent**               | Non-Idempotent                                 | Idempotent                                                         |
 
 ## SQS - Consuming Messages
 

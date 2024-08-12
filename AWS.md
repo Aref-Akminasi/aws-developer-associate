@@ -152,3 +152,9 @@ AWS edge locations are data centers located worldwide that help deliver content 
 [CDK](./CDK.md)
 
 [Cognito](./Cognito.md)
+
+[Step Functions](./stepfunctions.md)
+
+[AWS Security](./Security.md)
+
+[Other](./Other.md)
