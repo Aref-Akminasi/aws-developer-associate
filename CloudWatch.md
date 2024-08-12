@@ -175,3 +175,13 @@
 - Triggers a CloudWatch Alarm when things go wrong
 - The CloudWatch Alarm may invoke a lambda function to do a Route 53 DNS swap to redirect the users to an another instance
   ![CloudWatch Synthetics Canary](./assets/41.png)
+
+## CloudWatch - Evidently
+
+- Safely validate new features by serving them to a specified % of your users
+- Launches (= feature flags): enable and disable features for a subset of users
+- Experiments (= A/B testing): compare multiple versions of the same feature
+- Overrides: pre-define a variation for a specific user (ex: beta tester)
+- Store your experiment data on CloudWatch logs or S3
+
+![Evidently](./assets/78.png)
