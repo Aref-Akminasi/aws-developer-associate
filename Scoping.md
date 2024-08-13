@@ -27,6 +27,7 @@
 - Kinesis Data Streams
 - CloudWatch logs
 - Lambda Function
+- KMS Key
 
 ## Availability Zone Scope
 

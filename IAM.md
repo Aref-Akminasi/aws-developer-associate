@@ -114,11 +114,17 @@
 
 ## IAM - Authorization Model
 
-- \***Note**: an IAM user/role can access an S3 object if:
+### S3 Access (and other services)
 
-  - The user IAM permissions **ALLOW** it **OR** the resource policy **ALLOWS** it
-  - **AND** there's no explicit **DENY** in IAM or in the S3 Policy
-  - For cross account access, both the resource policy and the IAM permission should **ALLOW** the access
+- The user IAM permissions **ALLOW** it **OR** the resource policy **ALLOWS** it
+- **AND** there's no explicit **DENY** in IAM or in the S3 Policy
+- For cross account access, both the resource policy and the IAM permission should **ALLOW** the access
+
+### KMS Access
+
+- A user must have the proper IAM permissions to access the key even if the KMS key policy allows every one
+- If the policy explicitly allow a user in the principal, the user doesn't need an IAM policy
+- You cannot use IAM policies to allow access to a KMS key. Without permission from the key policy,
 
 ## IAM - Pass Role
 

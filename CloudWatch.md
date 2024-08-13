@@ -45,7 +45,12 @@
 ### Logs Security
 
 - Logs are encrypted by default
-- Can setup KMS-based encryption with your own keys
+- Logs are encrypted at the group level not the stream level
+- Can setup KMS-based encryption with your **Customer Managed Key** (the key policy must allow it)
+- You can not associate a CMK (Customer Managed Key) with a log group using CloudWatch console
+- You must use one of the following APIs:
+  - **associate-kms-key** if the log group already exists
+  - **create-log-group** if the log group doesn't exist yet and directly associate the key
 
 ### Logs Sources
 

@@ -135,3 +135,8 @@
 - Validate configuration changes before deployment using:
   - JSON Schema
   - Lambda function
+
+# AWS Nitro Enclaves
+
+- Process highly sensitive data in an isolated compute environment (healthcare, financial, etc...)
+- Fully isolated virtual machines
