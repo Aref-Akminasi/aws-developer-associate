@@ -179,5 +179,5 @@
 
 #### Steps explained
 
-1. Authenticate Docker to ECR (this actually involves two steps in one command: Retrieve a temporary password)
+1. Retrieve a temporary password from AWS, then docker login
 2. Pull Docker image from ECR

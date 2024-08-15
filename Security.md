@@ -80,7 +80,7 @@
 
 # CloudHSM
 
-- ClousHSM = Hardware Security Model
+- CloudHSM = Hardware Security Model
 - If we use CloudHSM AWS will provision encryption dedicated hardware
 - You manage your own encryption keys entirely (not AWS)
 - Supports both symmetric and asymmetric encryption

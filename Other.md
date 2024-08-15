@@ -4,10 +4,10 @@
 
 ## AppSync - Usage
 
-- AppSync is a managed service that uses GraphQL (uploading a GraphQL schema is required)
-- GraphQL makes it easy for applications to get exactly the data they need
-- Ability to have a merged API (combining multiple GraphQL APIs)
-- Retrieve data in real-time with WebSocket or MQTT on WebSocket
+- AppSync is a managed service that uses **GraphQL**
+- Uploading a GraphQL schema is **required**
+- Ability to have a **merged API** (combining multiple GraphQL APIs)
+- Retrieve data in real-time with **WebSocket** or **MQTT on WebSocket**
 
 ## AppSync - Integrations
 
@@ -20,24 +20,20 @@
 
 ## AppSync - Security
 
-- There are four ways you can authorize applications to interact with your AWS AppSync:
+- There are four ways you can authorize applications to interact with your AWS AppSync
 
   - API key
   - AWS IAM
   - OpenID Connect
   - Congnito User Pools
 
-- For custom domain names & HTTPS, it is recommended to use CloudFront in front of AppSync
+- For **custom domain names & HTTPS** it is recommended to use **CloudFront in front of AppSync**
 
 # Amplify
 
 ## Amplify - Basics
 
-- Create mobile and web applications
-- Amplify Studio: build full stack app, front end and backend in the console
-- Amplify CLI: configure an Amplify backend with CLI
-- Amplify Libraries: Connect your app to existing AWS Services
-- Amplify Hosting: Deploy your application
+- Create mobile and web applications via the console or CLI
 
 ## Amplify - Authentication
 
@@ -47,22 +43,21 @@
 ## Amplify - Datastore
 
 - run `amplify add api`
-- Leverages Amazon AppSync and Amazon DynamoDB
+- Leverages Amazon DynamoDB and Amazon AppSync
 
 ## Amplify - E2E Testing
 
-- Use the test step to run any test commands at build time in the file **amplify.yml**
+- Use the **test step** in **amplify.yml** to run any test commands at build time
 - Integrated with Cypress testing framework
-
-# SES
-
-- Simple Email Service
 
 # OpenSearch
 
 - Imagine we have a DynamoDB table, queries only exist by primary key or indexes
 - With OpenSearch, you can search any field
-- Doesn't support SQL natively but we have a plugin for it
+- Used for:
+  - Saving/Searching DynamoDB table data (search OpenSearch and retrieve data from the DynamoDB table)
+  - Saving/Searching CloudWatch logs
+  - Saving/Searching KDS and KDF data
 
 ## OpenSearch - Architectures
 
@@ -75,35 +70,25 @@
 - **Serverless** query service to analyze data stored in S3
 - Uses Standard SQL Language to query the files
 - Pricing $5.00 per TB of data scanned
-- Commonly used with Amazon Quicksight for reporting/dashboards
 
 ## Athena - Performance Improvement
 
 - Use columnar data for less scan
-- Compress data
 - Partition datasets in S3 for easy querying
 - Use larger files
+- Compress data
 
 ## Athena - Federated Query
 
-- Federated query allows you to run SQL queries across data stored in relational, non-relational, and custom data sources
-- Uses **Data Sources Connectors** that run on AWS Lambda
+- Federated query allows you to run SQL queries across data stored in services other than S3 (RedShift, DynamoDB, on-premises)
+- Uses **Data Source Connectors** that run on **Lambda**
 
 # AWS MSK
 
 - MSK = Managed Streaming for Apache Kafka
 - Alternative to Amazon Kinesis to stream data
+- 1MB of records size but can be increased to 10MB
 - Data is stored on EBS volumes for as long as you want
-
-## MSK vs KDS
-
-| Feature              | KDS                         | MSK                                   |
-| -------------------- | --------------------------- | ------------------------------------- |
-| Message Size         | 1MB                         | 1MB default, max is 10MB              |
-| Uses                 | Shards                      | Topics with Partitions                |
-| Resizing             | Shard splitting and merging | Can only add partitions to a topic    |
-| In-flight encryption | TLS in-flight encryption    | PLAINTEXT or TLS in-flight encryption |
-| At-rest encryption   | KMS at-rest encryption      | KMS at-rest encryption                |
 
 ## MSK - Consumers
 
@@ -123,14 +108,15 @@
 
 # AWS Macie
 
-- Amazon Macie is a fully managed data security and data privacy service that uses **machine learning** and **pattern matching** to discover and protect your sensitive data in AWS (ex: in S3 bucket)
-- Macie helps identify and alert you to sensitive data, such as personally identifiable information (PII)
+- Macie helps identify and alert you to sensitive data
+- Uses machine learning
+- Notify via EventBridge
 
 ![Macie](./assets/77.png)
 
 # AWS AppConfig
 
-- Deploy dynamic configuration changes to your applications independently of any code deployments
+- Deploy dynamic configuration changes to your applications
 - You don't need to restart the application
 - Validate configuration changes before deployment using:
   - JSON Schema
@@ -140,3 +126,7 @@
 
 - Process highly sensitive data in an isolated compute environment (healthcare, financial, etc...)
 - Fully isolated virtual machines
+
+# SES
+
+- Simple Email Service
