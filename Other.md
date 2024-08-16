@@ -5,7 +5,7 @@
 ## AppSync - Usage
 
 - AppSync is a managed service that uses **GraphQL**
-- Uploading a GraphQL schema is **required**
+- Uploading a **GraphQL schema** is **required**
 - Ability to have a **merged API** (combining multiple GraphQL APIs)
 - Retrieve data in real-time with **WebSocket** or **MQTT on WebSocket**
 

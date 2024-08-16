@@ -16,7 +16,7 @@
 ### Start workflow via
 
 - AWS Console
-- SDK call
+- SDK
 - API Gateway
 - EventBridge
 

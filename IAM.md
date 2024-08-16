@@ -124,7 +124,6 @@
 
 - A user must have the proper IAM permissions to access the key even if the KMS key policy allows every one
 - If the policy explicitly allow a user in the principal, the user doesn't need an IAM policy
-- You cannot use IAM policies to allow access to a KMS key. Without permission from the key policy,
 
 ## IAM - Pass Role
 
