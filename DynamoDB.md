@@ -112,7 +112,7 @@
 
 - Example: we write 10 items per second, with item size 2KB = 20WCUs
 - Example: we write 6 items per second, with item size 4.5KB = 30WCUs
-- Example: 10 Strongly Consistent Reads per second with item size 4KB = 4 RCUs
+- Example: 10 Strongly Consistent Reads per second with item size 4KB = 10 RCUs
 - Example: 16 Eventually Consistent Reads per second, with item size 12KB = 24 RCUs
 - Example: 10 Strongly Consistent Reads per second, with item size 6KB = 20 RCUs
 - Example: 3 Transactional writes per second, with item size 5KB = 30 WCUs
@@ -128,7 +128,7 @@
 ## DynamoDB - Throttling
 
 - Throughput can be exceeded temporarily using **Burst Capacity**
-- If Burst Capacity has been consumed, you'll get a **ProvisionedThroughputExceeded**
+- If Burst Capacity has been consumed, you'll get a **ProvisionedThroughputExceededException**
 
 ### Reasons for throttling
 
@@ -140,7 +140,7 @@
 ### Solutions
 
 - Exponential backoff
-- Use distribute parition keys
+- Use distributed parition keys
 - If it is RCU issue, we can use **DynamoDB Accelerator (DAX)**
 
 ## DynamoDB - Writing Operations
@@ -170,13 +170,13 @@
 
 - BatchGetItem
 
-  - Return items from one or more tables
+  - Return items from **one or more tables**
   - Up to 100 items, up to 16MB of data
   - **UnprocessedKeys** for failed read operations (Exponential backoff or add RCU)
 
 - Query: returns items based on Partition key and (optionaly) Sort Key
 
-  - Use the KeyConditionExpression parameter to provide:
+  - Use the **KeyConditionExpression** parameter to provide:
     - Partition Key Value (must be = operator) - required
     - Sort Key Value (=, >, <, =>, <=, between, begins with) - optional
   - Returns up to 1MB of data - use pagination to keep on reading
@@ -194,7 +194,7 @@
 
 ### Delete techniques
 
-- The best way to erase all data in a DynamoDB table is to DeleteTable and then create the table again **it is not recommended to use scan and delete items there after**
+- The best way to erase all data in a DynamoDB table is to DeleteTable and then create the table again it is **not** recommended to use scan and delete items there after
 
 ### Delete APIs
 
@@ -205,9 +205,9 @@
 
 - `--projection-expression` one or more attributes to retrieve
 - `--filter-expression` filter items
-- `--page-size: 10` Defines the number of items to retrieve per page. This parameter does not limit the total number of items retrieved; instead, it controls how many items are retrieved per individual API call. (handy to avoid timeout)
 - `--max-items: 100` Limits the total number of items returned in the response. (returns NextToken) It controls the total count of items regardless of pagination.
 - `--starting-token: eyJFeGNsdXN...` specify the last NextToken to retrieve the next set of items (works in combination with max-items) will get items 101-200
+- `--page-size: 10` Defines the number of items to retrieve per page. This parameter does not limit the total number of items retrieved; instead, it controls how many items are retrieved per individual API call. (handy to avoid timeout)
 
 ---
 
@@ -249,8 +249,8 @@
 - Automatically delete items after an expiry **timestamp (Unix time)**
 - you have to add an attribute as type **Number** with a value of **Unix time**
 - When enabling TTL you have to add a custom name for the expire attribute (ex:expires_on)
-- Doesn't consumer any WCUs
-- Expired items deleted within 48 hours of expiration (it is not immediately)
+- Doesn't consumes any WCUs
+- Expired items deleted within **48 hours of expiration (it is not immediately)**
 - Expired items are deleted from both LSIs and GSIs
 - A delete operation for each expired item enters the DynamoDB streams (can help recover expired items)
 
@@ -279,7 +279,7 @@
 - Old image: the entire item, as it appeared before it was modified
 - New and old images: both the new and the old images of the item
 
-## DynamoDB - Securiy
+## DynamoDB - Security
 
 ### Security
 
@@ -300,10 +300,6 @@
 ### Session State Cache
 
 - It's common to use DynamoDB to store session state
-- vs ElastiCache: ElastiCache is in-memory, but DynamoDB is serverless
-- vs EFS: EFS must be attached to EC2 instances as a network drive
-- vs EBS & Instance store: EBS & Instance store can only be used for local caching, not shared caching
-- vs S3: S3 is higher latency, and not meant for small objects
 
 ### Working with S3
 
@@ -326,5 +322,5 @@
 
 1. User Login: Users authenticate using identity providers like Amazon Cognito User Pool.
 2. Temporary AWS Credentials: After authentication, users receive temporary AWS credentials associated with an IAM role.
-3. IAM Role Conditions: The IAM role includes conditions, such as LeadingKey, to restrict users' access to data based on the primary key, ensuring users can only access their own data.
+3. IAM Role Conditions: The IAM role includes conditions, such as **LeadingKey**, to restrict users' access to data based on the primary key, ensuring users can only access their own data.
 4. Attribute-Level Access Control: Additional conditions can be set on attributes to limit which specific attributes a user can view or modify.

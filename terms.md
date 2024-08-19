@@ -65,3 +65,4 @@
 - CDK = Cloud Development Kit
 - SES = Simple Email Service
 - KMS = Key Management Service
+- DMS = Database Migration Service

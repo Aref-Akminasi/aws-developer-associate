@@ -14,7 +14,7 @@
 
 - Pay for function calls
 
-### Pay per duration
+### Pay for compute duration
 
 - Pay per **compute duration**, based on RAM used in that duration
 - 400.000 seconds of compute time per month is free (based on the function has 1GB RAM)
@@ -24,7 +24,7 @@
 
 - IAM in lambda is done through **IAM Execution role** and **Resource Based Policy**
 - We use an IAM execution role to allow Lambda functions to write to destinations.
-- Use Resource-Based Policies in the Lambda function to grant permissions to other AWS accounts and services to use your Lambda resources. (ex: S3)
+- Use Resource-Based Policies in the Lambda function to grant permissions to other AWS accounts and services to use your Lambda resources.
 - **Note:** When lambda is invoking the SQS, there is no Resource Based Policy needed, beacuse we poll the Event Source Mapping with the Lambda Role
 
 ## Lambda - Destinations
@@ -35,20 +35,20 @@
 - Destinations:
   - SQS
   - SNS
-  - Lambda
   - EventBridge
+  - Lambda
 - Note: AWS recommends you to use **lambda destinations** instead of **DLQ** (but both can be used)
 
 ## Lambda - Event and Context Objects
 
 ### Event Object
 
-- JSON document contains data for the function to process
-- Contains information from the invoking service (ex: EventBridge)
+- **JSON document contains data** for the function to process
+- Passed to your function by the invoking service (ex: EventBridge)
 
 ### Context Object
 
-- Provides methods and properties that provide information about the invocation (ex: function name, memory limit)
+- Provides **methods** and **properties** that provide information about the invocation (ex: function name, memory limit)
 - Passed to your function by Lambda service at runtime
 
 ### Execution Context
@@ -83,7 +83,7 @@ return user
 - It is a directory to store files temporarily (ephemeral)
 - Storage: Min 512 MB - Max 10GB
 - `/tmp` may persist temporarily between invocations to the same lambda function,
-- **Not** shared across all invocations of other lambda functions
+- **Not** shared across invocations of other lambda functions
 - When the lambda function is stopped data in `/tmp` directory is deleted
 - Use case: if a lambda function needs to download a large file
 
@@ -127,12 +127,12 @@ return user
 
 ## Lambda - Concurrency and Throttling
 
-- Concurrency limit: up to 1000 concurrent executions on all functions per region per account
+- Concurrency limit: up to 1000 concurrent executions on all functions **per region per account**
 - Can set a **reserved concurrency** at the function level (limit for one function)
 - Each invocation over the concurrency limit will trigger a **throttle**
 - Throttle behavior:
   - If sync invocation => return ThrottleError - 429
-  - If async invocation => lambda return the event to the internal **Event Queue** retry automatically and then send event to DLQ (this is other kind of retries than the retry on errors)
+  - If async invocation => lambda return the event to the internal **Event Queue** retry automatically and then send event to DLQ
 - If you need a higher account limit, open a support ticket
 
 ## Lambda - Starting types
@@ -151,13 +151,12 @@ return user
 
 - If your Lambda function depends on external libraries: X-Ray SDK, ...
 - You need to install the packages alongside your code and zip it together
-- Upload the zip stright to lambda if less than 50MB, else to S3 first and reference it from lambda
+- Upload the zip stright to lambda if less than 50MB, else to **S3 and reference it** from lambda
 - AWS SDK comes by default with every lambda function
-- The dependencies can only be used by that specific lambda function if this way is used
 
 ## Lambda - Layers
 
-- 5 Layers per function up to 250MB per layer
+- 5 Layers per function up to 250MB
 - More than one Lambda function can use these libraries
 
 - Use cases:
@@ -182,7 +181,8 @@ return user
 - Aliases are mutable (can be edited), you can change what version an alias points to without changing the alias itself.
 - We can have an alias pointing at $LATEST
 - We can define a "dev", "test" and "prod" aliases and have them point at different lambda versions
-- Aliases support **Canary Deployment** by assigning weights to different lambda versions
+- Aliases support assigning **weights** to different lambda versions to split traffic
+- Aliases support **Canary Deployment**
 
 ## Lambda - All Limits
 
@@ -191,7 +191,7 @@ return user
 - Maximum execution time: 900 sec (15 min)
 - Environment variables (4 KB)
 - /tmp: 512 MB to 10GB
-- Concurrency: 1000
+- Concurrency: 1000 per region per account
 - Max Lambda function deployment size (compressed .zip): 50MB
 - Max Lambda function uncompressed size: 250MB
 - 5 Layers per function up to 250MB
@@ -252,21 +252,10 @@ return user
 
 - Your Lambda function is invoked **synchronously**
 - An **event source mapping** is created internally in Lambda
-- The event source mapping polls the service and returns a batch
-- Requires an appropriate IAM execution role to pull
+- The event source mapping polls the service and returns a batch with messages
+- Requires an appropriate **IAM execution role** to pull
 
 ### Kinesis & DynamoDB
-
-- Items are processed in order at the shard level
-- Low traffic: use batch window to accumulate records before processing (the maximum amount of time to gather records before invkoing the function)
-- You can process multiple batches in parllel by having multiple lambda functions: Each batch contains records with the same partition key
-
-#### Scaling
-
-- One Lambda function per shard by default
-- Up to 10 batches per shard
-- In-order processing is still guaranteed for each partition key at the batch level
-  ![Kinesis Event Source Mapping](./assets/45.png)
 
 #### Error Handling
 
@@ -279,22 +268,6 @@ return user
   - Split the batch on timeout error (to work around Lambda timeout issues)
 
 ### SQS
-
-- An Event Source Mapping is created in the lambda function that polls batches from SQS
-- Specify the batch size (1-10 messages)
-- There is no batch window avaliable
-
-#### Scaling
-
-##### SQS Standard
-
-- Lambda adds 60 more instances per minute to scale up
-- Up to 1000 batches of messages processed simultaneously
-
-##### SQS FIFO
-
-- Messages with the same GroupID will be processed in order
-- The lambda function scales to the number of active message groups
 
 #### Error Handling
 
@@ -378,7 +351,7 @@ MyLambdaFunction:
 - AuthType: NONE, Lambda won't perform IAM authentication on requests to the function URL
 - AuthType: IAM, Only authenticated IAM users and roles can make requests to your function URL
 
-## Lambda Integration with ALB
+## Lambda - ALB
 
 - To use your lambda function with ALB the lambda function must be registered with a **target group**
 - Request is converted from HTTP (headers and body and query string parameters) to JSON in order to send it to the lambda function
@@ -419,14 +392,6 @@ MyLambdaFunction:
 - Linear: grow traffic every N minutes until 100%
 - Canary: try X percent then switch to 100%
 - All at once: immediate shift
-
-### AppSpec.yml parameters
-
-- All of the parameters below in AppSpec.yml are required
-- Name (required): the name of the lambda function to deploy
-- Alias (required): the name of the alias to the lambda function
-- CurrentVersion (required)
-- TargetVersion (required)
 
 ## Lambda - CodeGuru
 
