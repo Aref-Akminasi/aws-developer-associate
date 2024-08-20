@@ -8,7 +8,7 @@
 - If the Integration didn't process the request and return a response in 29 seconds, API Gateway will timeout
 - Error 504: timeout after 29 second maximum
 
-## API Gatway - APIs
+## API Gateway - APIs
 
 - HTTP API, much cheaper APIs, doesn't support resource policies
 - Rest API, doesn't support Native OpenID Connect / OAuth2.0 / JWT
@@ -52,26 +52,26 @@
 - Stage variables are like environment variables for API Gateway
 - Use them to change often changing configuration values
 - Format: `${stageVariables.variableName}`
-- Format example: `${stageVariables.lambdaAlias}` this will give us a input field names 'lambdaAlias' to enter which alias of lambda we want to invoke (ex: DEV, PROD, TEST)
+- Format example: `${stageVariables.lambdaAlias}` this will give us a **input field** names 'lambdaAlias' to enter which alias of lambda we want to invoke (ex: DEV, PROD, TEST)
 
 ## API Gateway - Mapping Templates
 
-- Uses Velocity Template Language (VTL): for loop, if etc...
+- Uses **Velocity Template Language (VTL)** for loop, if else, etc...
 - Must set **Content-Type** to **application/json** or **application/xml**
 
 ### Mapping Templates are used to
 
-- modify request/responses
+- **modify request/responses**
 - Rename / Modify query string parameters
 - Modify body content
 - Add headers
 - Used for filter output results (remove unnecessary data)
 - Rename Query String Parameters
-- Transform JSON to XML for a SOAP API
+- **Transform JSON to XML** for a SOAP API
 - Access stage variables in the mapping templates
-- Pass configuration parameters to:
+- **Pass configuration parameters** to:
 
-  - Lambda Function: Stage variables are passed to the "context" object in AWS Lambda
+  - Lambda Function: Stage variables are passed to the **context** object in AWS Lambda
   - HTTP Endpoint
 
 ## API Gateway - Integration Types
@@ -85,23 +85,24 @@
   - No mapping template
   - incoming request from the client is the input to lambda
   - the function is responsible for the logic of request/response
-  - Possibility to add HTTP headers if needed (ex: API key)
+  - **Possibility to add HTTP headers if needed (ex: API key)**
 - Integration type HTTP_PROXY
   - No mapping template
   - The HTTP request is passed to the backend
   - The HTTP response from the backend is forwarded by API Gateway
-  - Possibility to add HTTP headers if needed (ex: API key)
+  - **Possibility to add HTTP headers if needed (ex: API key)**
 
 ## API Gateway - Canary Deployment
 
-- Canary deployment to switch between stages
+- Canary deployment to switch between stages\*\*
 - Choose the % of traffic the canary channel receives
 - Metrics & logs are separate (for better monitoring)
 
-- This is also called blue/green deployment with AWS lambda & API Gateway
-  ![Canary deployment via API Gateway](./assets/50.png)
+![Canary deployment via API Gateway](./assets/50.png)
+
 - We can also have canary deployment via lambda (with no API gateway changes)
-  ![Canary deployment via Lambda](./assets/51.png)
+
+![Canary deployment via Lambda](./assets/51.png)
 
 # API Gateway - Additional Features
 
@@ -133,7 +134,7 @@
 ### Cache Invalidation
 
 - Able to flush the entire cache through the console
-- Clients can invalidate the cache with the HTTP header `cache-control:max-age:0`, when 'Require authorization' is checked it requires InvalidateCache action in IAM policy
+- Clients can invalidate the cache with the **HTTP header** `cache-control:max-age:0`, when 'Require authorization' is checked it requires **InvalidateCache** action in IAM policy
 - If you do not select the 'Require authorization' checkbox in the console, any client can invalidate the API cache.
 
 ## API Gateway - Usage Plans & API Keys
