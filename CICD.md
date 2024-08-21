@@ -10,20 +10,6 @@
 
 ## CodeCommit - Security
 
-### Authentication
-
-- SSH Keys
-- HTTPS
-
-### Authorization
-
-- IAM Policies
-
-### Encryption
-
-- Repositories are automatically encrypted at rest using AWS KMS
-- Encrypted in transit (HTTPS or SSH - both secure)
-
 ### Cross-account Access
 
 - Use an IAM Role in your AWS account and ask the other account to use **AWS STS (AssumeRole API)**
@@ -44,15 +30,13 @@
 ## CodePipeline - Artifacts
 
 - Each stage creates **artifacts**
-- Artifacts are stored in an S3 bucket and passed on the next stage
+- Artifacts are stored in an **S3 bucket** and passed on the next stage
 
 ![CodePipeline Artifacts](./assets/59.png)
 
 ## CodePipeline - Troubleshooting
 
 - If CodePipeline fails a stage, your pipeline **stops**, and you can get information in the console
-- If pipeline can't perform an action, make sure the IAM Role attached does have enough permissions
-- AWS CloudTrail can be used to audit AWS API calls
 - Use EventBridge to create events for failed pipelines or cancelled stages (ex: get email through SNS)
 
 # CodeBuild
@@ -132,7 +116,7 @@ cache:
 
 - Output logs can be stored in **Amazon S3 & CloudWatch Logs**
 - Use CloudWatch Metrics to monitor build statistics
-- Use CloudWatch Alarms to notify you if you need "Thresholds" for failures
+- Use CloudWatch Alarms
 - Use EventBridge to detect failed builds and trigger notifications
 
 # CodeDeploy
@@ -153,16 +137,16 @@ cache:
 - Deploy new applications versions to:
 
   - EC2 Instances
-  - On-premises servers
   - ECS
   - Lambda functions
+  - On-premises servers
 
 ## CodeDeploy - EC2/On-premises Platform
 
 - Perform **in-place deployments** or **blue/green deployments**
 - In place uses the same instances, while blue/green creates new instances
 - Must run the **CodeDeploy Agent** on the target instances
-- The EC2 Instances must have sufficient permissions to access S3 to get deployment bundles
+- The EC2 Instances must have sufficient permissions to access **S3** to get deployment bundles
 - Define Deployment speeds for in-place:
   - AllAtOnce
   - HalfAtATime
@@ -189,19 +173,21 @@ cache:
 
 ## CodeDeploy - Troubleshooting
 
-- **Automated Rollback** capability in case of failed deployments or trigger a **CloudWatch Alarm**
+- **Automated Rollback** capability in case of failed deployments **or** trigger a **CloudWatch Alarm**
 - If a rollback happens, CodeDeploy redeploys the last known good revision as a **new deployment (not a restored version)**
 
 # CodeArtifact
 
 ## CodeArtifact - Basics
 
-- CodeArtifact is a secure, scalable, and cost-effective artifact management for software development
-- Developers and CodeBuild can then retrieve dependencies straight from CodeArtifact
+- **Developers and CodeBuild** can then retrieve dependencies straight from CodeArtifact
+- CodeArtifact works as a proxy between the developers and the public artifact repositories that will cache dependencies
+
+### CodeArtifact - Structure
+
 - Your CodeArtifact lives in a VPC
 - In the VPC we have a Domain
 - Within a Domain we have repositories where the packages will be saved
-- CodeArtifact works as a proxy between the developers and the public artifact repositories that will cache dependencies
 
 ![CodeArtifact](./assets/61.png)
 

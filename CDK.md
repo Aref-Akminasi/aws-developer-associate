@@ -15,14 +15,14 @@
 | Language                  | Write your template declaratively in JSON or YAML | Write infrastructure in a programming language (JavaScript/TypeScript, Python, Java, and .NET) |
 | Infrastructure Management | Leverages CloudFormation                          | Leverages CloudFormation                                                                       |
 
-## CDK + SAM
+## CDK - Testing Locally via SAM
 
 - You can use SAM CLI to locally test your CDK apps
 - you must first run **cdk synth**
 
 ![cdk + sam](./assets/65.png)
 
-## CDK Constructs
+## CDK - Constructs
 
 Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) applications. A construct is a component within your application that represents one or more AWS CloudFormation resources and their configuration. You build your application, piece by piece, by importing and configuring constructs.
 
@@ -45,7 +45,7 @@ Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) 
 ### Layer 3 Consrtucts
 
 - Can be called **patterns**, which represents multiple related resources
-- Examples: build api gateway with lambda or ECS with fargate with minimal effor
+- Examples: build api gateway with lambda or ECS with fargate with minimal effort
 
 ## CDK - Commands
 
