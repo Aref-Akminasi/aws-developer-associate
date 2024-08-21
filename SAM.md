@@ -32,7 +32,7 @@
 - `sam sync --code --resource-id HelloWorldLambdaFunction` synchronize only a specific resource by its ID
 - `sam sync --watch` Monitor for file changes and automatically synchronize when changes are detected
 
-## SAM - Policy Templates
+## SAM - Lambda Policies
 
 - List of templates to apply permissions to your Lambda functions
 
