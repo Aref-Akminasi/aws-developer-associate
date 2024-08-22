@@ -40,11 +40,12 @@
 
 ## KMS - Key Policies
 
+- A user must have the proper IAM permissions to access the key even if the KMS key policy allows every one
+- If the policy explicitly allow a user in the principal, the user doesn't need an IAM policy
+
 ### Default KMS Key Policy
 
 - Created if you don't provide a specific KMS Key Policy
-- A user must have the proper IAM permissions to access the key even if the KMS key policy allows every one
-- If the policy explicitly allow a user in the principal, the user doesn't need an IAM policy
 
 ### Custom KMS Key Policy
 

@@ -5,6 +5,8 @@
 ## CUP - Basics
 
 - Create a **serverless database** of users for your apps
+- Is used for Authentication
+- Login returns a JWT Token
 
 ### Features
 
@@ -14,7 +16,9 @@
 - MFA
 - Federated Identities: login with Facebook, Google, SAML
 
-## CUP - Integrations
+## CUP - Access to AWS resources
+
+- You can access AWS resources through **API Gateway** or **ALB**
 
 ### API Gateway
 
@@ -40,7 +44,7 @@
   - Messages
   - Token Creation
 
-## CUP - Hosted UI Customs
+## CUP - Customs Hosted UI
 
 - You can customize the logo and the CSS on the hosted UI
 - For custom domains Hosted UI, you must create an **ACM certificate** in **us-east-1**
@@ -54,8 +58,8 @@
 
 ## CUP - JSON Web Token
 
-- Login sends back a JWT
-- Base64 encodes that contains:
+- Login returns a JWT Token
+- Base64 encoding that contains:
   - Header
   - Payload
   - Signature
@@ -64,9 +68,11 @@
 
 ## CIP - Basics
 
-- Users can be unauthenticated (guests) - in this case no Cognito User Pool needed
-- Users can then access AWS services directly or through API Gateway
-- IAM credentials are obtained by CIP through STS
+- Is used for authorization
+- Users can be unauthenticated (guests) - in this case **no Cognito User Pool is needed**
+- Auth might happen via **CUP** or via **3rd party services**
+- Users may then access **AWS services directly** or via **API Gateway**
+- Token is exchanged for IAM credentials, obtained by CIP through STS
 - The roles must have a trust policy of CIP
 
 ### Auth with 3rd party services happening via CUP
@@ -77,7 +83,7 @@
 
 ![CIP](./assets/68.png)
 
-## CIP - Policy variable
+## CIP - Policy variables
 
 - You can partition you users acess using **policy variables**
 - Example: giving access to users access to their own files in a prefix in an S3 bucket or DynamoDB LeadingKey
@@ -86,9 +92,9 @@
 
 ## CUP vs CIP
 
-| Feature                     | Cognito User Pools (CUP)                                                             | Cognito Identity Pools (CIP)                                           |
-| --------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| **Primary Use**             | Authentication (Identity Verification)                                               | Authorization (Access Control)                                         |
-| **Access to AWS Resources** | Through API Gateway or ALB                                                           | Directly access to AWS resources (ex: S3, DynamoDB) or via API Gateway |
-| **Return Value**            | Token                                                                                | IAM Credentials                                                        |
-| **guests**                  | Support via OnUanauthenticatedRequest on the load balancer (but use CIP in the exam) | Native Support                                                         |
+| Feature                     | Cognito User Pools (CUP)                                                            | Cognito Identity Pools (CIP)                                           |
+| --------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **Primary Use**             | Authentication                                                                      | Authorization                                                          |
+| **Access to AWS Resources** | Through API Gateway or ALB                                                          | Directly access to AWS resources (ex: S3, DynamoDB) or via API Gateway |
+| **Returns**                 | JWT Token                                                                           | IAM Credentials                                                        |
+| **Guest Users**             | Support via OnUnauthenticatedRequest on the load balancer (but use CIP in the exam) | Native Support                                                         |
