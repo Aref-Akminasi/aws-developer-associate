@@ -31,7 +31,7 @@
 
 ## IAM - Trust Relationship
 
-- Trust relationship is a **policy** on the **role** that defines which services might issume this role
+- Trust relationship is a **policy** on the **role** that defines which services might assume this role
 - This is to prevent adding Lambda role meant for DynamoDB on EC2 instance as example
 
 ## IAM Policies Structure
@@ -70,12 +70,6 @@
 - Multi Factor Authentication - MFA
 
   - MFA = password you know + security device you own (for generating tokens)
-
-- MFA devices options in AWS
-  - Virtual MFA device: Google Authenticator / Authy
-  - Universal 2nd Factor (U2F) Securtiy Key (Physical key)
-  - Hardware Key Fob MFA Device (Physical key)
-  - Hardware Key Fob MFA Device for AWS GovCloud (US) (Physical key)
 
 ## IAM CLI & SDK
 
