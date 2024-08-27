@@ -32,7 +32,7 @@
 
 ### S3 (Can't)
 
-- Amazon S3 cannot be mounted as a file system for ECS Tasks, but it can be used for Get Object
+- Amazon S3 cannot be mounted as a file system for ECS Tasks
 
 ### EFS
 
