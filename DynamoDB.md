@@ -47,21 +47,21 @@
 
 ### Option 1: Partition Key (HASH)
 
-- Partiton key must be unique for each item
+- Partition key must be unique for each item
 - Partition key might not be null
 - Partition key must be "diverse" so that the data is distributed (ex: user_id)
 
-### Option 2: Parititon Key + Sort Key (HASH + RANGE)
+### Option 2: Partition Key + Sort Key (HASH + RANGE)
 
 - The combination must be unique for each item
-- Parition Key or Sort Key might not be null
+- Partition Key or Sort Key might not be null
 - While the same partition key or sort key may appear multiple times in the table, the same combination of both cannot be duplicated.
 
 ### Write Sharding
 
 - Imagine we have a voting application with two candidates, candidate A and candidate B
 - If Partition Key is Candidate ID this results into two partitions, which will generate issues (ex: Hot Partition)
-- A strategy that allows better distribution of items evenly across parititons: add a suffix or a prefix to a partition key value (ex: candidate_A-11, candidate_A-20)
+- A strategy that allows better distribution of items evenly across partitions: add a suffix or a prefix to a partition key value (ex: candidate_A-11, candidate_A-20)
 
 ## DynamoDB - Capacity Modes
 
@@ -72,13 +72,13 @@
 
 - You specify the number of WCUs/RCUs
 - You need to plan capacity beforehand
-- Support for **auto scaling** to dynamically adjusts the provisioned throughput capacity (define min, max capacity units)
+- Support for **auto-scaling** to dynamically adjusts the provisioned throughput capacity (define min, max capacity units)
 
 ### On-Demand Mode
 
 - Read/writes automatically scale up/down with your workloads
 - No capacity planning needed
-- Unlimited WCU & RCU, no throtteling
+- Unlimited WCU & RCU, no throttling
 - Use case: unknown workloads, unpredictable application traffic
 - Pay for reads/writes, more expensive ($$$)
 
@@ -104,7 +104,7 @@
 ### Write modes
 
 - Standard (1x times the WCUs is consumed)
-- Trasactional (2x times the WCU is consumed)
+- Transactional (2x times the WCU is consumed)
   - You can group multiple actions together and submit them as a single all-or-nothing operation
   - On multiple items or multiple tables
 
@@ -140,7 +140,7 @@
 ### Solutions
 
 - Exponential backoff
-- Use distributed parition keys
+- Use distributed partition keys
 - If it is RCU issue, we can use **DynamoDB Accelerator (DAX)**
 
 ## DynamoDB - Writing Operations
@@ -174,7 +174,7 @@
   - Up to 100 items, up to 16MB of data
   - **UnprocessedKeys** for failed read operations (Exponential backoff or add RCU)
 
-- Query: returns items based on Partition key and (optionaly) Sort Key
+- Query: returns items based on Partition key and (optionally) Sort Key
 
   - Use the **KeyConditionExpression** parameter to provide:
     - Partition Key Value (must be = operator) - required
@@ -186,7 +186,7 @@
   - Returns up to 1MB of data - use pagination to keep on reading
   - Consumes a lot of RCU
   - You can have a **Limit** parameter
-  - You can have **parralel scans** to speed up the scan (consumes more RCU)
+  - You can have **parallel scans** to speed up the scan (consumes more RCU)
 
 - FilterExpression (optional): A filter expression is applied after a Query/Scan finishes, used only with non-key attributes. (can't be applied for BatchGetItem)
 
@@ -194,7 +194,7 @@
 
 ### Delete techniques
 
-- The best way to erase all data in a DynamoDB table is to DeleteTable and then create the table again it is **not** recommended to use scan and delete items there after
+- The best way to erase all data in a DynamoDB table is to DeleteTable and then create the table again it is **not** recommended to use scan and delete the items after
 
 ### Delete APIs
 
@@ -234,14 +234,14 @@
 
 ## DynamoDB - DAX
 
-- DAX = Fully Managed, highly avaliable, seamless in memory cache nodes for DynamoDB
+- DAX = Fully Managed, highly available, seamless in memory cache nodes for DynamoDB
 - Create DAX nodes
 - Microseconds latency for cached reads & queries
 - Solves too many reads problem
 - Has TTL, (default 5 minutes = 300 sec)
 - Support for Multi-AZ (3 nodes required for high availability)
 - DAX can be combined with ElastiCache in an architecture
-- Has encryption capabilites (at rest, in transit)
+- Has encryption capabilities (at rest, in transit)
 - IAM Service role required for DynamoDB access
 
 ## DynamoDB - TTL

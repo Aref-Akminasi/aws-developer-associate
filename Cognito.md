@@ -85,7 +85,7 @@
 
 ## CIP - Policy variables
 
-- You can partition you users acess using **policy variables**
+- You can partition your users access using **policy variables**
 - Example: giving access to users access to their own files in a prefix in an S3 bucket or DynamoDB LeadingKey
 
 ![policy variable](./assets/67.png)

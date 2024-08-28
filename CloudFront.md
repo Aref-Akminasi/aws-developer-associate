@@ -7,14 +7,14 @@
 - CloudFront is Content Delivery Network (CDN) service
 - 216 Points of Presence Globally (edge locations)
 - Content is cached at the edge locations
-- DDoS protection (because workdwide)
+- DDoS protection (because worldwide)
 - CloudFront is a global Service
 
 ## Origins (Content Sources)
 
 - ALB
   - ALB SG must allow **public IP** of Edge Locations
-  - EC2 Instances SG group behined the ALB may remain private
+  - EC2 Instances SG group behind the ALB may remain private
 - EC2 instance
   - EC2 Instances SG must allow **public IP** of Edge Locations
 - S3
@@ -122,7 +122,7 @@
 
 ## CloudFront - Real Time Logs
 
-- Get real-time requests recieved by CloudFront sent to **Kinesis Data Streams**
+- Get real-time requests received by CloudFront sent to **Kinesis Data Streams**
 - Monitor, analyze, and take actions based on content delivery performance
 - Real time logs allows you to choose:
   - Sampling Rate: percentage of requests for which you want to receive (if you are having lots of traffic but want to recieve a part of it)
