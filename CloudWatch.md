@@ -61,10 +61,10 @@
 ### Logs Targets
 
 - Amazon S3 (Batch export)
-- Kinesis Data Streams
-- Kinesis Data Firehose
 - AWS Lambda
 - OpenSearch
+- Kinesis Data Firehose
+- Kinesis Data Streams
 
 ## CloudWatch - Subscription Filter
 
