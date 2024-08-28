@@ -26,7 +26,7 @@
 
 ### Insights Events
 
-- Continous analysis of management events to detect unusual activity (bursts of IAM actions, hitting service limits, gaps in periodic maintenance...) Insights events are logged only when CloudTrail detects changes in your account's API usage that differ significantly from the account's typical usage patterns.
+- Continuous analysis of management events to detect unusual activity (bursts of IAM actions, hitting service limits, gaps in periodic maintenance...) Insights events are logged only when CloudTrail detects changes in your account's API usage that differ significantly from the account's typical usage patterns.
 - Ability to send CloudTrail Insights Events to:
   - CloudTrail console
   - S3
@@ -38,7 +38,7 @@
 - To keep events beyond this period, send them to S3
 - Use **Athena** to analyze CloudTrail events stored in a S3 bucket
 
-## CloudTrail - Inegration with EventBridge (Example)
+## CloudTrail - Integration with EventBridge (Example)
 
 - API Call (ex: DeleteTable on DynamoDB) -> CloudTrail -> EventBridge -> SNS Topic (Send an email alert)
 

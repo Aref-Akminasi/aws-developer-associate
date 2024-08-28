@@ -21,7 +21,7 @@
 
 - Compliance with data governance and legal requirements: data never leaves a region without your explicit permission
 - Proximity to customers: reduced latency
-- Avaliable services within a region: new services and new features aren't avaliable in every Region
+- Available services within a region: new services and new features aren't available in every Region
 - Pricing: pricing varies from region to region and is transparent in the service pricing page
 
 ### Availability Zones
@@ -45,7 +45,7 @@
 
   `aws configure --profile <profile-name>`
 
-- By default AWS in the terminal will use the `default` profile, if you want to use the other profile use:
+- By default, AWS in the terminal will use the `default` profile, if you want to use the other profile use:
 
   `aws <command> --profile <my-another-aws-profile>`
 
@@ -65,12 +65,12 @@
 ### Rate Limits Increase
 
 - You can request a service limit increase by **opening a ticket**
-- You can request a service limit increase by using the **Service Quotas API** (programmatical request)
+- You can request a service limit increase by using the **Service Quotas API** (programmatically request)
 
 ### Exponential Backoff
 
 - If you get **ThrottlingException** occasionally: use Exponential Backoff
-- For Cosistend **ThrottlingException** Errors: request an API throttling limit increase
+- For Consistent **ThrottlingException** Errors: request an API throttling limit increase
 - Exponential backoff: Retry mechanism starting at a time and doubling each retry (e.g., 100ms, 200ms, 400ms, 800ms, 1600ms).
 - Retry mechanism is already included in AWS SDK API calls
 - Must implement it yourself if using the AWS API
@@ -88,7 +88,7 @@
 
 - If an application on an EC2 instance uses environment variables for IAM user credentials (bad practice) with full S3 access, it will override the instance profile's limited permissions (IAM Role). To fix this, unset the environment variables to enforce the use of the instance profile.
 
-## AWS Signature v4 signing (Sigv4)
+## AWS Signature v4 signing (SigV4)
 
 - You should sign an AWS HTTP request for authorization using Signature v4 (SigV4) as one of the following methods:
   - HTTP Header (signature in Authorization header)

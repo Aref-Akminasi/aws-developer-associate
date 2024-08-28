@@ -85,7 +85,7 @@ Mappings:
 ### Conditions
 
 - Conditions are used to control the creation of **resources**, **outputs** or other **conditions** based on a condition
-- Conditions can **not** be used to control the creation of **parameters** parameters are always created in the template
+- Conditions can **not** be used to control the creation of **parameters**, parameters are always created in the template
 - Conditions keywords: (Warning: the **!** here is **not** a boolean operator, you can ignore it)
   - !And
   - !Equals
@@ -156,7 +156,7 @@ Conditions:
 ## CloudFormation - Service Role
 
 - **Service Role**: IAM role that allows CloudFormation to create/update/delete stack resources on your behalf
-- User must have **iam:PassRole** permission to be able to pass an IAM Role to cloudFormation (even if the user doesn't have direct permissions to create, update, or delete those resources)
+- User must have **iam:PassRole** permission to be able to pass an IAM Role to CloudFormation (even if the user doesn't have direct permissions to create, update, or delete those resources)
 
 ## CloudFormation - Capabilities
 
@@ -185,10 +185,10 @@ Conditions:
 - When you create a stack, all update actions are allowed on all resources. By default
 - You can use a stack policy to protect your resources from unintentional updates
 - A Stack Policy is a **JSON document**
-- After you set a stack policy, all of the resources in the stack are protected by default.
+- After you set a stack policy, all the resources in the stack are protected by default.
 - Specify an explicit **Allow** for the resources you want to be allowed to be updated
 
-- Example: Allow updated on all resources **except** the prodution database
+- Example: Allow updated on all resources **except** the production database
 
 ```json
 {
