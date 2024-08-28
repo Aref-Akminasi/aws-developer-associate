@@ -204,9 +204,9 @@
 
 - Token-based authorizer: JWT or Oauth
 - This method is used mainly when you use 3rd party authentication system
-- Lambda Authrorizer returns an IAM policy that will be cached
+- Lambda Authorizer returns an IAM policy that will be cached
 - Authentication = external
-- Authrorization = Lambda Function
+- Authorization = Lambda Function
 
 ![Lambda Authorizer](./assets/54.png)
 
@@ -229,7 +229,7 @@
 - Metrics are collected by a stage, possibility to enable detailed metrics
 - **CacheHitCount & CacheMissCount:** efficiency of the cache
 - **Count:** The total number API requests in a given period
-- **InegrationLatency:** The time between when API Gateway relays a request to the backend and when it receives a response from the backend
+- **IntegrationLatency:** The time between when API Gateway relays a request to the backend and when it receives a response from the backend
 - **Latency:** The time between when API Gateway receives a request from a client and when it returns a response to the client. The latency includes the integration latency and other API Gateway overhead
 - **4XXError** metric (client-side)
 - **5XXError** metric (server-side)
@@ -244,7 +244,7 @@
   - API Gateway throttles requests at 10000 rps across all APIs
   - If one API consumes all quotas, other APIs will be throttled
   - Soft limit can be increased upon request
-- In case of throttling, **429 Too Many Requests** error will occur (retriable with exponential backoff)
+- In case of throttling, **429 Too Many Requests** error will occur (retryable with exponential backoff)
 - Can set **Stage limit & Method limits** to improve performance
 - Or you can define **Usage Plans** to throttle per customer
 

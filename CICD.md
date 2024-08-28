@@ -1,6 +1,6 @@
 [Back](./AWS.md)
 
-# CodeCommit
+# CodeCommit DEPRECATED since July 25, 2024
 
 ## CodeCommit - Basics
 
@@ -18,10 +18,10 @@
 
 ## CodePipeline - Basics
 
-- Visual Workflow to **orchestrate** your CICD
+- Visual Workflow to **orchestrate** your CI/CD
 - Pipeline consists of stages
   - Stage example: Build > Test > Deploy
-  - Each stage can have **squential action groups** and/or **parallel action groups**
+  - Each stage can have **sequential action groups** and/or **parallel action groups**
   - Action group example: CodeBuild, Manual approval, etc...
 - Elastic Beanstalk has direct integration with CodePipeline, and doesn't require CodeDeploy
 
@@ -56,7 +56,7 @@
 
 ### env
 
-- env is used to define envrionment variables or reference parameter store or secrets-manager
+- env is used to define environment variables or reference parameter store or secrets-manager
 
 ### phases
 

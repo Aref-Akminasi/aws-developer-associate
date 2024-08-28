@@ -4,7 +4,7 @@
 
 ## CloudWatch - Metrics
 
-- **Metric** is a variable to monitor (CPUUtilization, NetworkIn...)
+- **Metric** is a variable to monitor (CPU-Utilization, NetworkIn...)
 - Metrics belong to **namespaces** (a container of metrics beloning to the same service)
 - **Dimension** is an attribute of a metric (instance id, environment, ec2 instance type), that helps you categorize and filter your metrics, ex: filter EC2 instances with CPU higher than 90% and t2.micro type
 
@@ -16,9 +16,9 @@
 ## CloudWatch - Custom Metrics
 
 - Possibility to define and send your own custom metrics to CloudWatch using a **custom script**
-- Example: memory (RAM) usage, disk space, number of logged in users...
+- Example: memory (RAM) usage, disk space, number of logged-in users...
 - CloudWatch custom metrics use **PutMetricData API**
-- Metric resolution (**StorageResolution API perameter** - two possible values):
+- Metric resolution (**StorageResolution API parameter** - two possible values):
   - Standard: 1 minute (60 seconds)
   - High resolution: 1/5/10/30 seconds - higher cost ($$$)
 - With **custom metrics** CloudWatch accepts data points two weeks in the past and two hours in the future without giving an error
@@ -46,7 +46,7 @@
 
 - Logs are encrypted by default
 - Logs are encrypted at the group level not the stream level
-- Can setup KMS-based encryption with your **Customer Managed Key** (the key policy must allow it)
+- Can set up KMS-based encryption with your **Customer Managed Key** (the key policy must allow it)
 - You can not associate a CMK (Customer Managed Key) with a log group using CloudWatch console
 - You must use one of the following APIs:
   - **associate-kms-key** if the log group already exists
@@ -97,22 +97,22 @@
 
 1. Uses a **subscription filter** on the sender and **subscription destination** on the recipient
 2. We have to define a destination Access Policy in the recipient (defines "who" can send the logs)
-3. We have to define an IAM role in the destionation with a **trust relationship to the sender account** to allow to put record in Kinesis Data Streams as example (grants the permissions needed to "do" the action)
+3. We have to define an IAM role in the destination with a **trust relationship to the sender account** to allow to put record in Kinesis Data Streams as example (grants the permissions needed to "do" the action)
 
 ![CloudWatch Logs Subscriptions - Multi-accounts](./assets/39.png)
 
 ## CloudWatch Logs For EC2
 
-- By default no logs from your EC2 machine will be sent to CloudWatch (We are talking about logs not metrics)
+- By default, no logs from your EC2 machine will be sent to CloudWatch (We are talking about logs not metrics)
 - Sending logs from EC2 instance requires
   - You need to run a **CloudWatch logs agent** on EC2 to push the log files you want
   - Make sure the EC2 has a correct **IAM permissions** (IAM role) to send logs to CloudWatch
-- The **CloudWatch logs agent** can be setup on-permises server too
+- The **CloudWatch logs agent** can be setup on-premise server too
   ![CloudWatch logs agent](./assets/40.png)
 
 ## CloudWatch Logs Agent & Unified Agent
 
-- For EC2 instances, on-permise servers
+- For EC2 instances, on-premise servers
 
 ### CloudWatch Logs Agent
 
@@ -132,7 +132,7 @@
 
 - Logs metric filter is **creating** a **metric** based on **logs**
 - The metric can be used to trigger a **CloudWatch Alarm**
-- Example: Check the logs for the word "ERROR" and trigger a CloudWatch alarm if more than 5 errors are counterd in the logs
+- Example: Check the logs for the word "ERROR" and trigger a CloudWatch alarm if more than 5 errors are counted in the logs
 - Note: the metric will only capture the logs that are created after the metric filter has been created
 
 ## CloudWatch - Alarms
@@ -178,7 +178,7 @@
 - Script Languages: **Node.js** or **Python**
 - Functionality: Programmatically reproduce customer actions, with access to a headless Google Chrome browser.
 - Triggers a CloudWatch Alarm when things go wrong
-- The CloudWatch Alarm may invoke a lambda function to do a Route 53 DNS swap to redirect the users to an another instance
+- The CloudWatch Alarm may invoke a lambda function to do a Route 53 DNS swap to redirect the users to an instance
   ![CloudWatch Synthetics Canary](./assets/41.png)
 
 ## CloudWatch - Evidently

@@ -35,14 +35,14 @@ Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) 
 
 - These are low-level constructs that directly correspond to AWS CloudFormation resources.
 - Construct names starts with **Cfn** (ex: CfnBucket)
-- You must explicity configure all resource properties that are required such as a bucket name for a S3 bucket
+- You must explicitly configure all resource properties that are required such as a bucket name for a S3 bucket
 
 ### Layer 2 Constructs
 
 - Represents AWS resources but with a higher level
 - Similar functionality as L1 but with convenient defaults, methods and boilerplate
 
-### Layer 3 Consrtucts
+### Layer 3 Constructs
 
 - Can be called **patterns**, which represents multiple related resources
 - Examples: build api gateway with lambda or ECS with fargate with minimal effort
@@ -50,7 +50,7 @@ Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) 
 ## CDK - Commands
 
 - `cdk bootstrap` You have to run this command for every region and will leverage a **S3 Bucket** to store files and **IAM Roles** to grant permissions for deployments
-- `cdk synth` Synthesizes and prints the CloudFromation template
+- `cdk synth` Synthesizes and prints the CloudFormation template
 - `cdk deploy` Deploy a stack
 - `cdk diff` View differences of local CDK and deployed Stack
 - `cdk destroy` Destroy the Stack
@@ -63,4 +63,4 @@ Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) 
   - Snapshot Tests: test the template against a previously stored template
 - To import a template in the test file use:
   - Template.fromStack(MyStack): if the stack is built in CDK
-  - Template.fromString(mystring): stack build outside CDK (ex: a file)
+  - Template.fromString(myString): stack build outside CDK (ex: a file)
