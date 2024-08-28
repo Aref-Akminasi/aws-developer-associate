@@ -2,6 +2,8 @@
 
 [Scoping](./Scoping.md)
 
+[Lists](./Lists.md)
+
 # AWS
 
 ## What's AWS?
