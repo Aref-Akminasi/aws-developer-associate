@@ -12,9 +12,11 @@
 
 - Transform header indicates it's SAM template: `Transform: 'AWS::Serverless-2016-10-31'`
 - It accepts the following resources
-  - `AWS::Serverless::Function`
-  - `AWS::Serverless:Api`
-  - `AWS::Serverless::SimpleTable`
+  - `AWS::Serverless::Function` - Creates a Lambda Function
+  - `AWS::Serverless::LayerVersion` - Creates a lambda layered version
+  - `AWS::Serverless:Api` - Creates API Gateway
+  - `AWS::Serverless::SimpleTable` - Creates DynamoDB table
+  - `AWS::Serverless::Application` - embed applications from S3 bucket
 - Package & Deploy: use `sam deploy` command (previously you had to do `sam package` first)
 
 ## SAM Accelerate (SAM Sync)
