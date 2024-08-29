@@ -6,6 +6,25 @@
 - NLB
 - CloudFront
 
+### ALB Target Groups
+
+- EC2 instances
+- Lambda functions
+- Private IP Addresses
+- ECS tasks
+
+### NLB Target Groups
+
+- EC2 instances
+- Private IP Addresses
+- Application Load Balancer
+- ECS Tasks
+
+### GWLB Target groups
+
+- EC2 instances
+- Private IP Addresses
+
 ### Supported database engines on RDS
 
 - PostgreSQL
@@ -54,6 +73,13 @@
 - EFS
 - EBS
 - Bind mounts
+
+### EKS Data Volumes
+
+- EBS
+- EFS
+- FSx for Lustre
+- FSx for NetApp ONTAP
 
 ### SNS Types of subscribers
 

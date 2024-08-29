@@ -55,9 +55,9 @@ Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) 
 - `cdk diff` View differences of local CDK and deployed Stack
 - `cdk destroy` Destroy the Stack
 
-## CDK - Testing
+## CDK - Unit Testing
 
-- To test CDK apps, use **CDK Assertions Module**
+- To unit test CDK apps, use **CDK Assertions Module**
 - Two Types of tests:
   - Fine-grained Assertions (common): test specific aspects of the CloudFormation template
   - Snapshot Tests: test the template against a previously stored template
