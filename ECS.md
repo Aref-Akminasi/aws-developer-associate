@@ -16,6 +16,11 @@
   | The EC2 instance will be a part of an Auto Scaling Group (ASG).| It's all serverless (you just create task definitions). |
   | Each EC2 Instance must run the **ECS agent** to register with the **ECS Cluster**. | AWS runs ECS tasks for you based on the CPU/RAM you specify. |
 
+## ECS - Removing Containers From a Cluster
+
+- If you terminate a container instance in the RUNNING state, that container instance is automatically removed, or deregistered, from the cluster.
+- If you terminate a container instance while it is in the STOPPED state, that container instance isn't automatically removed from the cluster. You will need to deregister your container instance in the STOPPED state by using the Amazon ECS console or AWS Command Line Interface.
+
 ## ECS IAM Roles
 
 - EC2 Instance Profile (EC2 Launch Type **only**):
@@ -27,6 +32,13 @@
   - Allow each task to have an IAM role
   - Defined in the **task definition**
   - Usage example: Get Object from S3
+
+## ECS - Config File
+
+- Config file `/etc/ecs/ecs.config`
+- In the config file you have to configure the cluster name you want the container to be registered to `ECS_CLUSTER=<your_cluster_name>`
+- A CloudFromation template might accept the name of the cluster as a parameter, but however if the name of the cluster is not changed in the config file the container will still be registered to the default cluster specified in the config file
+- Enable IAM roles for your ECS tasks in the config file using `ECS_ENABLE_TASK_IAM_ROLE`
 
 ## ECS - Data Volumes
 

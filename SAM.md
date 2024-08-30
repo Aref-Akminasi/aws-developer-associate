@@ -7,6 +7,7 @@
 - SAM = Serverless Application Model
 - All the configuration is YAML code or JSON
 - Supports anything from CloudFormation: Outputs, Mappings, Parameters, Resources
+- Using pre-built serverless applications with AWS Serverless Application Repository (SAR)
 
 ## SAM - Structure
 
@@ -40,7 +41,7 @@
 
 ```yaml
 MyFunction:
-  Type: "AWS::Serverless::Function"
+  Type: 'AWS::Serverless::Function'
   Properties:
     CodeUri: ${codeuri}
     Handler: hello.handler

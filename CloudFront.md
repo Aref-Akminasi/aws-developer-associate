@@ -9,6 +9,7 @@
 - Content is cached at the edge locations
 - DDoS protection (because worldwide)
 - CloudFront is a global Service
+- CloudFront support HTTPS between clients and CloudFront as well as between CloudFront and backend
 
 ## Origins (Content Sources)
 
@@ -118,6 +119,7 @@
 
 ## CloudFront - Field Level Encryption
 
+- field-level encryption further encrypts sensitive data in an HTTPS form using field-specific encryption keys before a POST request is forwarded to your origin.
 - Uses **asymmetric** encryption: Sensitive information are encrypted at the edge close to user (using public key), request is decrypted at the server (using private key)
 
 ## CloudFront - Real Time Logs

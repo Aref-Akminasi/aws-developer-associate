@@ -17,6 +17,11 @@
 - Region example: Europe (Paris) eu-west-3
 - Most AWS services are region-scoped: that means, when we use a service in one region and we try to use it in another region, it would be like a new time of using the service
 
+### AWS Partitions
+
+- In AWS, partitions are separated regions, standard `aws`, china `aws-cn` or GovCloud `aws-us-gov`
+- Using IAM roles and resource-based policies (ex: for S3 bucket) to grant cross-account-access across different partitions is not supported
+
 ### How to choose an AWS Region for your application?
 
 - Compliance with data governance and legal requirements: data never leaves a region without your explicit permission

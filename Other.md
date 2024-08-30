@@ -130,3 +130,7 @@
 # SES
 
 - Simple Email Service
+
+# AWS Service Catalog
+
+- Use AWS Service Catalog when you need to offer a selection of pre-approved, standard cloud resources (like virtual machines, databases, or entire application stacks) to your organization’s employees or teams. It helps ensure that only compliant, secure, and cost-effective resources are deployed

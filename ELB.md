@@ -72,6 +72,10 @@
 - Private IP Addresses
 - _ECS tasks_
 
+### ALB - 503 error
+
+- Application Load Balancer with **no registered targets** within the **target groups** will result in HTTP 503: Service unavailable error
+
 ### Headers Provided by ALB to the server
 
 - The application servers don't see the IP of the client directly, but will get extra headers from the ALB:

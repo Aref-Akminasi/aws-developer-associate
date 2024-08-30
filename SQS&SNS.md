@@ -18,6 +18,7 @@
 - SQS like a buffer between the **producer (the sender)** and the **consumer (the receiver)**
 - Retain messages for 4 days (default), max 14 days
 - Max message size is **256KB**
+- You can't change the queue type after you create it and you can't convert an existing standard queue into a FIFO queue
 
 ## SQS Queue Types
 

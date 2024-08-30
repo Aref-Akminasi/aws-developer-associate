@@ -2,6 +2,10 @@
 
 # Security
 
+# AWS Encryption SDK
+
+The AWS Encryption SDK is a **client-side** encryption library designed to make it easy for everyone to encrypt and decrypt data using industry standards and best practices.
+
 # KMS
 
 ## KMS - Basics

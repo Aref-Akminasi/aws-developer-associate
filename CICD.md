@@ -14,6 +14,11 @@
 
 - Use an IAM Role in your AWS account and ask the other account to use **AWS STS (AssumeRole API)**
 
+### Migration to CodeCommit
+
+- To migrate the existing application code from a GitHub repository to AWS CodeCommit use **Git credentials generated from IAM**
+- **Don't use** authentication offered by **GitHub secure** tokens because these are meant for GitHub not CodeCommit
+
 # CodePipeline
 
 ## CodePipeline - Basics
@@ -79,7 +84,7 @@ version: 0.2
 
 env:
   variables:
-    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+    JAVA_HOME: '/usr/lib/jvm/java-8-openjdk-amd64'
   parameter-store:
     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -109,7 +114,7 @@ artifacts:
 
 cache:
   paths:
-    - "/root/.m2/**/*"
+    - '/root/.m2/**/*'
 ```
 
 ## CodeBuild - Troubleshooting

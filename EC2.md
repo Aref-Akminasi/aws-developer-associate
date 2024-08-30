@@ -19,6 +19,7 @@
 - Firewall rules: security group
 - An EC2 is bound to an AZ, you cannot change the AZ of an EC2 directly
 - Bootstrap script (configure at first launch): EC2 User Data
+- If you want to keep the instance root EBS, set the `DeleteOnTermination` attribute to `False` using the command line, works also if the instance is running.
 
 ## EC2 User Data
 
@@ -210,6 +211,7 @@
 - Have a provisioned capacity (size in GBs, and Input/Output Operations per Second (IOPS))
 - EBS volumes may also stay unattached to an EC2 instance
 - EBS volumes can be attached to EC2 instances while the instance is running
+- EBS volumes support both in-flight encryption and encryption at rest using KMS
 
 ## Delete on Termination Attribute
 

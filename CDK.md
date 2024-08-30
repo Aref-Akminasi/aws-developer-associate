@@ -47,6 +47,16 @@ Constructs are the basic building blocks of AWS Cloud Development Kit (AWS CDK) 
 - Can be called **patterns**, which represents multiple related resources
 - Examples: build api gateway with lambda or ECS with fargate with minimal effort
 
+## CDK - Creating an app
+
+The correct order of steps to be followed for creating an app using AWS CDK
+
+1. Create the app from a template provided by AWS CDK
+2. Add code to the app to create resources within stacks
+3. Build the app (optional)
+4. Synthesize one or more stacks in the app
+5. Deploy stack(s) to your AWS account
+
 ## CDK - Commands
 
 - `cdk bootstrap` You have to run this command for every region and will leverage a **S3 Bucket** to store files and **IAM Roles** to grant permissions for deployments

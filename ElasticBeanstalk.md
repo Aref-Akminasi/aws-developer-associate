@@ -48,6 +48,7 @@
 - Downtime
 - No additional cost
 - Code is deployed on the same instances
+- Amazon EC2 burst balances is not lost because instances aren't replaced
 
 ![All at once](./assets/22.png)
 
@@ -58,6 +59,7 @@
 - Application is running below capacity during updating
 - No additional cost
 - Code is deployed on the same instances
+- If some instances complete the deployment successfully but other instances fail during the update, Elastic Beanstalk will replace the failed instances with new instances running the application version from the most recent successful deployment. As a result, there will be a mix of instances running the new version and instances running the previous version. However, with an Immutable Deployment strategy, if any instances fail during the update, the entire deployment will roll back, and there will be no swapping of instances
 
 ![Rolling](./assets/23.png)
 
@@ -81,6 +83,7 @@
 - Automated rollback on failure
 - Great for production
 - Code run on new instances
+- Amazon EC2 burst balances were lost because instances are replaced
 
 ![Immutable](./assets/25.png)
 
@@ -103,6 +106,7 @@
 - New instances are migrated from the temporary ASG to the original ASG
 - Automated rollback on failure
 - Code is deployed on new instances
+- Amazon EC2 burst balances were lost because instances are replaced
 
 ![Traffic Splitting](./assets/27.png)
 
