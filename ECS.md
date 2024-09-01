@@ -18,6 +18,7 @@
 
 ## ECS - Removing Containers From a Cluster
 
+- Problem: After stopping a container it still might appear in the cluster
 - If you terminate a container instance in the RUNNING state, that container instance is automatically removed, or deregistered, from the cluster.
 - If you terminate a container instance while it is in the STOPPED state, that container instance isn't automatically removed from the cluster. You will need to deregister your container instance in the STOPPED state by using the Amazon ECS console or AWS Command Line Interface.
 
