@@ -10,7 +10,7 @@
 - **A S3 bucket is created** by Elastic Beanstalk to hold your application versions
 - Resources managed by EB get deleted if the environment is deleted
 - You have the ability to clone an environment and it's configuration
-- Elastic Beanstalk uses CloudFromation under the hood
+- Elastic Beanstalk uses CloudFormation under the hood
 
 ## Elastic Beanstalk - Deployment Process
 
@@ -35,7 +35,7 @@
 
 ## Elastic Beanstalk - Deployment Modes (presets)
 
-- Signle instance: one instance with an elastic IP, one RDS instance, no ELB. Great for development
+- Single instance: one instance with an elastic IP, one RDS instance, no ELB. Great for development
 - High Availability: with Load Balancer, Multi-AZ RDS instances (master & standby). Great for production
 
 ![Elastic Beanstalk Deployment Modes prestes](./assets/21.png)
@@ -130,7 +130,7 @@
 - Requirements:
   - Place your configuration files in the **.ebextensions/** directory in the root of source code
   - YAML or JSON should be the content of the file
-  - Each configuration file should have a **.config** extensions (ex: loggin.config)
+  - Each configuration file should have a **.config** extensions (ex: logging.config)
   - Configuration files can be used to modify Elastic Beanstalk default settings using the **option_settings** section within the .config files
 - option settings example
 
@@ -147,7 +147,7 @@ option_settings:
 
 - After creating an Elastic Beanstalk environment, **you cannot change the Elastic Load Balancer type** (you can only change the configuration)
 - To migrate to a new ELB type:
-  1. create a new environment with the same coniguration except ELB
+  1. create a new environment with the same configuration except ELB
   2. deploy your application onto the new environment
   3. Perform a CNAME swap or Route 53 update
 
@@ -155,7 +155,7 @@ option_settings:
 
 ### RDS migration
 
-1. Create a snapshot of RDS (as a safegurad)
+1. Create a snapshot of RDS (as a safeguard)
 2. Go to the RDS console and protect the RDS database from deletion
 3. Create a new Elastic Beanstalk environment, without RDS
 4. Point your application to existing RDS

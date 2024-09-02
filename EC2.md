@@ -24,7 +24,7 @@
 ## EC2 User Data
 
 - It is possible to bootstrap our instances using an **EC2 User data** script.
-- **bootstraping** means launching commands when a machine starts.
+- **bootstrapping** means launching commands when a machine starts.
 - That script is **only run once** at the instance **first start**
 - EC2 user data is used to automate boot tasks such as:
   - installing updates
@@ -86,7 +86,7 @@
   - Access to ports
   - Authorised IP ranges - IPv4 and IPv6
   - Control of inbound network (from other to the instance)
-  - Control of outbound network (from the instance to other)
+  - Control of outbound network (from the instance to others)
   - Security groups **don't** manage access to AWS resources like S3 buckets or other services; this is handled by IAM roles and policies which define permissions for AWS resources.
   - Security groups handles access to RDS database
   - Security groups handles access to EFS
@@ -108,7 +108,7 @@
 - Security groups does live **outside** the EC2 - if traffic is blocked the EC2 instance won't see it
 - It's good practice to maintain one separate security group for SSH access
 - If your application is not accessible **time out**, then it's a security group issue or a firewall (corporate firewall or a personal firewall)
-- If your application gives a **connection refused** error, then it's an application error or it's not launched
+- If your application gives a **connection refused** error, then it's an application error, or it's not launched
 
 ---
 
@@ -134,7 +134,7 @@
 - Typing `exit` in the terminal or pressing `ctrl+d` will close the connection
 
 - You can also connect using with SSH with EC2 Instance Connect
-- While using EC2 Instance Connect, you might want to do some action like 'getting all the users of IAM', never enter your own access key and secret access key while using SSH in the `aws configure` of an EC2, because someone can connect to the EC2 using EC2 Instance connect and retrive that data. What you can do is assigning an IAM role to the EC2 instance
+- While using EC2 Instance Connect, you might want to do some action like 'getting all the users of IAM', never enter your own access key and secret access key while using SSH in the `aws configure` of an EC2, because someone can connect to the EC2 using EC2 Instance connect and retrieve that data. What you can do is assigning an IAM role to the EC2 instance
 
 ## EC2 Instances Purchasing Options
 
@@ -163,7 +163,7 @@
 ### Dedicated Hosts:
 
 - book an entire physical server, with EC2 instance capacity fully dedicated to your use
-- Allows you address compliance requiremenets and use your existing server bound sofware licenses
+- Allows you to address compliance requirements and use your existing server bound software licenses
 - Purchasing options:
   - On-demand: pay per second
   - Reserved: 1 or 3 years
@@ -275,7 +275,7 @@
   - Volume: 4 GiB - 16 TiB
   - Max throughput: 1000 MiB/s
   - Max PIOPS 64000 for Nitro EC2 instances & 32000 PIOPS for others
-  - Can increase PIOPS independently from volume size (up to 50 PIOS per 1 GiB)
+  - Can increase PIOPS independently of volume size (up to 50 PIOS per 1 GiB)
 
 - io2 Block Express
   - Volume: 4 GiB - 64 TiB
@@ -290,7 +290,7 @@
 - st1:
 
   - Usage:
-    - designed for frequenty accessed, high-throughput workloads
+    - designed for frequent accessed, high-throughput workloads
     - Big Data
     - Data Warehouses
     - Log Processing
@@ -299,7 +299,7 @@
 - sc1 Cold HDD:
   - Usage:
     - For data that is infrequently accessed
-    - Scenarios where lowest cost is important
+    - Scenarios where the lowest cost is important
   - Max throughput 250 MiB/s - max IOPS 250
 
 ## EBS Multi-Attach - io1/io2 family
@@ -326,7 +326,7 @@
 
 - EFS is a managed NFS (network file system) that can be mounted on many EC2 instances
 - EFS works with EC2 instances in **multi-AZ** (You have one zone EFS option too)
-- Highly avaliable, scalabe, expensive (3x gp2), pay per use
+- Highly available, scalable, expensive (3x gp2), pay per use
 - Compatible with Linux based AMIs **(not Windows)**
 - **Uses security group to control access to EFS**
 - File system scales automatically, pay-per-use, no capacity planning
@@ -349,7 +349,7 @@
 - Storage Tiers:
   - Standard: for frequently accessed files
   - Infrequent Access (EFS-IA): cost to retrieve files, lower price to store
-  - Archive: rearely accessed data (few times each year), 50% cheaper
+  - Archive: rarely accessed data (few times each year), 50% cheaper
   - Implement lifecycle policies to move files between storage tiers (ex: move a file if it has had no access for 60 days)
 
 ## AMI
@@ -364,4 +364,4 @@
   - Your own AMI: you make and maintain them yourself
   - An AWS Marketplace AMI: an AMI someone else made (and potentially sells)
 
-\*Note: Creating an AMI from an instance that has a user data set to it, if the instance has been launched before creating the AMI, it means the programgs/tools specified in the User Data of the instance will be available out of the box to the AMI when an instance is created from the AMI and launched.
+\*Note: Creating an AMI from an instance that has a user data set to it, if the instance has been launched before creating the AMI, it means the programs/tools specified in the User Data of the instance will be available out of the box to the AMI when an instance is created from the AMI and launched.

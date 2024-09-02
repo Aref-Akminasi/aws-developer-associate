@@ -35,7 +35,7 @@
 
 ## RDS - Storage Auto Scaling
 
-- You have to set **Maximum Storage Threshhold**
+- You have to set **Maximum Storage Threshold**
 - Automatically modify storage if:
   - Free storage is less than 10% of allocated storage
   - Low-storage lasts at least 5 minutes
@@ -54,7 +54,7 @@
 - Read replicas are used for **SELECT** (=read) only kind of statements (not **INSERT, UPDATE, DELETE**)
 - Use Cases:
   - you want to run a reporting application to run some analytics but don't want to affect the DB workload
-  - adding an a replica to other region so it can promote as the Master DB if a disaster happen in our region
+  - adding a replica to other region so it can promote as the Master DB if a disaster happen in our region
 
 ### Read Replicas - Network cost
 
@@ -72,11 +72,11 @@
 - **Not used for scaling** (no one can read/write to the standby database)
 - Applications doesn't require an update the connection string (because they don't make use of the standby instances)
 
-### The operation from Signle AZ to Multi AZ
+### The operation from Single AZ to Multi AZ
 
 - Zero downtime operation **(no need to stop the DB)**
 - You have just to click on 'modify' for the database
-- How it works behined the scenes:
+- How it works behind the scenes:
   - A snapshot is taken from the DB
   - A new DB is restored from the snapshot in a new AZ
 
@@ -84,7 +84,7 @@
 
 - Note: The Read Replicas can be setup as Multi AZ for Disaster Recovery
 
-## Cross-Region Replicaiton
+## Cross-Region Replication
 
 #### Can I use RDS multi-az for cross region replication?
 
@@ -95,7 +95,7 @@
 - Improves database efficiency by reducing the stress on the database and minimize open connections (and timeouts)
 - RDS proxy is Serverless, autoscaling, high available (multi-AZ)
 - Reduced RDS & Aurora failover time by 66% (because the failover is not handled anymore through the instances themselves)
-- RDS Proxy is never publicly accessible (must be accessed from VPC, so you canno't connect directly through the internet)
+- RDS Proxy is never publicly accessible (must be accessed from VPC, so you cannot connect directly through the internet)
 - Enforce IAM Authentication for DB, and securely store credentials in AWS Secrets Manager
 - It is handy to handle connections between lambda functions and the DB
 - Supports:
@@ -125,7 +125,7 @@
 ![Aurora DB Cluster](./assets/1.png)
 
 - Writer Endpoint: Pointing to the master DB
-- Reader Endpoint: Conncetion Load Balancing (from all read replica's)
+- Reader Endpoint: Connection Load Balancing (from all read replica's)
 
 ## RDS & Aurora Security
 

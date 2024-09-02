@@ -6,15 +6,17 @@
 
 - Launch **Docker Containers** on AWS = Launch **ECS Tasks** on **ECS Clusters**
 - A Task is a collection of one or more containers together
-- If the essentiel container within a task is failed or killed the whole task is going to be stopped
+- If the essential container within a task is failed or killed the whole task is going to be stopped
 - Each task has its own task definition
 - ECS Service: manages a group of tasks
 - ECS has two Launch Types:
-  | **EC2 Launch Type** | **AWS Fargate** |
-  |------------------------------------------------------------------|-----------------------------------------------------------|
-  | You must provision & maintain the EC2 instances. | You don't provision & maintain any infrastructure. |
-  | The EC2 instance will be a part of an Auto Scaling Group (ASG).| It's all serverless (you just create task definitions). |
-  | Each EC2 Instance must run the **ECS agent** to register with the **ECS Cluster**. | AWS runs ECS tasks for you based on the CPU/RAM you specify. |
+- ECS has two Launch Types:
+
+| **EC2 Launch Type**                                                                | **AWS Fargate**                                              |
+  |------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| You must provision & maintain the EC2 instances.                                   | You don't provision & maintain any infrastructure.           |
+| The EC2 instance will be a part of an Auto Scaling Group (ASG).                    | It's all serverless (you just create task definitions).      |
+| Each EC2 Instance must run the **ECS agent** to register with the **ECS Cluster**. | AWS runs ECS tasks for you based on the CPU/RAM you specify. |
 
 ## ECS - Removing Containers From a Cluster
 
@@ -38,7 +40,7 @@
 
 - Config file `/etc/ecs/ecs.config`
 - In the config file you have to configure the cluster name you want the container to be registered to `ECS_CLUSTER=<your_cluster_name>`
-- A CloudFromation template might accept the name of the cluster as a parameter, but however if the name of the cluster is not changed in the config file the container will still be registered to the default cluster specified in the config file
+- A CloudFormation template might accept the name of the cluster as a parameter, but however if the name of the cluster is not changed in the config file the container will still be registered to the default cluster specified in the config file
 - Enable IAM roles for your ECS tasks in the config file using `ECS_ENABLE_TASK_IAM_ROLE`
 
 ## ECS - Data Volumes
@@ -61,7 +63,7 @@
 - Works for both EC2 and Fargate Tasks (using ephemeral storage)
 - Use cases:
   - Share ephemeral data between multiple containers
-  - "sidecar" container pattern, where the "sidecar" container is used to send metrics/logs to other destinations (seperation of concerns)
+  - "sidecar" container pattern, where the "sidecar" container is used to send metrics/logs to other destinations (separation of concerns)
 
 ![Bind Mounts](./assets/19.png)
 
@@ -113,7 +115,7 @@
 - By default:
 
   - Minimum healthy percentage: 100%
-  - Maximum perecent: 200%
+  - Maximum percent: 200%
 
 - Example:
   - having 10 v1 tasks running
@@ -182,7 +184,7 @@
 
 ## Elastic Container Registry (ECR)
 
-- store container images, privatly or publicaly
+- store container images, privately or publicly
 - User must have the required permissions to push/pull Docker images to/from ECR repository
 
 ### Example pulling an image from ECR

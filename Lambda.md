@@ -25,12 +25,12 @@
 - IAM in lambda is done through **IAM Execution role** and **Resource Based Policy**
 - We use an IAM execution role to allow Lambda functions to write to destinations.
 - Use Resource-Based Policies in the Lambda function to grant permissions to other AWS accounts and services to use your Lambda resources.
-- **Note:** When lambda is invoking the SQS, there is no Resource Based Policy needed, beacuse we poll the Event Source Mapping with the Lambda Role
+- **Note:** When lambda is invoking the SQS, there is no Resource Based Policy needed, because we poll the Event Source Mapping with the Lambda Role
 
 ## Lambda - Destinations
 
 - Lambda destinations are for **asynchronous** invocations
-- There are no destination configurations available for failed events from **sychronous** invocations
+- There are no destination configurations available for failed events from **synchronous** invocations
 - We can define destinations for **successful** and destinations **failed** events
 - Destinations:
   - SQS
@@ -87,7 +87,7 @@ return user
 - When the lambda function is stopped data in `/tmp` directory is deleted
 - Use case: if a lambda function needs to download a large file
 
-## Lambda - Envrionment Variables
+## Lambda - Environment Variables
 
 - We can add environment variables in the lambda configuration
 - Environment variable = key/value pair in "string" form
@@ -95,7 +95,7 @@ return user
 
 ## Lambda Logging & Monitoring
 
-- CloudWatch metrics are recordded from the lambda function (duration, invocations, error count, etc...)
+- CloudWatch metrics are recorded from the lambda function (duration, invocations, error count, etc...)
 - When we create a lambda function a basic role is attached to it by default to allow to send logs to CloudWatch Logs
 - AWS Lambda execution logs are stored in AWS CloudWatch Logs
 - You can enable **active tracing** for x-ray on lambda
@@ -110,14 +110,14 @@ return user
 
 ### Deploying in a VPC
 
-- When a Lambda function is deployed in a VPC, in a subnet, it creats an Elastic Network Interface (ENI) with a security group around the ENI in order to connect to AWS resources
+- When a Lambda function is deployed in a VPC, in a subnet, it creates an Elastic Network Interface (ENI) with a security group around the ENI in order to connect to AWS resources
 - It can not access the internet by default when deployed in your VPC
 - Even deploying a Lambda function in a public subnet doesn't give it internet access or a public IP (For EC2 it does)
 - In order for a Lambda function to connect to the internet, it has to happen via NAT Gateway or a NAT Instance placed in a public subnet
 
 ## Lambda - Storage Options
 
-- **Note:** EBS is not a valid type of a storage for a Lambda function
+- **Note:** EBS is not a valid type of storage for a Lambda function
 
 |                               | Ephemeral /tmp | Amazon S3 | Amazon EFS |
 | ----------------------------- | -------------- | --------- | ---------- |
@@ -151,7 +151,7 @@ return user
 
 - If your Lambda function depends on external libraries: X-Ray SDK, ...
 - You need to install the packages alongside your code and zip it together
-- Upload the zip stright to lambda if less than 50MB, else to **S3 and reference it** from lambda
+- Upload the zip straight to lambda if less than 50MB, else to **S3 and reference it** from lambda
 - AWS SDK comes by default with every lambda function
 
 ## Lambda - Layers
@@ -197,9 +197,9 @@ return user
 - 5 Layers per function up to 250MB
 - Lambda Container Images: max image size 10GB
 
-## Lambda - Best Practicies
+## Lambda - Best Practices
 
-- Perform heavy-duty work outside of your function handler: DB connections, initialize SDK, import dependencies
+- Perform heavy-duty work outside your function handler: DB connections, initialize SDK, import dependencies
 - Use environment variables for: DB connection strings, S3 Buckets, don't put these in your code
 - Use Layers where necessary
 - Avoid using recursive code, never have a lambda function call itself
@@ -212,7 +212,7 @@ return user
 
 ## Lambda - Synchronous Invocation
 
-- Invoke a Lambda Function synchrounasly through:
+- Invoke a Lambda Function synchronously through:
   - CLI
   - SDK
   - API Gateway
@@ -227,7 +227,7 @@ return user
 
 ## Lambda - Asynchronous Invocations
 
-- Invoke a Lambda Function asynchrounasly through:
+- Invoke a Lambda Function asynchronously through:
 
   - S3
   - SNS
@@ -235,7 +235,7 @@ return user
   - and more...
 
 - The result is not sent back to the caller
-- The events are placed in an internal **Event Queue** in Lambda Serivce
+- The events are placed in an internal **Event Queue** in Lambda Service
 - Lambda attempts to retry on **errors** (3 tries total)
 - Failed tasks might be sent to a destination
 - Tasks that couldn't be processed might be moved to SQS DLQ or SNS DLQ **via Lambda and not via SQS** (requires IAM execution role)
@@ -259,7 +259,7 @@ return user
 
 #### Error Handling
 
-- By default if your function returns an error, the entire batch is reprocessed until the function succeeds or the items in the batch expire
+- By default, if your function returns an error, the entire batch is reprocessed until the function succeeds or the items in the batch expire
 - You can configure the event source mapping to:
   - Discard event batches, we can send them to:
     - SQS
@@ -271,12 +271,12 @@ return user
 
 #### Error Handling
 
-- When an error occurs, batches are returned to the queue as individual messeges and might be processed in different grouping than the original batch
+- When an error occurs, batches are returned to the queue as individual messages and might be processed in different grouping than the original batch
 - To use a DLQ: set up on the SQS queue not on lambda **(DLQ via lambda is only for async invocations)**
 
 # Lambda with other Services
 
-## Lambda - CloudFromation
+## Lambda - CloudFormation
 
 ### Inline
 
@@ -305,11 +305,11 @@ MyLambdaFunction:
 ### S3
 
 - Store Lambda zip in S3
-- Refer the S3 Zip location in the CloudFormaiton code
+- Refer the S3 Zip location in the CloudFormation code
 - You need to provide the following in CloudFormation:
   - S3Bucket = Bucket name
   - S3Key = Name of the file
-  - S3ObjectVersion = Verion ID of the Object
+  - S3ObjectVersion = Version ID of the Object
 
 ```yaml
 MyLambdaFunction:
@@ -335,7 +335,7 @@ MyLambdaFunction:
 
 - Use AWS-provided Base Images
 - **Use Multi-Stage Builds:** Create smaller, more efficient images by only including necessary artifacts in the final image.
-- **Build from stable to frequently changing in your docker file:** make your most frequently occuring changes as late in your Docker file as possible
+- **Build from stable to frequently changing in your docker file:** make your most frequently occurring changes as late in your Docker file as possible
 - **Use a single repository for Functions with Large Layers:** ECR compares each layer of a container image when it is pushed to avoid uploading and storing duplicates
 
 ## Lambda - Function URL
