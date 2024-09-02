@@ -217,6 +217,11 @@
 - Allow traffic from within the VPC
 - Allow only from IP ranges
 
+## API Gateway - Errors
+
+- Error 504: timeout after 29 second maximum
+- Error 502: output format of a Lambda function in a proxy integration is in a different format
+
 ## API Gateway - Logging and tracing
 
 ### CloudWatch Logs

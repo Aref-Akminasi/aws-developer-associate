@@ -17,6 +17,10 @@
 - High availability across zones
 - Separate public traffic from private traffic
 
+## ELB - Access Logs
+
+- Elastic Load Balancing provides access logs that capture detailed information about requests sent to your load balancer
+
 ## Health Checks
 
 - They enable the load balancer to know if instances it forwards traffic to are available to reply to requests

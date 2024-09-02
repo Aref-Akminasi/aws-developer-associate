@@ -114,6 +114,7 @@ return user
 - It can not access the internet by default when deployed in your VPC
 - Even deploying a Lambda function in a public subnet doesn't give it internet access or a public IP (For EC2 it does)
 - In order for a Lambda function to connect to the internet, it has to happen via NAT Gateway or a NAT Instance placed in a public subnet
+- Ensure **Subnet IDs and SG IDs** are configured in the lambda function (not the NACL ID), in order to connect to AWS resources
 
 ## Lambda - Storage Options
 
@@ -301,6 +302,8 @@ MyLambdaFunction:
             }
     Role: arn:aws:iam::123456789012:role/execution_role
 ```
+
+- The `Handler` attribute is the method name that lambda service calls to execute the function **NOT** `FunctionName`
 
 ### S3
 

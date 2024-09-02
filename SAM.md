@@ -17,7 +17,7 @@
   - `AWS::Serverless::LayerVersion` - Creates a lambda layered version
   - `AWS::Serverless:Api` - Creates API Gateway
   - `AWS::Serverless::SimpleTable` - Creates DynamoDB table
-  - `AWS::Serverless::Application` - embed applications from S3 bucket
+  - `AWS::Serverless::Application` - Embed applications from S3 bucket
 - Package & Deploy: use `sam deploy` command (previously you had to do `sam package` first)
 
 ## SAM Accelerate (SAM Sync)
@@ -41,7 +41,7 @@
 
 ```yaml
 MyFunction:
-  Type: 'AWS::Serverless::Function'
+  Type: "AWS::Serverless::Function"
   Properties:
     CodeUri: ${codeuri}
     Handler: hello.handler
@@ -56,8 +56,8 @@ MyFunction:
 
 - SAM Framework natively uses CodeDeploy to update Lambda functions
 - In the SAM Template we can add:
-  - `AutoPublishAlias: live` specify the name of the alias
-  - `DeploymentPreference` Canary, Linear, AllAtOnce
+  - `AutoPublishAlias: live` specify the name of the alias (will publish the alias instantly)
+  - `DeploymentPreference` Canary, Linear, AllAtOnce (is used when you don't want an instant switch)
   - `Alarms` Alarms that can trigger a rollback
   - `Hooks` Validation Lambda function that are run before & after traffic shifting
 

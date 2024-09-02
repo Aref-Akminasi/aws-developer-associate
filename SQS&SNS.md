@@ -43,6 +43,10 @@
 - EC2 Instances in an ASG can be set to poll for messages from an SQS Queue
 - ASG will scale based on **CloudWatch Metric - Queue Length (ApproximateNumberOfMessages)**
 
+## SQS - Priority Queues
+
+- In an architecture, you can ensure that premium customers' messages are given higher priority by creating two SQS queues: one for normal customers and one for premium customers. The application can then process messages from the high-priority queue
+
 ## SQS - Security
 
 ### Encryption
@@ -92,10 +96,10 @@
 - Long Polling decreases the number of **API Calls** made to SQS while decreasing the latency of the application
 - Long polling can be enabled at the queue level, or at the API level while making a call using **ReceiveMessageWaitTimeSeconds**
 
-## SQS - Extended Client
+## SQS - Extended Client Library for Java
 
 - Exceeds message size limit > 256KB
-- Using the SQS Extended Client (Java Library)
+- Using SQS Extended Client Library for Java
 - Using the small message in the SQS as a pointer to an S3 bucket
   ![SQS Extended Client](./assets/33.png)
 

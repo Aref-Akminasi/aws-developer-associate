@@ -22,6 +22,10 @@
 - If you terminate a container instance in the RUNNING state, that container instance is automatically removed, or deregistered, from the cluster.
 - If you terminate a container instance while it is in the STOPPED state, that container instance isn't automatically removed from the cluster. You will need to deregister your container instance in the STOPPED state by using the Amazon ECS console or AWS Command Line Interface.
 
+## ECS - Tag & Retag
+
+- To retag docker images in Amazon ECR, it is not required to pull or push these images again to the ECR depository. The **--image-tag option of the put-image command** can be used to retag the existing image in the repository.
+
 ## ECS IAM Roles
 
 - EC2 Instance Profile (EC2 Launch Type **only**):

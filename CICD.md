@@ -8,16 +8,20 @@
 - No size limit on repositories
 - Code Commit is deprecated on AWS
 
+## CodeCommit - Best practices
+
+- AWS recommends setting your dependencies to point to a specific version. AWS does not recommend that you set the version to the latest because that can introduce changes that might break your application without notice.
+
 ## CodeCommit - Security
 
 ### Cross-account Access
 
 - Use an IAM Role in your AWS account and ask the other account to use **AWS STS (AssumeRole API)**
 
-### Migration to CodeCommit
+### Migration to CodeCommit from GitHub
 
 - To migrate the existing application code from a GitHub repository to AWS CodeCommit use **Git credentials generated from IAM**
-- **Don't use** authentication offered by **GitHub secure** tokens because these are meant for GitHub not CodeCommit
+- **Don't use** authentication offered by **GitHub secure tokens** because these are meant for GitHub not CodeCommit
 
 # CodePipeline
 
@@ -84,7 +88,7 @@ version: 0.2
 
 env:
   variables:
-    JAVA_HOME: '/usr/lib/jvm/java-8-openjdk-amd64'
+    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
   parameter-store:
     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -114,7 +118,7 @@ artifacts:
 
 cache:
   paths:
-    - '/root/.m2/**/*'
+    - "/root/.m2/**/*"
 ```
 
 ## CodeBuild - Troubleshooting
@@ -123,6 +127,11 @@ cache:
 - Use CloudWatch Metrics to monitor build statistics
 - Use CloudWatch Alarms
 - Use EventBridge to detect failed builds and trigger notifications
+
+## CodeBuild - Overriding a build command
+
+- To override the build command, run the start build AWS CLI command with **buildspecOverride** property set to the new **buildspec.yml** file
+- This option might be helpful if the developer has access to run the builds but does not have access to the code and to edit the CodeBuild project
 
 # CodeDeploy
 

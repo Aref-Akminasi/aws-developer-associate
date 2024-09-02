@@ -109,6 +109,9 @@ Alias AWS resources Record Targets:
 - **DNS records must have the same name and type**
 - Can be associated with Health Checks
 - Assign a weight of 0 to a record to stop sending traffic to a resource
+- **Example:** You are planning to launch a web based application in two different regions within US on AWS due to your organization compliance policies. You have setup 2 EC2 instances attached to an elastic load balancer in us-east-1. You have replicated the same setup in us-west-1. Now you have two load balancers which needs to listen traffic from internet. You would want to split the requests equally between both load balancers from a domain name hosted on your AWS Route 53. How should you configure your Route 53 record sets?
+- **Solution:** Create two **record sets** one each for us-east-1 and us-west-1 load balancers. Set weighted routing policy with weights as 1 and 1 respectively
+- **Mistake:** Create one record set and select both load balancers as Alias Targets. Set weighted routing policy with weights as 1 and 1 respectively (A record set can only have one Alias target)
 
 ### Latency
 

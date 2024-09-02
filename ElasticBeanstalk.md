@@ -126,6 +126,7 @@
 ## Elastic Beanstalk - Extensions
 
 - EB extensions = Configuration files
+- Configuration files are used to set configuration options like run the environment on m4.large instead of t1.micro
 - Add the configuration through the files in your .zip file **not through CLI**
 - Requirements:
   - Place your configuration files in the **.ebextensions/** directory in the root of source code
