@@ -14,7 +14,7 @@
 
 ## Kinesis Data Streams - Ordering
 
-- Records at the same shard are proccesed in the order they were added
+- Records at the same shard are processed in the order they were added
 - Records that shares the same partition goes to the same shard (ordering)
 - the consumer for a specific shard, and for records with the same partition key, will be the same.
 
@@ -69,13 +69,13 @@
 
 ## Kinesis Data Streams - Consumers
 
-### Self managed
+### Self-managed
 
 - Kinesis Client Library (KCL)
   - Each KCL has to read from at least one Kinesis Shard, reading from multiple shards is ok
   - Each shard can be read by only one KCL instance at a time
   - You can not have more KCLs than shards, having less KCLs than shards is ok
-  - Progress is checkpointed into **DynamoDB** (IAM Access required)
+  - Progress is checkpoint into **DynamoDB** (IAM Access required)
 - AWS SDK
 
 ### AWS Managed
@@ -88,10 +88,10 @@
 
 - Encryption in flight using HTTPS
 - Encryption at rest using KMS
-- Supports client side encyrption/decryption
+- Supports client side encryption/decryption
 - Control Access / authorization using IAM policies
 - Monitor API Calls using **CloudTrail**
-- **VPC endpoints** avaliable for Kinesis to access within a VPC not and across the internet
+- **VPC endpoints** available for Kinesis to access within a VPC not and across the internet
 
 ## Kinesis Data Streams - Scaling
 
@@ -136,7 +136,7 @@
 - Redshift
 - OpenSearch
 - HTTP(s) endpoint
-- 3rd party parnter: MongoDB, DataDog...
+- 3rd party partner: MongoDB, DataDog...
 
 - Note: Lambda is **not** a consumer
 

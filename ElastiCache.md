@@ -80,7 +80,7 @@
 ### Cache Evictions Methods
 
 - You delete the item explicitly in the cache
-- Item is evicted because the memory is full and it's not recently used Least Recently Used (LRU)
+- Item is evicted because the memory is full, and it's not recently used Least Recently Used (LRU)
 - You set an item time-to-live TTL ('EXPIRE' keyword)
 
 - **Note:** if too many evictions happen due to memory shortage, you should scale up or out

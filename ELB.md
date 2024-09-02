@@ -90,7 +90,7 @@
   - Identity provider (IdP): OpenID Connect (OIDC) compliant
   - Cognito User Pools
 - Must use an HTTPS listener
-- **OnUanauthenticatedRequest** options:
+- **OnUanauthenticatedRequest** options: //Dit kan ik nergens terug vinden?
   - authenticate (default): ask the user to authenticate
   - deny
   - allow
@@ -99,7 +99,7 @@
 
 - Network Load Balancer (Layer 4)
 - Allow to forward TCP & UDP traffic to your instances
-- High performance handles milions of requests per seconds
+- High performance handles millions of requests per seconds
 - Less latency ~ 100 ms (vs 400 ms for ALB)
 - Provides a static DNS hostname
 - NLB has **one static IP per AZ** and supports assigning Elastic IP (helpful for whitelisting specific IP)
