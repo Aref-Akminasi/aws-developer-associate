@@ -6,16 +6,16 @@
 - IAM is a global service, so if we create a user it would be available everywhere
 - Users are people within your organization, and can be grouped
 - Groups **only** contain users, not other groups
-- Some users doesn't have to belong to a group (but it's not the best practice)
+- Some users don't have to belong to a group (but it's not the best practice)
 - A user can belong to multiple groups
 
 ## IAM Permissions
 
-- Users or Groups can assigned JSON documents called policies
+- Users or Groups can have JSON documents assigned called policies
 - These policies define the permissions of the users
 - In AWS you apply the **least privilege principle:** don't give more permissions than a user needs
 - If a user doesn't belong to a group you could provide **inline policy** which is a policy only attached to a user
-- Premissions are inherited from the group, example: if a user is part of the group 'admin' it will get the admin permissions (Policies inheritance)
+- Permissions are inherited from the group, example: if a user is part of the group 'admin' it will get the admin permissions (Policies inheritance)
 
 ## IAM - Policies
 
@@ -49,7 +49,7 @@
         "AWS": ["arn:aws:iam::123456789012:root"] //account/user/role to which this policy is applied to
       },
       "Action": ["s3:GetObject", "s3:PutObject"], //list of actions this policy allows or denies
-      "Rresource": ["arn:aws:s3::mybucket/*"] //list of resources to which the actions is applied to
+      "Resource": ["arn:aws:s3::mybucket/*"] //list of resources to which the actions is applied to
       //Condition: We can add conditions here for when this policy is in effect (optional)
     }
   ]
@@ -58,7 +58,7 @@
 
 ## IAM Password Policy
 
-- In AWS, you can setup a password policy:
+- In AWS, you can set up a password policy:
 
   - minimum length
   - specific character types
@@ -67,7 +67,7 @@
   - Prevent password re-use (a password an user had before)
   - Changing the password policy (such as changing the minimum length) doesn't require users to change their old passwords immediately. Instead, they will have to meet the new password policy when their passwords expire.
 
-- Multi Factor Authentication - MFA
+- Multi-Factor Authentication - MFA
 
   - MFA = password you know + security device you own (for generating tokens)
 
@@ -138,7 +138,7 @@
 
 ## IAM - Dynamic Policy
 
-- You can partition you users acess using **policy variables**
+- You can partition your users access using **policy variables**
 - Example: giving access to users access to their own files in a prefix in an S3 bucket or DynamoDB LeadingKey
 
 ![policy variable](./assets/67.png)
@@ -150,7 +150,7 @@
 ## STS - APIs
 
 - AssumeRole: Assume roles within your account or cross account
-- GetSesstionToken: for MFA
+- GetSessionToken: for MFA
 - GetCallerIdentity: return details about the IAM user or role used in the API call
 - DecodeAuthorizationMessage: decode error message when an AWS API is denied
 
@@ -168,7 +168,7 @@
 ## AWS Managed Microsoft AD
 
 - Managed Directory on AWS
-- Establisch trust connections with your on-premise AD
+- Establish trust connections with your on-premise AD
 - Supports MFA
 
 ## AD Connector

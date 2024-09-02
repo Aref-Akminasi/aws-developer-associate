@@ -25,7 +25,7 @@
   - API key
   - AWS IAM
   - OpenID Connect
-  - Congnito User Pools
+  - Cognito User Pools
 
 - For **custom domain names & HTTPS** it is recommended to use **CloudFront in front of AppSync**
 

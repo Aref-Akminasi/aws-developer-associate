@@ -111,7 +111,7 @@
 - Redshift
 - OpenSearch
 - HTTP(s) endpoint
-- 3rd party parnter: MongoDB, DataDog...
+- 3rd party painter: MongoDB, DataDog...
 - Note: Lambda is not a consumer
 
 ### KDA for SQL applications Producers
@@ -228,7 +228,7 @@
 - API Gateway
 - ALB
 
-### Stepfunctions - Start workflow via
+### Step functions - Start workflow via
 
 - AWS Console
 - SDK
@@ -248,7 +248,7 @@
 - API key
 - AWS IAM
 - OpenID Connect
-- Congnito User Pools
+- Cognito User Pools
 
 ### OpenSearch usages
 
