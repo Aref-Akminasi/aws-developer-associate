@@ -90,7 +90,7 @@
   - Identity provider (IdP): OpenID Connect (OIDC) compliant
   - Cognito User Pools
 - Must use an HTTPS listener
-- **OnUanauthenticatedRequest** options: //Dit kan ik nergens terug vinden?
+- **OnUnauthenticatedRequest** options: //Dit kan ik nergens terug vinden?
   - authenticate (default): ask the user to authenticate
   - deny
   - allow
