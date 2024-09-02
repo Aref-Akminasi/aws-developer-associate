@@ -14,6 +14,10 @@
   - When an EC2 instance fails the ALB Health Checks, its marked unhealthy and will be terminated while the ASG launches a new EC2 instance.
 - ASGs are free (you only pay for the underlying EC2 instances)
 
+## ASG - Lifecycle hooks
+
+- Amazon EC2 Auto Scaling offers the ability to add lifecycle hooks to your Auto Scaling groups. These hooks let you create solutions that are aware of events in the Auto Scaling instance lifecycle, and then perform a custom action on instances when the corresponding lifecycle event occurs. A lifecycle hook provides a specified amount of time (one hour by default) to wait for the action to complete (install updates, user data script) before the instance transitions to the next state.
+
 ## Auto Scaling Group Attributes
 
 - Launch Template that contains (AMI, EC2 User Data, EBS volumes, Security Groups, etc...)

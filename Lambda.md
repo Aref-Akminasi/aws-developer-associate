@@ -98,6 +98,7 @@ return user
 - CloudWatch metrics are recorded from the lambda function (duration, invocations, error count, etc...)
 - When we create a lambda function a basic role is attached to it by default to allow to send logs to CloudWatch Logs
 - AWS Lambda execution logs are stored in AWS CloudWatch Logs
+- For debugging a Lambda function we use CloudWatch logs **NOT** CloudWatch metrics (exam question)
 - You can enable **active tracing** for x-ray on lambda
 
 ## Lambda - VPC configuration

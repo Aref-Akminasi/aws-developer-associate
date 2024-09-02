@@ -91,6 +91,13 @@
 - Five percent is called the **rate** at which additional requests beyond the reservoir size are sampled
 - You can have custom sampling rules for changing the reservoir size and the rate
 
+## X-Ray - Commands
+
+- `~/xray-daemon$./xray -o` command option can be used while running X-Ray daemon locally & not on Amazon EC2 instance. This will skip checking Amazon EC2 instance metadata. (to remmember: offline)
+- `~/xray-daemon$ ./xray -r` this command can be used to assume an IAM role while saving results in different accounts. (to remmember: role)
+- `~/xray-daemon$ ./xray -t` this command can be used to bind a different TCP port for the X-Ray service. (to remmember: tcp)
+- `~/xray-daemon$ ./xray -b` this command can be used to bind a different UDP port for the X-Ray service
+
 ## X-Ray APIs
 
 ### Write APIs

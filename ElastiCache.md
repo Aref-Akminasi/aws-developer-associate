@@ -84,3 +84,8 @@
 - You set an item time-to-live TTL ('EXPIRE' keyword)
 
 - **Note:** if too many evictions happen due to memory shortage, you should scale up or out
+
+## ElastiCache - Cluster Memory
+
+- The total memory capacity of the cluster is calculated by multiplying the number of nodes in the cluster by the RAM capacity of the node after deducting the system overhead.
+- **Example (35 GB is needed):** Use cache.t2.medium type of nodes with each having 3.22 GiB memory, 2 cores, and a quantity of 11 nodes giving 35.42 GiB in total meeting the requirement

@@ -118,6 +118,7 @@
 
 - Deploy dynamic configuration changes to your applications
 - You don't need to restart the application
+- Ability for scheduling new features
 - Validate configuration changes before deployment using:
   - JSON Schema
   - Lambda function

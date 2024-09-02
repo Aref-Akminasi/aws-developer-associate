@@ -142,6 +142,10 @@ option_settings:
     DEBUG_MODE: false
 ```
 
+### Multi-container docker platform
+
+- You are working on deploying a new Amazon Beanstalk environment with a multi-container Docker platform. Which configuration file can be used to specify Amazon EC2 container instance & file volumes for the multi-container Docker platform? Use **Dockerrun.aws.json version 2** file
+
 ## Elastic Beanstalk - Migrations
 
 ### Load Balancer migration
@@ -155,6 +159,9 @@ option_settings:
 ![ELB Migration](./assets/28.png)
 
 ### RDS migration
+
+- After you verify that your application works correctly with the database, you may consider moving towards a production environment. At this point, you have the option to decouple the database from your Elastic Beanstalk environment to move towards a configuration that offers greater flexibility. The decoupled database can remain operational as an external Amazon RDS database instance.
+- The health of the environment isn't affected by decoupling the database. If you need to terminate the environment, you can do so and also choose the option to keep the database available and operational outside of Elastic Beanstalk.
 
 1. Create a snapshot of RDS (as a safeguard)
 2. Go to the RDS console and protect the RDS database from deletion
