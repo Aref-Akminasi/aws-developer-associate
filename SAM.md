@@ -23,14 +23,14 @@
 ## SAM Accelerate (SAM Sync)
 
 - SAM Accelerate is a set of features to reduce latency while deploying resources to AWS
-- Ability to synchronizes code changes to AWS without updating infrastructure (uses service APIs & bypass CloudFromation)
+- Ability to synchronizes code changes to AWS without updating infrastructure (uses service APIs & bypass CloudFormation)
 
 ![SAM Accelerate](./assets/63.png)
 
 ### Examples
 
 - `sam sync` synchronize code and infrastructure configuration
-- `sam sync --code` synchronize code changes without updating infrastructure (bypass CloudFromation, fast update)
+- `sam sync --code` synchronize code changes without updating infrastructure (bypass CloudFormation, fast update)
 - `sam sync --code --resource AWS::Serverless::Function` synchronize only all Lambda functions and their dependencies
 - `sam sync --code --resource-id HelloWorldLambdaFunction` synchronize only a specific resource by its ID
 - `sam sync --watch` Monitor for file changes and automatically synchronize when changes are detected

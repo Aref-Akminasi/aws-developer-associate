@@ -9,9 +9,9 @@
 - TLD = Top Level Domain
 - SLD = Second Level Domain
 - FQDN = Fully Qualified Domain Name = Absolute Domain Name
-- FQDN is the full domain name, excluding the prtotocol
+- FQDN is the full domain name, excluding the protocol
 
-![How DNS Works](./assets/7.png)
+  ![How DNS Works](./assets/7.png)
 
 ## Amazon Route 53
 
@@ -19,7 +19,7 @@
   - Authoritative = The customer (you) can update the DNS records
 - Ability to check the health of your resources
 - The only AWS service which provides 100% availability Service Level Agreement (SLA)
-- Why is it called Route 53? 53 is a reference to the tradinitional DNS port
+- Why is it called Route 53? 53 is a reference to the traditional DNS port
 
 ## Route 53 usage with domains from other registrars
 
@@ -101,7 +101,7 @@ Alias AWS resources Record Targets:
 - Routing traffic to multiple resources
 - Can be associated with health checks (return only values for healthy resources)
 - **Up to 8 healthy records are returned for each Multi-Value query**
-- It's different than 'simple' because in 'simple' we don't know if something is healthy or not
+- It's different from 'simple' because in 'simple' we don't know if something is healthy or not
 
 ### Weighted
 
@@ -128,12 +128,12 @@ Alias AWS resources Record Targets:
 - This routing is based on the user location (country, continent)
 - You can have a location 'default' so all other countrys that are not specified as a record will get the default
 
-### Geoproximity
+### Geo-proximity
 
 - Is helpful for shifting traffic from one region to an another
 - **You must use Route 53 Traffic Flow to use this feature**
 - To change the size of the geographic region, specify bias values:
-  - To expand (1 to 99) - more traffic to thre resource
+  - To expand (1 to 99) - more traffic to the resource
   - To shrink (-1 to -99) - less traffic to the resource
 
 ## Route 53 - Traffic Flow
@@ -150,7 +150,7 @@ Alias AWS resources Record Targets:
 - Health Check types:
   - Health checks that monitor an endpoint (app, server, other AWS resource...)
     - About 15 global health checkers will check the endpoint health
-    - If > 18% of health checkers report the endpoint is healthy, Route 53 consider it helathy, otherwist it's unhealthy
+    - If > 18% of health checkers report the endpoint is healthy, Route 53 consider it healthy, otherwise it's unhealthy
     - Check every 30 sec (default)
     - Via HTTP, HTTPS and TCP
     - Health checkers can check the **first 5120 bytes** of the response if its text based

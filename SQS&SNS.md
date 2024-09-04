@@ -18,7 +18,7 @@
 - SQS like a buffer between the **producer (the sender)** and the **consumer (the receiver)**
 - Retain messages for 4 days (default), max 14 days
 - Max message size is **256KB**
-- You can't change the queue type after you create it and you can't convert an existing standard queue into a FIFO queue
+- You can't change the queue type after you create it, and you can't convert an existing standard queue into a FIFO queue
 
 ## SQS Queue Types
 
@@ -67,9 +67,9 @@
 ## SQS - Message Visibility Timeout
 
 - After a message polled by a consumer, it becomes invisible to other consumers
-- **30 sec** invisiblity by default
+- **30 sec** invisibility by default
 - If a message is not processed and deleted within the visibility timeout, it will go back and be visible in the queue
-- A consumer could call the **ChangeMessageVisiblity API** to get more time
+- A consumer could call the **ChangeMessageVisibility API** to get more time
 - If visibility timeout is **high(hours)**, and consumer crashes, re-processing will take time
 - If visibility timeout is **low(seconds)**, we may get duplicates
 
@@ -77,7 +77,7 @@
 
 - If a consumer fails to process a message withing the Visibility Timeout the message goes back to the queue
 - We can set a threshold of how many times a message can go back to the queue, **MaximumReceives**
-- After the **MaximumReceives** Threshold is exceeded, the message goes into a **dead letter queue** (an another SQS queue)
+- After the **MaximumReceives** Threshold is exceeded, the message goes into a **dead letter queue** (another SQS queue)
 - **DLQ of a FIFO queue must also be a FIFO queue**
 - **DLQ of a standard queue must also be a standard queue**
 - DLQ is useful for **debugging**
@@ -108,7 +108,7 @@
 - CreateQueue (MessageRetentionPeriod, as an argument)
 - DeleteQueue
 - PurgeQueue: Delete all the messages in queue
-- SendMesaage (DelaySeconds, as an argument): to add a message into the queue
+- SendMessage (DelaySeconds, as an argument): to add a message into the queue
 - DeleteMessage: to delete a message from SQS queue
 - ReceiveMessage (MaxNumberOfMessages (default: 1, max: 10), as an argument)
 - ReceiveMessageWaitTimeSeconds: LongPolling
@@ -120,7 +120,7 @@
 
 - De-duplication interval is 5 min
 - Two deduplication methods:
-  - Content based deduplication: will do a SHA-256 hash of the message body
+  - Content based deduplication: will do an SHA-256 hash of the message body
   - Explicitly provide a message deduplication ID
 - After 5 minutes, a message with the same deduplication ID or content can be accepted again as a new message.
 
@@ -134,7 +134,7 @@
 
 ## General
 
-- SNS = Simple Noticiation Service
+- SNS = Simple Notification Service
 - SNS max message size = 256 KB
 - SNS Push data to subscribers
 - Each subscriber to the topic will get all the messages by default

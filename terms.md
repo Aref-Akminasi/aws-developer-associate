@@ -53,14 +53,14 @@
 - DLQ = Dead Letter Queue
 - KCL = Kinesis Client Library
 - KPL = Kinesis Producer Library
-- IMDS = Instance Meta Data
+- IMDS = Instance Metadata Service
 - ARN = Amazon Resource Name
 - WCU = Write Capacity Unit
 - RCU = Read Capacity Unit
 - LSI = Local Secondary Index
 - GSI = Global Secondary Index
 - VTL = Velocity Template Language
-- SAM = Serverless Aplication Model
+- SAM = Serverless Application Model
 - STS = Security Token Service
 - CDK = Cloud Development Kit
 - SES = Simple Email Service
