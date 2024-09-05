@@ -20,6 +20,10 @@
 | Backup and restore features                                     | No backup and restore                          |
 | Supports Sets and Sorted Sets                                   | Multi-threaded architecture                    |
 
+## ElastiCache - Parameter Groups
+
+- parameter groups are collections of **settings or configuration options** that are applied to your ElastiCache clusters or nodes. They allow you to manage and customize the behavior of your Redis or Memcached instances.
+
 ## Amazon Memory DB for Redis
 
 - Redis-compatible, durable, in-memory database service

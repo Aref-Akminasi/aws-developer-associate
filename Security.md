@@ -61,6 +61,7 @@ The AWS Encryption SDK is a **client-side** encryption library designed to make 
 - KMS Encrypt API call has a limit of **4KB**
 - If you want to encrypt **> 4KB**, we need to use **Envelope Encryption** method
 - For Envelope Encryption we should use **GenerateDataKey API** that will return a **DEK (Data Encryption Key)** that we can use it to encrypt locally and send file back
+- The **Customer Master Key** is used to **encrypt the data key, not the data itself**, the **data key** is used to **encrypt the data**
 - **GenerateDataKeyWithoutPlaintext API** to use DEK at some point (not immediately)
 - The **AWS Encryption SDK** implement Envelope Encryption for us
 - The Encryption SDK has DEK caching mechanism to reduce requests to KMS

@@ -166,8 +166,6 @@
 
 - GetItem: read **one item** based on primary key (HASH or HASH + RANGE)
 
-  - Use ProjectionExpression: can be specified to retrieve only certain attributes
-
 - BatchGetItem
 
   - Return items from **one or more tables**
@@ -188,7 +186,12 @@
   - You can have a **Limit** parameter
   - You can have **parallel scans** to speed up the scan (consumes more RCU)
 
-- FilterExpression (optional): A filter expression is applied after a Query/Scan finishes, used only with non-key attributes. (can't be applied for BatchGetItem)
+- FilterExpression (optional): A filter expression is applied after a **Query/Scan finishes**, used **only** with **non-key attributes**, **can't** be applied for **BatchGetItem**
+- Use ProjectionExpression: can be specified to retrieve only certain attributes
+
+### Consumed Capacity
+
+- If you want to know how much of the consumed capacity is being used for the queries, ensure to set the **ReturnConsumedCapacity** in the query request to **TOTAL**
 
 ## DynamoDB - Deleting Operations
 

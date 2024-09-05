@@ -151,6 +151,13 @@ option_settings:
 
 - Your application is going to run periodic tasks, use **cron.yaml** file
 
+### Installing packages
+
+- Problem: You need to ensure that custom software is installed on the backend linux servers launched as part of the Elastic Beanstalk environment
+- Solution:
+  1. Create a YAML file with the required package names to be installed on the server
+  2. Place the file in .ebextensions folder in your Application Source Bundle
+
 ## Elastic Beanstalk - Migrations
 
 ### Load Balancer migration

@@ -17,6 +17,20 @@
   - IBM DB2
   - Aurora (Supports MySQL and PostgreSQL)
 
+## Connect to RDS instance
+
+- Request an endpoint (DNS name) for the instance from the Database administrator
+- Use the **DescribeDBInstances API** and get the endpoint (DNS name) for the database instance
+- It is **NOT** recommended to use **IPs** since they could change during failover
+
+## RDS Logs
+
+The AWS RDS Service contains several logs, such as the ones given below:
+
+- Error logs
+- General query log
+- Slow query log
+
 ## Advantages over using RDS versus deploying DB on EC2
 
 - RDS Pros:

@@ -137,16 +137,24 @@ cache:
 
 ## CodeDeploy - Basics
 
+- In AWS CodeDeploy, the **deployment group** is essentially the set of instances that you want to deploy your application to.
 - A file names **appspec.yml** defines how the deployment happens, at the root level of the code files
-- CodeDeploy lifecycle:
 
-  1. ApplicationStop
-  2. DownloadBundle
-  3. BeforeInstall
-  4. Install
-  5. AfterInstall
-  6. ApplicationStart
-  7. ValidateService
+## CodeDeploy lifecycle for EC2
+
+1. ApplicationStop
+2. DownloadBundle
+3. BeforeInstall
+4. Install
+5. AfterInstall
+6. ApplicationStart
+7. ValidateService
+
+## CodeDeploy lifecycle for Lambda
+
+1. BeforeAllowTraffic (supports lambda validation functions)
+2. AllowTraffic
+3. AfterAllowTraffic (supports lambda validation functions)
 
 - Deploy new applications versions to:
 
@@ -189,6 +197,13 @@ cache:
 
 - **Automated Rollback** capability in case of failed deployments **or** trigger a **CloudWatch Alarm**
 - If a rollback happens, CodeDeploy redeploys the last known good revision as a **new deployment (not a restored version)**
+- During AWS CodeDeploy automatic roll-back, it will try to retrieve files that were part of previous versions. If these files are deleted or missing, you need to manually add those files and run automated deployment (don't do a manual deployment)
+- Restarting the CodeDeployAgent service will recreate a log file if the log file was deleted
+
+### Number of healthy instances error
+
+- AWS CodeDeploy generates a **HEALTH_CONSTRAINTS_INVALID** error when a minimum number of healthy instances defined in the deployment group are not avaliable during deployment
+- Solution: reduce the number of required healthy instances by updating your deployment configuration or increase the number of instances in this deployment group
 
 # CodeArtifact
 
