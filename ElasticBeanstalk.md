@@ -107,6 +107,7 @@
 - Automated rollback on failure
 - Code is deployed on new instances
 - Amazon EC2 burst balances were lost because instances are replaced
+- Configuration setting example: `NewVersionPercent: "15" & EvaluationTime: "5"` make sure you point the **new version** and set the time in **minutes**
 
 ![Traffic Splitting](./assets/27.png)
 
@@ -145,6 +146,10 @@ option_settings:
 ### Multi-container docker platform
 
 - You are working on deploying a new Amazon Beanstalk environment with a multi-container Docker platform. Which configuration file can be used to specify Amazon EC2 container instance & file volumes for the multi-container Docker platform? Use **Dockerrun.aws.json version 2** file
+
+### Periodic tasks configuration file
+
+- Your application is going to run periodic tasks, use **cron.yaml** file
 
 ## Elastic Beanstalk - Migrations
 

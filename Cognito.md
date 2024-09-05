@@ -75,6 +75,11 @@
 - Token is exchanged for IAM credentials, obtained by CIP through STS
 - The roles must have a trust policy of CIP
 
+## CIP - Role Based Control
+
+- Amazon Cognito identity pools assign your authenticated users a set of temporary, limited-privilege credentials to access your AWS resources. The permissions for each user are controlled through IAM roles that you create.
+- Rules are evaluated in sequential order & **IAM role** for first matching rule is used, unless a **CustomRoleArn** is specified to override the order
+
 ### Auth with 3rd party services happening via CUP
 
 ![CIP](./assets/66.png)

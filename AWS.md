@@ -79,8 +79,7 @@
 - Exponential backoff: Retry mechanism starting at a time and doubling each retry (e.g., 100ms, 200ms, 400ms, 800ms, 1600ms).
 - Retry mechanism is already included in AWS SDK API calls
 - Must implement it yourself if using the AWS API
-  - Must only implement the retries on 5xx server **errors** and **throttling**
-  - Do not implement on the 4xx **client errors**, but if it is 4xx with **ThrottlingException** we use exponential backoff
+  - Must only implement the retries on **throttling** 4xx or 5xx errors (ex: client 429 throttling error)
 
 ## AWS Default credentials provider chain
 

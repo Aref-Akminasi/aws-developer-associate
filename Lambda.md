@@ -185,6 +185,9 @@ return user
 - We can define a "dev", "test" and "prod" aliases and have them point at different lambda versions
 - Aliases support assigning **weights** to different lambda versions to split traffic
 - Aliases support **Canary Deployment**
+- Steps to shift traffic
+  1. Create an alias with the **routing-config** parameter
+  2. Update the alias with the **routing-config** parameter
 
 ## Lambda - All Limits
 

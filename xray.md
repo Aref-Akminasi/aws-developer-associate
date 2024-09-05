@@ -25,6 +25,17 @@
 - **Annotations:** Key/Value pairs used to index traces and use with searching and filtering
 - **Metadata:** Key/Value paris, not indexed, not used for searching and filtering
 
+## X-Ray - Required segment fields
+
+- Following are the required segment fields in a segment document:
+  - Name
+  - Id
+  - Trace_id
+  - Start_time
+  - End_time
+  - In_progress
+- Note: there are also optional segment fields in a segment document
+
 ## X-Ray Security
 
 - IAM for authorization

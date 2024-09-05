@@ -104,6 +104,10 @@
 
 ![Canary deployment via Lambda](./assets/51.png)
 
+## API Gateway - DynamoDB
+
+- Ensure to create an **integration request** when creating an API gateway stage that will **directly interact** with **DynamoDB tables**
+
 # API Gateway - Additional Features
 
 ## API Gateway - Open API spec
