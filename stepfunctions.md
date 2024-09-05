@@ -22,9 +22,9 @@
 
 ## Step Functions - Tasks Types
 
-- Call AWS service (invoke lambda funcions, publish to SNS topic)
+- Call AWS service (invoke lambda functions, publish to SNS topic)
 - Activity Tasks (EC2, ECS, on-premises, etc...).
-  - Activites poll the Step Functions for work
+  - Activities poll the Step Functions for work
   - Activities send results back to Step Functions
 
 ## Step Functions - States
@@ -50,8 +50,8 @@
 - **States.ALL** matches any error
 - **States.Timeout** Task time out
 - **States.TaskFailed** execution failure
-- **States.Permissions** insufficient premissions
-- **MyCustomError** The task may report it's own custom errors
+- **States.Permissions** insufficient permissions
+- **MyCustomError** The task may report its own custom errors
 
 ### Retry
 

@@ -6,7 +6,7 @@
 
 - VPC = Virtual Private Cloud
 - VPC is private network to deploy your resources
-- Subnets: allow you to parition your network inside your VPC
+- Subnets: allow you to partition your network inside your VPC
   - A public subnet is a subnet that is accessible from the internet
   - A private subnet is a subnet that is not accessible from the internet
 - To define access to the internet and between subnets, we use **Route Tables**
@@ -68,7 +68,7 @@
 - This gives you:
   - enhanced security
   - lower latency to access AWS services
-- VPC Endpoint gateway: for S3 & DyanmoDB **only**
+- VPC Endpoint gateway: for S3 & DynamoDB **only**
 - VPC Endpoint Interface: for the rest of the services
 
 ![VPC Endpoints](./assets/11.png)
@@ -88,7 +88,7 @@
 
 ![Typical 3 Tier Architecture](./assets/12.png)
 
-### Wordpress on AWS
+### WordPress on AWS
 
 ![Wordpress on AWS](./assets/13.png)
 

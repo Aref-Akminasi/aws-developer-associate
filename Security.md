@@ -13,7 +13,7 @@ The AWS Encryption SDK is a **client-side** encryption library designed to make 
 - Ability to audit KMS key usage using CloudTrail
 - KMS keys are scoped to a region
 - We can encrypt any secret, like environment variables in a lambda function
-- Services must have appropriate IAM premissions for calling KMS
+- Services must have appropriate IAM permissions for calling KMS
 - Use **Encrypt** and **Decrypt** APIs
 
 ## KMS - Keys Types

@@ -45,8 +45,8 @@
 
 ### X-Ray with EC2
 
-1. Your code must import the AWS X-Ray SDK (requires little code midifications)
-2. Install the X-Ray Deamon on the instance running the application
+1. Your code must import the AWS X-Ray SDK (requires little code modifications)
+2. Install the X-Ray Daemon on the instance running the application
 3. The instance must have the IAM rights to write data to X-Ray
 
 - Note: X-Ray Daemon running on the machine will send batch every 1 second (containing segments) to AWS X-Ray
@@ -63,12 +63,12 @@
 
 ### X-Ray with Lambda
 
-1. Enable **X-Ray Integration** in the **Lambda Function Configuration** by activiting **active tracing**
+1. Enable **X-Ray Integration** in the **Lambda Function Configuration** by enabling **active tracing**
 2. Ensure it has an IAM execution role with proper policy
 3. Ensure that X-Ray SDK is imported in the code
-4. Bu enabling the integration you get an environment variable to communicate with X-Ray: AWS_XRAY_DAEMON_ADDRESS, for the x-ray daemon IP port
+4. By enabling the integration you get an environment variable to communicate with X-Ray: AWS_XRAY_DAEMON_ADDRESS, for the x-ray daemon IP port
 
-- Note: You do not need to manually install the **X-Ray Daemon** for lambda, it is done for you by enabling the X-Ray Inegration
+- Note: You do not need to manually install the **X-Ray Daemon** for lambda, it is done for you by enabling the X-Ray Integration
 
 ### X-Ray with ECS
 
@@ -104,9 +104,9 @@
 
 ## X-Ray - Commands
 
-- `~/xray-daemon$./xray -o` command option can be used while running X-Ray daemon locally & not on Amazon EC2 instance. This will skip checking Amazon EC2 instance metadata. (to remmember: offline)
-- `~/xray-daemon$./xray -r` this command can be used to assume an IAM role while saving results in different accounts. (to remmember: role)
-- `~/xray-daemon$./xray -t` this command can be used to bind a different TCP port for the X-Ray service. (to remmember: tcp)
+- `~/xray-daemon$./xray -o` command option can be used while running X-Ray daemon locally & not on Amazon EC2 instance. This will skip checking Amazon EC2 instance metadata. (to remember: offline)
+- `~/xray-daemon$./xray -r` this command can be used to assume an IAM role while saving results in different accounts. (to remember: role)
+- `~/xray-daemon$./xray -t` this command can be used to bind a different TCP port for the X-Ray service. (to remember: tcp)
 - `~/xray-daemon$./xray -b` this command can be used to bind a different UDP port for the X-Ray service
 
 ## X-Ray APIs
@@ -138,14 +138,14 @@
 
 - PutTraceSegments: Uploads segment documents to AWS X-Ray
 - PutTelemetryRecords: Allows an entity to send operational and performance metrics to AWS X-Ray
-- GetSamplingRules: Retrive all sampling rules (to know what/when to send)
+- GetSamplingRules: Retrieve all sampling rules (to know what/when to send)
 
 ### Read APIs
 
 - GetServiceGraph: get the main service graph
 - GetTraceGraph: Retrieves a service graph for one or more specific trace IDs
-- GetTraceSummaries: **Retrieves IDs** and **annotations** for traces avaliable for a specified **time frame**
-- BatchGetTraces: Retrieves a list of traces speficied by ID
+- GetTraceSummaries: **Retrieves IDs** and **annotations** for traces available for a specified **time frame**
+- BatchGetTraces: Retrieves a list of traces specified by ID
 
 # AWS distribution for OpenTelemetry
 
