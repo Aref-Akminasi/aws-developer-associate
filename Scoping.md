@@ -25,7 +25,7 @@
 - SQS Queue
 - SNS Topic
 - Kinesis Data Streams
-- CloudWatch logs log group
+- CloudWatch logs log-group
 - Lambda Function
 - KMS Key
 
