@@ -150,6 +150,8 @@
 ## STS - APIs
 
 - AssumeRole: Assume roles within your account or cross account
+- AssumeRoleWithSAML: return credentials for users logged with SAML
+- AssumeRoleWithWebIdentity: reurn credentials for users logged in with Facebook or Google
 - GetSessionToken: for MFA
 - GetCallerIdentity: return details about the IAM user or role used in the API call
 - DecodeAuthorizationMessage: decode error message when an AWS API is denied
