@@ -288,6 +288,7 @@
 
 - VPC Endpoints available to access DynamoDB without using the public internet
 - Access Fully controlled by IAM
+- Create the DynamoDB table by using default encryption settings, uses AWS owned key (cost effectively)
 - Encryption at rest using AWS KMS and in-transit using SSL/TLS
 
 ### Backup and restore feature available

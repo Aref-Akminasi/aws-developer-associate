@@ -18,7 +18,7 @@
   - `AWS::Serverless:Api` - Creates API Gateway
   - `AWS::Serverless::SimpleTable` - Creates DynamoDB table
   - `AWS::Serverless::Application` - Embed applications from S3 bucket
-- Package & Deploy: use `sam deploy` command (previously you had to do `sam package` first)
+- Package & Deploy: use `sam package` and `sam deploy`
 
 ## SAM Accelerate (SAM Sync)
 

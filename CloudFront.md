@@ -10,6 +10,7 @@
 - DDoS protection (because worldwide)
 - CloudFront is a global Service
 - CloudFront support HTTPS between clients and CloudFront as well as between CloudFront and backend
+- CloudFront is designed to cache data for **GET** and **HEAD** requests, ** NOT POST** requests
 
 ## Origins (Content Sources)
 

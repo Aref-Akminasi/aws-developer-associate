@@ -4,7 +4,8 @@
 
 # AWS Encryption SDK
 
-The AWS Encryption SDK is a **client-side** encryption library designed to make it easy for everyone to encrypt and decrypt data using industry standards and best practices.
+- The AWS Encryption SDK is a **client-side** encryption library designed to make it easy for everyone to encrypt and decrypt data using industry standards and best practices.
+- When using the AWS Encryption SDK, how does the developer keep track of the **data encryption keys** used to encrypt data? the SDK encrypts the **data encryption key** and stores it (encrypted) as part of the returned ciphertext
 
 # KMS
 

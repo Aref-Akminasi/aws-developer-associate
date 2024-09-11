@@ -184,7 +184,7 @@ return user
 - We can have an alias pointing at $LATEST
 - We can define a "dev", "test" and "prod" aliases and have them point at different lambda versions
 - Aliases support assigning **weights** to different lambda versions to split traffic
-- Aliases support **Canary Deployment**
+- Aliases are used for **Canary Deployment** (There is no direct canary deployment configuration via Lambda)
 - Steps to shift traffic
   1. Create an alias with the **routing-config** parameter
   2. Update the alias with the **routing-config** parameter
@@ -214,6 +214,8 @@ return user
 - Use Lambda Container Images to upload large Lambda functions (up to 10GB of image size)
 
 # Lambda - Types Of Invocations
+
+- Firstly, you have to add a trigger to the lambda function and select the source
 
 ## Lambda - Synchronous Invocation
 
@@ -281,6 +283,12 @@ return user
 
 # Lambda with other Services
 
+## Lambda - API Gateway
+
+- By default API Gateway invokes lambda synchronously
+- We can configure API Gateway to invoke a lambda function asynchronously by adding `X-Amz-Invocation-Type` header with a static value of `Event` in the integration request (non-proxy request)
+- Use case: Provide an immediate response so that the UI can display a message while files are being processed
+
 ## Lambda - CloudFormation
 
 ### Inline
@@ -340,7 +348,7 @@ MyLambdaFunction:
 
 ### Best Practices
 
-- Use AWS-provided Base Images
+- **Use AWS-provided Base Images**
 - **Use Multi-Stage Builds:** Create smaller, more efficient images by only including necessary artifacts in the final image.
 - **Build from stable to frequently changing in your docker file:** make your most frequently occurring changes as late in your Docker file as possible
 - **Use a single repository for Functions with Large Layers:** ECR compares each layer of a container image when it is pushed to avoid uploading and storing duplicates

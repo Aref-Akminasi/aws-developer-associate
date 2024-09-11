@@ -6,6 +6,7 @@
 
 - CDK let's you define your cloud infrastructure using a programming language: JavaScript/TypeScript, python, Java and .NET
 - The code is **compiled** into a CloudFormation template (JSON/YAML) using `cdk synth`
+- You can create an AWS CDK custom resource (ex: use the custom resource to **attach the function code** to an **AWS Lambda function** and to **invoke** the Lambda function **when the deployment stack runs**)
 
 ## CDK vs SAM
 

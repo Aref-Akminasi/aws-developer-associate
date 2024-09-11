@@ -141,7 +141,7 @@ Conditions:
 ### Stack creation fails
 
 - Default: everything rolls back (gets deleted)
-- Option to preserve successfully provisioned resources
+- Option to preserve successfully provisioned resources (via `--disable-rollback` command option)
 
 ### Stack update fails
 
