@@ -317,6 +317,14 @@ MyLambdaFunction:
 
 - The `Handler` attribute is the method name that lambda service calls to execute the function **NOT** `FunctionName`
 
+#### Traffic shifting a Lambda function using CloudFormation templates
+
+- uses values below 1 (0.05 = 5%)
+
+```cli
+aws lambda create-alias --name alias name --function-name function-name \--routing-config AdditionalVersionWeights={"2"=0.05}
+```
+
 ### S3
 
 - Store Lambda zip in S3
@@ -336,7 +344,7 @@ MyLambdaFunction:
     Code:
       S3Bucket: my-bucket
       S3Key: my-function.zip
-      S3ObjectVersion: "Some String"
+      S3ObjectVersion: 'Some String'
     Role: arn:aws:iam::123456789012:role/execution_role
 ```
 

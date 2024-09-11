@@ -32,6 +32,7 @@
   - Stage example: Build > Test > Deploy
   - Each stage can have **sequential action groups** and/or **parallel action groups**
   - Action group example: CodeBuild, Manual approval, etc...
+  - If your release process includes activities that are not included in the default actions, such as an internally developed build process or a test suite, you can create a custom action for that purpose and include it in your pipeline.
 - Elastic Beanstalk has direct integration with CodePipeline, and doesn't require CodeDeploy
 
 ![CodePipeline](./assets/58.png)
@@ -88,7 +89,7 @@ version: 0.2
 
 env:
   variables:
-    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+    JAVA_HOME: '/usr/lib/jvm/java-8-openjdk-amd64'
   parameter-store:
     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -118,7 +119,7 @@ artifacts:
 
 cache:
   paths:
-    - "/root/.m2/**/*"
+    - '/root/.m2/**/*'
 ```
 
 ## CodeBuild - Troubleshooting

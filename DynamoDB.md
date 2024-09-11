@@ -97,6 +97,7 @@
 - Strong Consistency (1x times the RCUs is consumed)
   - If we read just after a write, we will get the correct data
   - Set **ConsistentRead** parameter to **True** in API calls
+  - Request is not cached in DAX
 - Transactional (2x more the RCUs is consumed)
   - You can group multiple actions together and submit them as a single all-or-nothing operation
   - On multiple items or multiple tables
@@ -168,7 +169,7 @@
 
 - BatchGetItem
 
-  - Return items from **one or more tables**
+  - Return multiple items from **one or more tables**
   - Up to 100 items, up to 16MB of data
   - **UnprocessedKeys** for failed read operations (Exponential backoff or add RCU)
 

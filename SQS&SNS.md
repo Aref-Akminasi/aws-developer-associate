@@ -90,6 +90,12 @@
 - Can set a default at a queue level
 - Can override the default on send using the **DelaySeconds** parameter when sending a message
 
+## SQS - Short Polling
+
+- Short polling is the default method when you use the `ReceiveMessage` API call.
+- It checks the queue for messages and returns immediately, even if no messages are found.
+- Use short polling when you need immediate responses or if your application requires high-frequency polling and no latency
+
 ## SQS - Long Polling
 
 - The idea of long polling is when a consumer requests messages from the queue it can optionally wait for messages to arrive if there are none in the queue

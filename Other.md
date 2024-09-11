@@ -135,3 +135,14 @@
 # AWS Service Catalog
 
 - Use AWS Service Catalog when you need to offer a selection of pre-approved, standard cloud resources (like virtual machines, databases, or entire application stacks) to your organization’s employees or teams. It helps ensure that only compliant, secure, and cost-effective resources are deployed
+
+# AWS Fault Injection Simulator
+
+- AWS Fault Injection Simulator, which is a service for performing chaos engineering experiments
+- How to select specific a specific EC2? Specify **path & values** in a **resource filters section** of a **Target component** in the **experiment template**
+
+# AWS Redshift
+
+- Data warehouse service
+- To handle large scale data sets and database migrations
+- Support for complex joins
