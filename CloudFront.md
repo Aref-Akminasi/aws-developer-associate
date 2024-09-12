@@ -9,7 +9,6 @@
 - Content is cached at the edge locations
 - DDoS protection (because worldwide)
 - CloudFront is a global Service
-- CloudFront support HTTPS between clients and CloudFront as well as between CloudFront and backend
 - CloudFront is designed to cache data for **GET** and **HEAD** requests, ** NOT POST** requests
 
 ## Origins (Content Sources)
@@ -122,6 +121,12 @@
 
 - field-level encryption further encrypts sensitive data in an HTTPS form using field-specific encryption keys before a POST request is forwarded to your origin.
 - Uses **asymmetric** encryption: Sensitive information are encrypted at the edge close to user (using public key), request is decrypted at the server (using private key)
+
+## CloudFront - Security between CloudFront/Client & CloudFront/Origin
+
+- **CloudFront supports HTTPS** between clients and CloudFront as well as between CloudFront and backend
+- Set the Origin Protocol Policy to **HTTPS Only**
+- Set the Viewer Protocol Policy to **HTTPS Only** or **Redirect HTTP to HTTPS**
 
 ## CloudFront - Real Time Logs
 

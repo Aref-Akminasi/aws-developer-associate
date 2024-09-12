@@ -28,6 +28,7 @@
 ## CodePipeline - Basics
 
 - Visual Workflow to **orchestrate** your CI/CD
+- The best sequence for CI/CD is: Build -> Test -> Deploy
 - Pipeline consists of stages
   - Stage example: Build > Test > Deploy
   - Each stage can have **sequential action groups** and/or **parallel action groups**
@@ -89,7 +90,7 @@ version: 0.2
 
 env:
   variables:
-    JAVA_HOME: '/usr/lib/jvm/java-8-openjdk-amd64'
+    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
   parameter-store:
     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -119,7 +120,7 @@ artifacts:
 
 cache:
   paths:
-    - '/root/.m2/**/*'
+    - "/root/.m2/**/*"
 ```
 
 ## CodeBuild - Troubleshooting

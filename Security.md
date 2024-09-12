@@ -28,13 +28,13 @@
 
 ## KMS - Key Management
 
-| Feature            | AWS Owned Keys (not part of KMS service) | AWS Managed Keys              | Customer Managed Keys created in KMS                | Customer Managed Keys Imported            |
-| ------------------ | ---------------------------------------- | ----------------------------- | --------------------------------------------------- | ----------------------------------------- |
-| Name Example       | SSE-S3, SSE-SQS, SSE-DDB (default key)   | aws/service-name, ex: aws/rds | -                                                   | -                                         |
-| Cost of the Key    | Free                                     | Free                          | $1/Month per key                                    | $1/Month per key                          |
-| Cost of API calls  | Free                                     | $0.03/10000 calls             | $0.03/10000 calls                                   | $0.03/10000 calls                         |
-| Key Policy Control | No Control                               | No Control                    | Full control                                        | Full control                              |
-| Key Rotation       | Managed by AWS                           | automatic every 1 year        | must be enabled, automatic & on-demand (rotate now) | only manual rotation possible using alias |
+| Feature            | AWS Owned Keys (not part of KMS service) | AWS Managed Keys              | Customer Managed Keys created in KMS                | Customer Managed Keys Imported                |
+| ------------------ | ---------------------------------------- | ----------------------------- | --------------------------------------------------- | --------------------------------------------- |
+| Name Example       | SSE-S3, SSE-SQS, SSE-DDB (default key)   | aws/service-name, ex: aws/rds | -                                                   | -                                             |
+| Cost of the Key    | Free                                     | Free                          | $1/Month per key                                    | $1/Month per key                              |
+| Cost of API calls  | Free                                     | $0.03/10000 calls             | $0.03/10000 calls                                   | $0.03/10000 calls                             |
+| Key Policy Control | No Control                               | No Control                    | Full control                                        | Full control                                  |
+| Key Rotation       | Managed by AWS                           | automatic every 1 year        | must be enabled, automatic & on-demand (rotate now) | only **manual rotation** possible using alias |
 
 ## KMS - Copying Snapshots across regions
 
@@ -121,16 +121,18 @@
 
 ## SSM Standard vs SSM advanced
 
-| Feature                | Standard | Advanced |
-| ---------------------- | -------- | -------- |
-| Total nr of parameters | 10000    | 100000   |
-| Max size of parameter  | 4KB      | 8KB      |
-| Parameter Policy (TTL) | No       | Yes      |
-| Cost                   | Yes      | No       |
+| Feature                | Standard | Advanced                              |
+| ---------------------- | -------- | ------------------------------------- |
+| Total nr of parameters | 10000    | 100000                                |
+| Max size of parameter  | 4KB      | 8KB                                   |
+| Parameter Policy (TTL) | No       | Yes                                   |
+| Cost                   | No       | Yes, per advanced parameter per month |
 
 # AWS Secrets Manager
 
 - Meant for storing secrets
+- Is the best option to store **databases passwords**
+- You can also store **certificates** in AWS Secrests Manager (don't store them in S3 bucket)
 - KMS encryption is **required**
 - Capability to force rotation of secrets every X days (via a lambda function)
 - It has a tight integration with RDS, Aurora
