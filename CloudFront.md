@@ -93,6 +93,7 @@
     - Can leverage API's to create and rotate keys
   - An AWS Account that contains a CloudFront Key Pair (not recommended)
     - Need to manage keys using the root account and the AWS console
+    - Root account can have up to *two* active CloudFront Key Pairs
 - You generate your own public / private key
   - The private key is used by your application (ex: EC2) to sign URLs
   - The public key (uploaded) is used by CloudFront to verify URL's

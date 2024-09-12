@@ -152,5 +152,6 @@ The AWS RDS Service contains several logs, such as the ones given below:
 ---
 
 - IAM Authentication: IAM roles to connect to your database (ex: using EC2)
+- - Supported on MySQL and PostgreSQL.
 - Security Groups: Control Network access to your RDS / Aurora DB
 - Audit Logs can be enabled, but will be lost soon so: sent logs to CloudWatch Logs for longer retention
