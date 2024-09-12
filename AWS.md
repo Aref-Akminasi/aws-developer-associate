@@ -95,7 +95,7 @@
 ## AWS Signature v4 signing (SigV4)
 
 - You should sign an AWS HTTP request for authorization using Signature v4 (SigV4) as one of the following methods:
-  - HTTP Header (signature in Authorization header)
+  - HTTP Header (signature in **Authorization** header)
   - Query String (signature included in the URL, using the **X-Amz-Signature** query parameter)
 
 ## Edge Locations
