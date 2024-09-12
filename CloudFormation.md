@@ -85,7 +85,7 @@ Mappings:
 ### Conditions
 
 - Conditions are used to control the creation of **resources**, **outputs** or other **conditions** based on a condition
-- Conditions can **not** be used to control the creation of **parameters**, parameters are always created in the template
+- Conditions can **not** be used to control the creation of **parameters** (or Outputs), parameters are always created in the template
 - Conditions keywords: (Warning: the **!** here is **not** a boolean operator, you can ignore it)
   - !And
   - !Equals
