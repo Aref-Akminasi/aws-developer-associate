@@ -41,7 +41,7 @@
 
 ```yaml
 MyFunction:
-  Type: "AWS::Serverless::Function"
+  Type: 'AWS::Serverless::Function'
   Properties:
     CodeUri: ${codeuri}
     Handler: hello.handler
@@ -66,8 +66,8 @@ MyFunction:
 ## SAM - Local Capabilities
 
 - **SAM CLI + AWS Toolkits** allows you to debug your Lambda functions locally, inspect variables, and execute code line-by-line.
-- `sam local start-lambda` Start a local endpoint that emulates AWS Lambda service
-- `sam local invoke` Invoke lambda function with payload once and quit after invocation completes
+- `sam local start-lambda` Start a local endpoint that emulates AWS Lambda service (is **NOT** used for testing a specific lambda funcion)
+- `sam local invoke` Invoke lambda function with payload once and quit after invocation completes (is used for testing a specific lambda funcion)
 - `sam local generate-event` Generate sample payloads for event sources (S3, SQS, etc...)
 - `sam local start-api` Start a local HTTP server that hosts all your functions
 

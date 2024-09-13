@@ -126,7 +126,7 @@
 
 **\*NOTE: We can use both Unified Agent and Custom Metrics to send some metrics such as RAM usage**
 
-**\*NOTE: For application-specific metrics like the number of logged-in users, custom metrics**
+**\*NOTE: For application-specific metrics like the number of logged-in users, use custom metrics**
 
 ## CloudWatch - Logs Metric Filter
 
@@ -184,8 +184,8 @@
 ## CloudWatch - Evidently
 
 - Safely validate new features by serving them to a specified % of your users
-- Launches (= feature flags): enable and disable features for a subset of users
 - Experiments (= A/B testing): compare multiple versions of the same feature
+- Launches (= feature flags): enable and disable features for a subset of users
 - Overrides: pre-define a variation for a specific user (ex: beta tester)
 - Store your experiment data on CloudWatch logs or S3
 

@@ -116,10 +116,14 @@ return user
 - Even deploying a Lambda function in a public subnet doesn't give it internet access or a public IP (For EC2 it does)
 - In order for a Lambda function to connect to the internet, it has to happen via NAT Gateway or a NAT Instance placed in a public subnet
 - Ensure **Subnet IDs and SG IDs** are configured in the lambda function (not the NACL ID), in order to connect to AWS resources
+- How to connect a lambda function to an RDS instance hosted in a private subnet?
+  1. Create a lambda function inside the VPC with the **AWSLambdaVPCAccessExecutionRole** policy attached to the lambda execution role.
+  2. Modify the **RDS SG** to allow inbound access from the **lambda SG**
 
 ## Lambda - Storage Options
 
 - **Note:** EBS is not a valid type of storage for a Lambda function
+- Lambda can **write** data to **ElastiCache** and **read** from it
 
 |                               | Ephemeral /tmp | Amazon S3 | Amazon EFS |
 | ----------------------------- | -------------- | --------- | ---------- |
@@ -188,6 +192,11 @@ return user
 - Steps to shift traffic
   1. Create an alias with the **routing-config** parameter
   2. Update the alias with the **routing-config** parameter
+
+## Lambda - Test Events
+
+- Private test events
+- Lambda also supports **Shareable Test Events** are test events that you can share with other users in the same **AWS account** You can **edit** other users' shareable test events and invoke your function with them.
 
 ## Lambda - All Limits
 
@@ -392,17 +401,18 @@ MyLambdaFunction:
 - Viewer request & response is between the client and CloudFront
 - Origin request & response is between CloudFront and the origin
 
-  |                         | CloudFront Functions                                                                            | Lambda@Edge                                                                                             |
-  | ----------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-  | Programming language    | JavaScript                                                                                      | Node.js, Python                                                                                         |
-  | Good for nr of requests | Milions of requests per second                                                                  | Thousands of requests per second                                                                        |
-  | Ability to change       | Viewer request/response                                                                         | Viewer requests/response and origin request/response                                                    |
-  | Execution time          | Very high speed < 1ms                                                                           | 5 - 10 sec                                                                                              |
-  | Max memory              | 2MB                                                                                             | 128MB - 10GB                                                                                            |
-  | Feature From            | Native feature from CloudFront, manage code in CloudFront                                       | Feature from Lambda Service, add the function in **us-east-1** region and CloudFront will distribute it |
-  | Use case                | transform request attributes (headers, cookies, query strings, redirects), request auth, etc... | Access network to use external services for processing, change body of HTTP request, etc...             |
+  |                         | CloudFront Functions                                      | Lambda@Edge                                                                                             |
+  | ----------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+  | Programming language    | JavaScript                                                | Node.js, Python                                                                                         |
+  | Good for nr of requests | Milions of requests per second                            | Thousands of requests per second                                                                        |
+  | Ability to change       | Viewer request/response                                   | Viewer requests/response and origin request/response                                                    |
+  | Execution time          | Less than 1ms                                             | 5 - 10 sec                                                                                              |
+  | Max memory              | 2MB                                                       | 128MB - 10GB                                                                                            |
+  | Feature From            | Native feature from CloudFront, manage code in CloudFront | Feature from Lambda Service, add the function in **us-east-1** region and CloudFront will distribute it |
+  | Network access          | No                                                        | Yes                                                                                                     |
+  | Use case                | Modifying request/response headers, redirects             | Complex logic, access to AWS services, request/response body manipulation, authentication               |
 
-  ![Lambda@Edge vs CloudFront](./assets/46.png)
+![Lambda@Edge vs CloudFront](./assets/46.png)
 
 ## Lambda - Lambda & CodeDeploy
 

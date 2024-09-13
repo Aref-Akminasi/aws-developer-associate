@@ -99,7 +99,7 @@
 
 | Feature                     | Cognito User Pools (CUP)                                                            | Cognito Identity Pools (CIP)                                           |
 | --------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| **Primary Use**             | Authentication                                                                      | Authorization                                                          |
+| **Primary Use**             | Authentication / Creating an account                                                | Authorization                                                          |
 | **Access to AWS Resources** | Through API Gateway or ALB                                                          | Directly access to AWS resources (ex: S3, DynamoDB) or via API Gateway |
 | **Returns**                 | JWT Token                                                                           | IAM Credentials                                                        |
 | **Guest Users**             | Support via OnUnauthenticatedRequest on the load balancer (but use CIP in the exam) | Native Support                                                         |

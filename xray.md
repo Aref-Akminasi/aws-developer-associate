@@ -6,6 +6,12 @@
 - X-Ray helps with **troubleshooting performance (bottlenecks)** and understand **dependencies** in a **microservice architecture**
 - X-Ray helps with **instrumentation** which means writing **trace** information to measure the product's performance
 
+## X-Ray - Instrumentation Types
+
+- Auto instrumentation: Instrument your application with zero code changes.
+- Library instrumentation: Make minimal application code changes to add pre-built instrumentation targeting specific libraries or frameworks.
+- Manual instrumentation: If you want to exclude some information from being traced, such as PII, use manual instrumentation.
+
 ## X-Ray - Compatibility
 
 - AWS Lambda
