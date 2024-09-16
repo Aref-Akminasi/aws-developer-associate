@@ -48,8 +48,14 @@
 
 ### Context Object
 
-- Provides **methods** and **properties** that provide information about the invocation (ex: function name, memory limit)
+- Provides **methods** and **properties** that provide information about the invocation (ex: function name, memory limit, request ID)
 - Passed to your function by Lambda service at runtime
+
+### Logging key events
+
+- Obtain the request identifier from the **AWS request ID** field in the **context object** Configure the application to write logs to **standard output**
+- **AWS Request ID:** This identifier is available in the context object and provides a unique ID for the invocation, which is useful for tracking and correlating logs related to that specific execution.
+- **Standard Output:** Lambda automatically captures logs written to standard output (stdout) and standard error (stderr) and sends them to Amazon CloudWatch Logs.
 
 ### Execution Context
 
@@ -296,7 +302,12 @@ return user
 
 - By default API Gateway invokes lambda synchronously
 - We can configure API Gateway to invoke a lambda function asynchronously by adding `X-Amz-Invocation-Type` header with a static value of `Event` in the integration request (non-proxy request)
-- Use case: Provide an immediate response so that the UI can display a message while files are being processed
+
+## Lambda - KDS
+
+- Q: A company is using an AWS Lambda function to process records from an Amazon Kinesis Data Stream. The company recently observed slow processing of the records. A developer notices that the **iterator age** metric for the function is increasing and that the Lambda run duration is constantly above normal. Which actions should the developer take to increase the processing speed?
+- Solution: Increase the number of shards of the Kinesis Data Stream and Increase the memory of the Lambda function
+- Note: **iterator age** represents the amount of time (in milliseconds) between the moment a record is added to the Kinesis data stream and the moment that record is read and processed by your AWS Lambda function.
 
 ## Lambda - CloudFormation
 
@@ -353,7 +364,7 @@ MyLambdaFunction:
     Code:
       S3Bucket: my-bucket
       S3Key: my-function.zip
-      S3ObjectVersion: 'Some String'
+      S3ObjectVersion: "Some String"
     Role: arn:aws:iam::123456789012:role/execution_role
 ```
 

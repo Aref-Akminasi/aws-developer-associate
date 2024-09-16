@@ -73,11 +73,16 @@
 
 ### Cache Behaviors (Path patterns)
 
-- You can use path pattern to route to different origin based on the content type
+- You can use path pattern to route to **different origin** or the **same origin** based on the content type
 - Route to different kind of origins based on the content type or path pattern:
   - `/images/*` => Origin is S3 bucket
   - `/api/*` => Origin is an ALB
 - When adding additional Cache Behaviors, the Default Cache Behavior is always the last to be processed and is always `/*`
+
+#### Example
+
+- Q: The developer needs to implement a solution to allow unauthenticated access to the login page. The solution also must keep all private content secure.
+- Solution: Add a second cache behavior to the distrubtion with the same origin as the default cache behavior. Set the path pattern for the second cache behavior to the path of the login page, and make viewer access unrestricted. Keep the default cache behavior's settings unchanged.
 
 ## CloudFront Signed URL / Signed Cookies
 
@@ -92,7 +97,7 @@
     - Can leverage API's to create and rotate keys
   - An AWS Account that contains a CloudFront Key Pair (not recommended)
     - Need to manage keys using the root account and the AWS console
-    - Root account can have up to *two* active CloudFront Key Pairs
+    - Root account can have up to _two_ active CloudFront Key Pairs
 - You generate your own public / private key
   - The private key is used by your application (ex: EC2) to sign URLs
   - The public key (uploaded) is used by CloudFront to verify URL's

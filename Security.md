@@ -91,6 +91,7 @@
 ## SSM - Basics
 
 - Secure storage for configuration and secrets
+- Usage example: storing one time fixed license keys, that doesn't need rotation
 - KMS encryption is optional
 - Has version tracking to see previous versions
 - Security through IAM
