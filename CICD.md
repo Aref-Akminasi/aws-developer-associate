@@ -200,7 +200,7 @@ cache:
 - **Automated Rollback** capability in case of failed deployments **or** trigger a **CloudWatch Alarm**
 - If a rollback happens, CodeDeploy redeploys the last known good revision as a **new deployment (not a restored version)**
 - During AWS CodeDeploy automatic roll-back, it will try to retrieve files that were part of previous versions. If these files are deleted or missing, you need to manually add those files and run automated deployment (don't do a manual deployment)
-- Restarting the CodeDeployAgent service will recreate a log file if the log file was deleted
+- Restarting the **CodeDeployAgent service** will recreate a log file if the log file was deleted
 
 ### Number of healthy instances error
 

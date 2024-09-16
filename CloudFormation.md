@@ -49,6 +49,7 @@ Description about the template
 
 - Parameters are a way to provide **inputs** to your AWS CloudFormation template
 - Mask password inputs using `NoEcho: true`
+- `AllowedValues` - An array containing the list of values allowed for the parameter. (use if you want to restrict the choice)
 - CloudFormation **Pseudo Parameters**, some of them are:
   - `AWS::AccountId` - returns your account id
   - `AWS::Region` - returns region of the template is deployed in

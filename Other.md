@@ -34,6 +34,7 @@
 ## Amplify - Basics
 
 - Create mobile and web applications via the console or CLI
+- Amplify supports static site hosting with serverless backend capabilities. It integrates directly with version control systems such as AWS CodeCommit, Bitbucket, and GitHub.
 
 ## Amplify - Authentication
 

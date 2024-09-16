@@ -198,6 +198,7 @@ return user
 - Steps to shift traffic
   1. Create an alias with the **routing-config** parameter
   2. Update the alias with the **routing-config** parameter
+- Aliases can be used to return to an older version: If you need to roll back to a previous version, you can simply update the alias to point to the desired version. This method is straightforward and has minimal operational overhead compared to other solutions.
 
 ## Lambda - Test Events
 

@@ -219,6 +219,12 @@
 - By default, any other attached EBS volume is not deleted (attribute disabled), it's retained
 - You can also deselect the `Delete on Termination` attribute to save the data when an instance is deleted
 
+## EBS Encryption
+
+- If an application requires that all data in transit between an EC2 instance and an Amazon EBS volume to be encrypted:
+  - Enable EBS encryption
+  - Leverage OS-level encryption
+
 ## EBS Snapshots
 
 - Make a backup (snapshot) of your EBS volume at a point in time

@@ -161,6 +161,7 @@
 1. Define an IAM Role within your account or cross account
 2. Define which principals can access this IAM Role
 3. Use AWS STS to retrieve temporary credentials
+4. You will receive temporary security credentials an **access key** a **secret access key** and a **session token**. To use these credentials in subsequent AWS CLI commands, the application needs to set the access key, secret access key, and session token in the **environment variables**
 
 # Active Directory
 
