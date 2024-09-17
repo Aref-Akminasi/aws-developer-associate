@@ -136,6 +136,11 @@
 - You can also connect using with SSH with EC2 Instance Connect
 - While using EC2 Instance Connect, you might want to do some action like 'getting all the users of IAM', never enter your own access key and secret access key while using SSH in the `aws configure` of an EC2, because someone can connect to the EC2 using EC2 Instance connect and retrieve that data. What you can do is assigning an IAM role to the EC2 instance
 
+## EC2 - CLI Commands
+
+- `aws ec2 start-instances` it resumes instances that have been **stopped**
+- `aws ec2 run-instances` launch a **new EC2 instance**
+
 ## EC2 Instances Purchasing Options
 
 ### On-Demand Instances:

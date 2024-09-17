@@ -75,3 +75,7 @@ The correct order of steps to be followed for creating an app using AWS CDK
 - To import a template in the test file use:
   - Template.fromStack(MyStack): if the stack is built in CDK
   - Template.fromString(myString): stack build outside CDK (ex: a file)
+
+## CDK - Security Validation
+
+- When the developer must run a validation tool across all constructs in the CDK application to ensure that critical security configurations are activated: use the **CDK Aspects** class to create **custom rules** to apply to the CDK application. **Fail the stack synthesis** if any violations are present

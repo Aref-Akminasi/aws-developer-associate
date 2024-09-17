@@ -41,7 +41,7 @@
 
 ```yaml
 MyFunction:
-  Type: 'AWS::Serverless::Function'
+  Type: "AWS::Serverless::Function"
   Properties:
     CodeUri: ${codeuri}
     Handler: hello.handler
@@ -60,6 +60,8 @@ MyFunction:
   - `DeploymentPreference` Canary, Linear, AllAtOnce (is used when you don't want an instant switch)
   - `Alarms` Alarms that can trigger a rollback
   - `Hooks` Validation Lambda function that are run before & after traffic shifting
+    - `PreTraffic`
+    - `PostTraffic`
 
 ![SAM & CodeDeploy](./assets/71.png)
 

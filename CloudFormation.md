@@ -79,7 +79,8 @@ Mappings:
 
 ### Outputs
 
-- Import/Export values from a stack to another stack
+- Add an `Export` declaration to the **Outputs section** of the original template
+- Use `ImportValue` in another template
 - The export name must be **unique** in the **region**
 - You can't delete the underlying stack until all the references are **deleted** (stacks that uses the outputs)
 
