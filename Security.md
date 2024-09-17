@@ -57,15 +57,18 @@
 - Define users, roles that can access the KMS key
 - Useful for cross account access of your KMS key
 
-## KMS - Envelope Encryption
+## KMS - Data keys
 
-- KMS Encrypt API call has a limit of **4KB**
-- If you want to encrypt **> 4KB**, we need to use **Envelope Encryption** method
-- For Envelope Encryption we should use **GenerateDataKey API** that will return a **DEK (Data Encryption Key)** that we can use it to encrypt locally and send file back
-- The **Customer Master Key** is used to **encrypt the data key, not the data itself**, the **data key** is used to **encrypt the data**
-- **GenerateDataKeyWithoutPlaintext API** to use DEK at some point (not immediately)
-- The **AWS Encryption SDK** implement Envelope Encryption for us
-- The Encryption SDK has DEK caching mechanism to reduce requests to KMS
+- The **KMS Encrypt API** has a size limit of **4KB** for encryption.
+- For data larger than 4KB, we use **Envelope Encryption**
+- Envelope Encryption involves using the **GenerateDataKey API**, which gives you a **Data Encryption Key (DEK)** You use this key to encrypt your data **locally** (without using KMS Encrypt API).
+- The GenerateDataKey API returns the same key in two forms:
+  - Plaintext key: Used for encrypting your data.
+  - Encrypted key: Stored securely for future decryption. When you need to decrypt the data, you provide the encrypted key to KMS, and KMS gives you back the plaintext key.
+- The **Customer Master Key (CMK)** is only used to **encrypt** the **data key (DEK)**, not your actual data. The data key (DEK) is what you use to encrypt the data.
+- The **GenerateDataKeyWithoutPlaintext API** is for generating the encrypted data key without needing the plaintext key immediately (you can retrieve it later for use).
+- AWS provides an **Encryption SDK** that handles Envelope Encryption for you, so you don’t have to manage it manually.
+- The **AWS Encryption SDK** also includes a **DEK caching mechanism**, which helps reduce the number of requests to KMS by temporarily storing DEKs for reuse.
 
 ## KMS - Limits
 

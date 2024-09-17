@@ -93,6 +93,10 @@
 }
 ```
 
+## Step Functions - Local Testing
+
+- AWS Step Functions supports **local testing** with **mocked service integrations** without making calls to SQS and S3 as example
+
 ## Step Functions - Wait For Task Token
 
 - Task might wait for other AWS service, 3rd party API call, human approval, etc...
