@@ -84,6 +84,11 @@
 - Q: The developer needs to implement a solution to allow unauthenticated access to the login page. The solution also must keep all private content secure.
 - Solution: Add a second cache behavior to the distrubtion with the same origin as the default cache behavior. Set the path pattern for the second cache behavior to the path of the login page, and make viewer access unrestricted. Keep the default cache behavior's settings unchanged.
 
+#### Example
+
+- Q: a scenario where a developer deploys a static website using Amazon S3 and CloudFront. The issue at hand is that while users can access individual files, such as /products/index.html, they encounter errors when trying to access directories without specifying a filename, such as /products/.
+- Solution: Create a **CloudFront function** that examines the request URL and appends `index.html` when directories are being accessed. **Don't** use the default path to be redirected to `index.html` because we want to be redirected to `/products/index.html`
+
 ## CloudFront Signed URL / Signed Cookies
 
 - Signed URL = access to individual files

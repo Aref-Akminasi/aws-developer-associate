@@ -28,6 +28,7 @@
 - CloudWatch logs log-group
 - Lambda Function
 - KMS Key
+- ACM certificates
 
 ## Availability Zone Scope
 

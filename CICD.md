@@ -32,7 +32,7 @@
 - Pipeline consists of stages
   - Stage example: Build > Test > Deploy
   - Each stage can have **sequential action groups** and/or **parallel action groups**
-  - Action group example: CodeBuild, Manual approval, etc...
+  - Action group example: CodeBuild, Manual approval (use in the same stage as an action, not in as a seperate stage), etc...
   - If your release process includes activities that are not included in the default actions, such as an internally developed build process or a test suite, you can create a custom action for that purpose and include it in your pipeline.
 - Elastic Beanstalk has direct integration with CodePipeline, and doesn't require CodeDeploy
 

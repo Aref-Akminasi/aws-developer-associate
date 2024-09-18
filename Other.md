@@ -102,6 +102,8 @@
 
 - ACM = AWS Certificate Manager
 - Manage and deploy SSL/TLS Certificates
+- Certificates can be created in any region, but each certificate is **region specific**
+- Amazon Cognito's hosted UI and custom domain configurations require an ACM certificate to be created in us-east-1 because Cognito’s custom domains are managed globally but the backend services that handle these configurations are centrally managed in us-east-1.
 - Load TLS certificates on
   - ELB
   - CloudFront

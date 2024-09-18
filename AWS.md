@@ -98,6 +98,16 @@
   - HTTP Header (signature in **Authorization** header)
   - Query String (signature included in the URL, using the **X-Amz-Signature** query parameter)
 
+## Common Error Codes
+
+- 401 - Returned when wrong user credentials are entered for login
+- 404 - Not Found
+- 429 - Throttling Error
+- 502 - output format of a Lambda function in a proxy integration is in a different format
+- 503 - Service unavailable (When an ELB doesn't have any target groups)
+- 504 - API Gateway Timeout
+- 505 - HTTP version is not supported by the server
+
 ## Edge Locations
 
 AWS edge locations are data centers located worldwide that help deliver content quickly and efficiently to users.
