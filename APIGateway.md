@@ -77,7 +77,7 @@
 ## API Gateway - Integration Types
 
 - Integration Type MOCK
-  - API Gateway returns a response without sending the request to the backend
+  - Configure the method's **integration request** and **integration response** to associate a **JSON responses** with specific **HTTP status codes**
 - Integration Type HTTP/AWS
   - You must configure both the integration request and the integration response
   - Setup data mapping using **mapping templates** for the request & response
