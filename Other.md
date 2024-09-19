@@ -8,6 +8,8 @@
 - Uploading a **GraphQL schema** is **required**
 - Ability to have a **merged API** (combining multiple GraphQL APIs)
 - Retrieve data in real-time with **WebSocket** or **MQTT on WebSocket**
+- AppSync API support **mocks**
+- It is recommended to use **AppSync mocks** over **API Gateway mocks** if you need to mock multiple APIs.
 
 ## AppSync - Integrations
 
