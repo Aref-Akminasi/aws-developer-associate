@@ -130,6 +130,7 @@ The AWS RDS Service contains several logs, such as the ones given below:
 - Aurora costs more
 - Support for Cross Region Replication
 - Backtrack: restore data at any point of time without using backups
+- Aurora has support for **transactional operations** (if any update fails, the transaction must roll back)
 - 6 copies of your data across 3 AZ
   - 4 copies out of 6 needed for writes
   - 3 copies out of 6 needed for reads

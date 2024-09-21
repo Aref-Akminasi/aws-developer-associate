@@ -18,7 +18,7 @@
 
 ## CUP - Access to AWS resources
 
-- You can access AWS resources through **API Gateway** or **ALB**
+- With CUP, you can access AWS resources through **API Gateway** or **ALB**
 
 ### API Gateway
 

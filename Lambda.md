@@ -278,6 +278,13 @@ return user
 - The event source mapping polls the service and returns a batch with messages
 - Requires an appropriate **IAM execution role** to pull
 
+### Event Filtering
+
+- You can use event filtering to control which records from a stream or queue Lambda sends to your function
+- **DON'T** filter the events in the Lambda function handler
+- With event filtering your Lambda function handler will be simpler
+- Usage example: Create an event source mapping between DynamoDB streams and an AWS Lambda function. Use Lambda event filtering to trigger the Lambda function only if sales fail when the price is aobve the specified threshold. Configure the Lambda function to publish the data to an Amazon SNS topic.
+
 ### Kinesis & DynamoDB
 
 #### Error Handling
@@ -365,7 +372,7 @@ MyLambdaFunction:
     Code:
       S3Bucket: my-bucket
       S3Key: my-function.zip
-      S3ObjectVersion: "Some String"
+      S3ObjectVersion: 'Some String'
     Role: arn:aws:iam::123456789012:role/execution_role
 ```
 

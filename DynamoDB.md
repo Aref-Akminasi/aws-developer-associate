@@ -175,6 +175,8 @@
 
 - Query: returns items based on Partition key and (optionally) Sort Key
 
+  - `ScanIndexForward: true` returns the results in the order in which they are stored (default)
+  - `ScanIndexForward: false` returns the results in reverse order.
   - Use the **KeyConditionExpression** parameter to provide:
     - Partition Key Value (must be = operator) - required
     - Sort Key Value (=, >, <, =>, <=, between, begins with) - optional

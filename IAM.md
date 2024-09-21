@@ -143,6 +143,12 @@
 
 ![policy variable](./assets/67.png)
 
+## IAM - Premission Sets
+
+- You can configure **permission sets** in AWS IAM Identity Center to grant access to other accounts, allowing you to easily assign a set of permissions to users across AWS accounts without managing individual IAM roles directly.
+
+- Premission Sets vs AssumeRole API: AssumeRole API is used to obtain temporary security credentials for a specific IAM role, allowing users or applications to assume that role and gain its permissions for a limited time. It’s more about dynamically switching roles for specific tasks.
+
 # AWS STS
 
 - STS Allows to grant limited and temporary access to AWS resources (up to 1 hour)

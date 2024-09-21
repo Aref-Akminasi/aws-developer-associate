@@ -31,7 +31,7 @@
 - **Annotations:** Key/Value pairs used to index traces and use with searching and filtering
 - **Metadata:** Key/Value paris, not indexed, not used for searching and filtering
 
-- Note: **Region annotation** for AWS services will be added **automatically** for AWS services, however, customers will need to instrument custom services
+- Note: **Region annotations** for AWS services will be added **automatically** for AWS services, however, customers will need to instrument custom services
 
 ## X-Ray - Required segment fields
 

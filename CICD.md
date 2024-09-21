@@ -83,14 +83,17 @@
 
 ### cache
 
-- files to cache (usually dependencies) to S3 for future build speedup
+- Local caching: use local caching for large build artifacts, ex: 0.5GB - 1.5GB (save network time and traffic), add path to the buildspec.yaml file
+- S3 caching: use S3 caching for smaller artifacts
+
+- Note: local caching is more prefered
 
 ```yml
 version: 0.2
 
 env:
   variables:
-    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+    JAVA_HOME: '/usr/lib/jvm/java-8-openjdk-amd64'
   parameter-store:
     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -120,7 +123,7 @@ artifacts:
 
 cache:
   paths:
-    - "/root/.m2/**/*"
+    - '/root/.m2/**/*'
 ```
 
 ## CodeBuild - Troubleshooting

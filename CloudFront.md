@@ -104,7 +104,7 @@
     - Need to manage keys using the root account and the AWS console
     - Root account can have up to _two_ active CloudFront Key Pairs
 - You generate your own public / private key
-  - The private key is used by your application (ex: EC2) to sign URLs
+  - The private key is used by your application (ex: EC2) to sign URLs (to sign, not to encrypt)
   - The public key (uploaded) is used by CloudFront to verify URL's
 
 ## CloudFront - Geo Restriction
@@ -130,8 +130,9 @@
 
 ## CloudFront - Field Level Encryption
 
-- field-level encryption further encrypts sensitive data in an HTTPS form using field-specific encryption keys before a POST request is forwarded to your origin.
-- Uses **asymmetric** encryption: Sensitive information are encrypted at the edge close to user (using public key), request is decrypted at the server (using private key)
+- field-level encryption further encrypts **sensitive data** before a POST request is forwarded to your origin. (like creditcard info)
+- Uses **asymmetric** encryption: Sensitive information are encrypted at the edge close to user (using public key), request is decrypted at the server (using private key). Usage of the keys here is the opposite of the usage of the keys for signing.
+- When a question asks about **encrypting data in transit** use HTTPS, **NOT** Field Level Encryption, because it is used to encrypt some sensitive data and not all the data in the connection.
 
 ## CloudFront - Security between CloudFront/Client & CloudFront/Origin
 

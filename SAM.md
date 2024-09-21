@@ -41,7 +41,7 @@
 
 ```yaml
 MyFunction:
-  Type: "AWS::Serverless::Function"
+  Type: 'AWS::Serverless::Function'
   Properties:
     CodeUri: ${codeuri}
     Handler: hello.handler
@@ -72,12 +72,6 @@ MyFunction:
 - `sam local invoke` Invoke lambda function with payload once and quit after invocation completes (is used for testing a specific lambda funcion)
 - `sam local generate-event` Generate sample payloads for event sources (S3, SQS, etc...)
 - `sam local start-api` Start a local HTTP server that hosts all your functions
-
-## SAM - Change Set
-
-- A **change set** is a way to safely preview the impact of your new SAM application deployment without immediately applying the changes.
-- It helps you make informed decisions about whether or not to proceed with the deployment based on what is expected to happen to your AWS resources.
-- `--no-execute-changeset` Indicates whether to apply the changeset. Specify this option if you want to view your stack changes before applying the changeset. This command creates an AWS CloudFormation changeset and then exits without applying the changeset. To apply the changeset, run the same command without this option.
 
 ## SAM - Multiple Environments
 

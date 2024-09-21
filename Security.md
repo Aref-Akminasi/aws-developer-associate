@@ -135,7 +135,7 @@
 # AWS Secrets Manager
 
 - Meant for storing secrets
-- Is the best option to store **databases passwords**
+- Is the best option to store **databases passwords** and **credentials**
 - You can also store **certificates** in AWS Secrests Manager (don't store them in S3 bucket)
 - KMS encryption is **required**
 - Capability to force **managed rotation** of secrets every X days (via a lambda function)

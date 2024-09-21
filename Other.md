@@ -123,7 +123,7 @@
 
 - Deploy dynamic configuration changes to your applications
 - You don't need to restart the application
-- Ability for scheduling new features
+- Ability for **scheduling** new features
 - Validate configuration changes before deployment using:
   - JSON Schema
   - Lambda function
@@ -151,3 +151,7 @@
 - Data warehouse service
 - To handle large scale data sets and database migrations
 - Support for complex joins
+
+# Amazon Translate
+
+- TranslateText API has caching mechanism

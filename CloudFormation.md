@@ -229,6 +229,15 @@ Conditions:
 
 ![Delete content on S3](./assets/31.png)
 
+## CloudFormation - Change Set
+
+- A **change set** is a way to safely preview the impact of your new CloudFormation/SAM application deployment without immediately applying the changes.
+- It helps you make informed decisions about whether or not to proceed with the deployment based on what is expected to happen to your AWS resources.
+
+## CloudFormation - Drift Detection
+
+- Performing a drift detection operation on a stack determines whether the stack has drifted from its expected template configuration (if a developer has modified some of the resources)
+
 ## CloudFormation - StackSets
 
 - **Create, update, or delete** stacks **across multiple accounts** and **regions** with a single template

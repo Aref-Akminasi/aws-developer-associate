@@ -13,7 +13,7 @@
 - ECS has two Launch Types:
 
 | **EC2 Launch Type**                                                                | **AWS Fargate**                                              |
-  |------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | You must provision & maintain the EC2 instances.                                   | You don't provision & maintain any infrastructure.           |
 | The EC2 instance will be a part of an Auto Scaling Group (ASG).                    | It's all serverless (you just create task definitions).      |
 | Each EC2 Instance must run the **ECS agent** to register with the **ECS Cluster**. | AWS runs ECS tasks for you based on the CPU/RAM you specify. |
@@ -155,9 +155,17 @@
 - We have to define only the container port (host port is not applicable)
 - On the SG of the task allow port 80 from the ALB SG
 
+## Migrating containers from EC2 to Fargate
+
+- Use the **PutClusterCapacityProviders API** operation to associate the ECS cluster with the **FARGATE** and **FARGATE_SPOT** capacity provider strategies.
+- Use **FARGATE as provider 1** with a **base value**. Use **FARGATE_SPOT as provider 2** for **failover**
+
+- **Note: DON'T** use **CreateCapacityProvider API** because we already have a cluster and just want to update it
+
 ## AWS Copilot
 
 - AWS Copilot is a CLI tool to simplifies build, release, set up infrastructure, and operate production-ready containerized apps
+- You can use AWS Copilot CLI to define the AWS Copilot pipeline and to deploy the AWS CodePipeline
 
 ## Elastic Kubernetes Service (EKS)
 
