@@ -41,7 +41,7 @@
 
 ```yaml
 MyFunction:
-  Type: 'AWS::Serverless::Function'
+  Type: "AWS::Serverless::Function"
   Properties:
     CodeUri: ${codeuri}
     Handler: hello.handler

@@ -93,7 +93,7 @@ version: 0.2
 
 env:
   variables:
-    JAVA_HOME: '/usr/lib/jvm/java-8-openjdk-amd64'
+    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
   parameter-store:
     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -123,7 +123,7 @@ artifacts:
 
 cache:
   paths:
-    - '/root/.m2/**/*'
+    - "/root/.m2/**/*"
 ```
 
 ## CodeBuild - Troubleshooting
@@ -144,6 +144,11 @@ cache:
 
 - In AWS CodeDeploy, the **deployment group** is essentially the set of instances that you want to deploy your application to.
 - A file names **appspec.yml** defines how the deployment happens, at the root level of the code files
+
+## CodeDeploy - Install Locally
+
+- A developer can test and debug the code locally and reference the code from a S3 bucket
+- Install the AWS CodeDeploy agent locally to validate the deployment. Specify the S3 bucket where the code package is located
 
 ## CodeDeploy lifecycle for EC2
 

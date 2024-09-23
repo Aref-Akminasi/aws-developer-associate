@@ -262,7 +262,7 @@ return user
 - Lambda attempts to retry on **errors** (3 tries total)
 - Failed tasks might be sent to a destination
 - Tasks that couldn't be processed might be moved to SQS DLQ or SNS DLQ **via Lambda and not via SQS** (requires IAM execution role)
-- Use case: use it if you are handling too many requests
+- The default setting is that tasks that could not be processed are **discarded** optionally, we can set up a DLQ
 
 ## Lambda - Event Source Mapping
 
@@ -372,7 +372,7 @@ MyLambdaFunction:
     Code:
       S3Bucket: my-bucket
       S3Key: my-function.zip
-      S3ObjectVersion: 'Some String'
+      S3ObjectVersion: "Some String"
     Role: arn:aws:iam::123456789012:role/execution_role
 ```
 

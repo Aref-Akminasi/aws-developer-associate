@@ -2,6 +2,10 @@
 
 # API Gateway - Basics
 
+## API Gateway - Private APIs
+
+- Private APIs are only accessed within a VPC
+
 ## API Gateway - Timeout
 
 - The maximum integration timeout for AWS API Gateway is 29 seconds. This is the time limit for the backend integration (e.g., Lambda function, HTTP endpoint) to respond to the API Gateway.
@@ -94,9 +98,10 @@
 
 ## API Gateway - Canary Deployment
 
-- Canary deployment to switch between stages\*\*
+- Canary deployment to switch between stages
 - Choose the % of traffic the canary channel receives
 - Metrics & logs are separate (for better monitoring)
+- Note: API Gateway stages **don't** provide **weighted routing** between stages
 
 ![Canary deployment via API Gateway](./assets/50.png)
 
@@ -212,9 +217,14 @@
 - Authentication = external
 - Authorization = Lambda Function
 
+#### Steps for caching
+
+- Use a token-based Lambda authorizer
+- Configure an **integration request mapping template** to reference the **context map** from the API Gateway **Lambda authorizer**
+
 ![Lambda Authorizer](./assets/54.png)
 
-### Resource Policies
+## API Gateway - Resource Policies
 
 - Resource Policies on API Gateway
 - Allow for cross account access combined with IAM security
@@ -260,3 +270,9 @@
 ## API Gateway - CORS
 
 - CORS must be enabled on API Gateway when you request API calls from another domain (ex: S3 website) to make a request to API Gateway
+
+# API Gateway - Common solutions
+
+## Prevent exposing the API key of a third party service in the frontend
+
+- Use Amazon API Gateway to create a REST API. Create an AWS Lambda proxy integration. Make calls to the third-party HTTP API from the Lambda function. Pass the company's API key as an HTTP request header.

@@ -118,6 +118,7 @@
 - The first request per second is called the **reservoir**, which ensures that at least one trace is recorded each second as long the service is serving requests.
 - Five percent is called the **rate** at which additional requests beyond the reservoir size are sampled
 - You can have custom sampling rules for changing the reservoir size and the rate
+- **Note:** **disabling sampling**, AWS X-Ray will trace every single request (maybe this is your goal)
 
 ## X-Ray - Commands
 
