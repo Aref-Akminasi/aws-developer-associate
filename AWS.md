@@ -20,7 +20,7 @@
 ### AWS Partitions
 
 - In AWS, partitions are separated regions, standard `aws`, china `aws-cn` or GovCloud `aws-us-gov`
-- Using IAM roles and resource-based policies (ex: for S3 bucket) to grant cross-account-access across different partitions is not supported
+- Using **IAM roles** and **resource-based policies** (ex: for S3 bucket) to grant cross-account-access across **different partitions** is not supported
 
 ### How to choose an AWS Region for your application?
 
@@ -34,7 +34,7 @@
 - Each region has many availability zones (usually 3, min is 3, max is 6)
 - Each availability zone (AZ) has one or more discrete data centers, each with redundant power, networking, and connectivity
 - Availability Zones are separated from each other, so that they're isolated from disasters
-- AZs are connected with high bandwidth, ultra-low latency networking **(They're not connected through the internet)**
+- AZs in a region are connected with high bandwidth, ultra-low latency networking **(They're not connected through the internet)**
 - Naming convention: us-east-1 (Region) has us-east-1a, us-east-1b, us-east-1c (Availability Zones)
 
 ## High Availability & Scalability
@@ -56,7 +56,7 @@
 
 ## MFA with CLI
 
-- To use MFA with the CLI, you must create a temporary session
+- To use MFA with the CLI, you must create a **temporary session**
 - To do so, you must run the `STS GetSessionToken` API call, in the terminal `aws sts get-session-token`
 
 ## AWS Limits (Service Quotas)
@@ -83,7 +83,7 @@
 
 ## AWS Default credentials provider chain
 
-1. Command Line Options (--profile)
+1. Command Line Options (ex: --profile)
 2. Environment Variables
 3. ...
 4. ...
@@ -94,7 +94,7 @@
 
 ## AWS Signature v4 signing (SigV4)
 
-- You should sign an AWS HTTP request for authorization using Signature v4 (SigV4) as one of the following methods:
+- You should **sign an AWS HTTP request** for **authorization** using **Signature v4 (SigV4)** as one of the following methods:
   - HTTP Header (signature in **Authorization** header)
   - Query String (signature included in the URL, using the **X-Amz-Signature** query parameter)
 
@@ -103,7 +103,7 @@
 - 401 - Returned when wrong user credentials are entered for login / no token is used for authorization
 - 403 - Returned when wrong user credentials are entered for login / no token is used for authorization
 - 404 - Not Found
-- 429 - Throttling Error
+- 429 - Throttling Error (use exponential backoff)
 - 502 - output format of a Lambda function in a proxy integration is in a different format
 - 503 - Service unavailable (When an ELB doesn't have any target groups)
 - 504 - API Gateway Timeout

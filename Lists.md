@@ -111,7 +111,7 @@
 - Redshift
 - OpenSearch
 - HTTP(s) endpoint
-- 3rd party painter: MongoDB, DataDog...
+- 3rd party partner: MongoDB, DataDog...
 - Note: Lambda is not a consumer
 
 ### KDA for SQL applications Producers
@@ -193,7 +193,7 @@
 - EventBridge
 - Lambda
 
-### Lambda - Synchronous Invocation
+### Lambda - Synchronous Invocations
 
 - CLI
 - SDK

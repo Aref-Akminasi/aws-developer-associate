@@ -4,7 +4,7 @@
 
 ## What is EC2?
 
-- EC2 = Elastic Compute Cloud = Infrastructure as a Service
+- EC2 = Elastic Compute Cloud = Infrastructure as a Service = IaaS
 
 ## EC2 sizing & configuration options
 
@@ -185,7 +185,7 @@
 
 ### Capacity Reservations:
 
-- reserve capacity in a specific AZ for **any duration**
+- reserve capacity in a **specific AZ** for **any duration**
 - You always have access to EC2 capacity when you need it
 - You are charged at On-Demand rate whether you run instances or not
 - No time commitment, **no billing discounts**

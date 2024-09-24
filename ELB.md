@@ -84,9 +84,9 @@
 ### Headers Provided by ALB to the server
 
 - The application servers don't see the IP of the client directly, but will get extra headers from the ALB:
-  - **X-Forwarded-For** This header contains the real IP address of the client.
-  - **X-Forwarded-Port** This header specifies the port number that the client used to connect to the ALB.
-  - **X-Forwarded-Proto** This header specifies the protocol (HTTP or HTTPS) that the client used to connect to the ALB.
+  - **X-Forwarded-For** This header contains the real IP address of the **client.**
+  - **X-Forwarded-Port** This header specifies the port number that the **client** used to connect to the ALB.
+  - **X-Forwarded-Proto** This header specifies the protocol (HTTP or HTTPS) that the **client** used to connect to the ALB.
 
 ### Authenticate Users
 

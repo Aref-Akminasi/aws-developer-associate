@@ -31,7 +31,7 @@
 
 ## IAM - Trust Relationship
 
-- Trust relationship is a **policy** on the **role** that defines which services might assume this role
+- Trust relationship is a **policy** on the **role** that defines which services might **assume this role**
 - This is to prevent adding Lambda role meant for DynamoDB on EC2 instance as example
 
 ## IAM Policies Structure
@@ -117,7 +117,7 @@
 ### KMS Access
 
 - A user must have the proper IAM permissions to access the key even if the KMS key policy allows every one
-- If the policy explicitly allow a user in the principal, the user doesn't need an IAM policy
+- If the KMS policy explicitly allow a user in the principal, the user doesn't need an IAM policy
 
 ## IAM - Pass Role
 
@@ -147,27 +147,25 @@
 
 - You can configure **permission sets** in AWS IAM Identity Center to grant access to other accounts, allowing you to easily assign a set of permissions to users across AWS accounts without managing individual IAM roles directly.
 
-- Premission Sets vs AssumeRole API: AssumeRole API is used to obtain temporary security credentials for a specific IAM role, allowing users or applications to assume that role and gain its permissions for a limited time. It’s more about dynamically switching roles for specific tasks.
-
 # AWS STS
 
 - STS Allows to grant limited and temporary access to AWS resources (up to 1 hour)
 
 ## STS - APIs
 
-- AssumeRole: Assume roles within your account or cross account
-- AssumeRoleWithSAML: return credentials for users logged with SAML
-- AssumeRoleWithWebIdentity: reurn credentials for users logged in with Facebook or Google
-- GetSessionToken: for MFA
-- GetCallerIdentity: return details about the IAM user or role used in the API call
-- DecodeAuthorizationMessage: decode error message when an AWS API is denied
+- **AssumeRole** Assume roles within your account or cross account
+- **AssumeRoleWithSAML** return credentials for users logged with SAML
+- **AssumeRoleWithWebIdentity** reurn credentials for users logged in with Facebook or Google
+- **GetSessionToken** for MFA
+- **GetCallerIdentity** return details about the IAM user or role used in the API call
+- **DecodeAuthorizationMessage** decode error message when an AWS API call is denied
 
 ## STS - Assume Role
 
 1. Define an IAM Role within your account or cross account
-2. Define which principals can access this IAM Role
+2. Define a trust policy that tells which AWS principals (users, groups, or roles) can assume this role.
 3. Use AWS STS to retrieve temporary credentials
-4. You will receive temporary security credentials an **access key** a **secret access key** and a **session token**. To use these credentials in subsequent AWS CLI commands, the application needs to set the access key, secret access key, and session token in the **environment variables**
+4. You will receive temporary security credentials an **access key** a **secret access key** and a **session token**. You can manually or programmatically set these credentials in your environment for use by the AWS CLI or SDKs.
 
 # Active Directory
 
@@ -189,5 +187,6 @@
 
 - Managed Directory on AWS
 - Cannot be joined with on-premise AD
+- Doesn't support MFA
 
 ![AD](./assets/70.png)
