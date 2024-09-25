@@ -190,7 +190,7 @@
 - You are charged at On-Demand rate whether you run instances or not
 - No time commitment, **no billing discounts**
 - Combine with regional reserved instances and savings plans to benefit from billing discounts
-
+- - When you purchase a Reserved Instance for a specific Availability Zone, it's referred to as a **Zonal Reserved Instance**.
 \*Note: when buying Savings plans, Dedicated Hosts, Capacity Reservations, you are not having instances yet
 
 \*Note: you can buy or sell your reserved instances if you don't need them anymore

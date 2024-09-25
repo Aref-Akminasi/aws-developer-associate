@@ -81,7 +81,7 @@
 - **DLQ of a FIFO queue must also be a FIFO queue**
 - **DLQ of a standard queue must also be a standard queue**
 - DLQ is useful for **debugging**
-- We can use **Redrive to Source** option to send the messages back to the source SQS queue after we have fixed our code
+- We can use **Redrive to Source** option or "SendMessageBatch" API  the to send the messages back to the source SQS queue after we have fixed our code
 
 ## SQS - Delivery Delay
 
