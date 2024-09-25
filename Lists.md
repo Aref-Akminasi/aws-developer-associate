@@ -43,6 +43,12 @@
 - Microsoft SQL Server
 - Aurora (Supports MySQL and PostgreSQL)
 
+### RDS Logs
+
+- Error logs
+- General query log
+- Slow query log
+
 ### Alias AWS resources Record Targets
 
 - ELB

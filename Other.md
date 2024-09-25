@@ -155,3 +155,7 @@
 # Amazon Translate
 
 - TranslateText API has caching mechanism
+
+# AWS Glue
+
+- AWS Glue is a fully managed extract, transform, and load (ETL) service provided by Amazon Web Services (AWS). It helps users prepare and load data for analytics and business intelligence (BI). AWS Glue automates the process of discovering, cataloging, cleaning, and transforming data from various sources, making it available for analysis and machine learning.

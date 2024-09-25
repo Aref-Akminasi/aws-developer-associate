@@ -18,8 +18,8 @@
 
 ## Server Name Indication Protocol (SNI)
 
-- Clients can use SNI protocol to specify the hostname they want to reach
 - SNI enables servers of loading multiple SSL certificates onto one web server (to serve multiple websites)
+- Clients can use SNI protocol to specify the hostname they want to reach
 - The following supports SNI:
   - ALB
   - NLB

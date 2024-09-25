@@ -16,7 +16,7 @@
 
 ## ASG - Lifecycle hooks
 
-- Amazon EC2 Auto Scaling offers the ability to add lifecycle hooks to your Auto Scaling groups. These hooks let you create solutions that are aware of events in the Auto Scaling instance lifecycle, and then perform a custom action on instances when the corresponding lifecycle event occurs. A lifecycle hook provides a specified amount of time (one hour by default) to wait for the action to complete (install updates, user data script) before the instance transitions to the next state.
+- Lifecycle hooks in AWS Auto Scaling Groups (ASG) are mechanisms that allow you to pause and take actions at key stages in the lifecycle of an instance. Specifically, they let you control what happens when an instance is launched or terminated in an ASG, enabling you to perform custom actions like initializing software, draining connections, or performing cleanup tasks.
 
 ## Auto Scaling Group Attributes
 

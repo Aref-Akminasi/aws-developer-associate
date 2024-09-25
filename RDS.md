@@ -19,8 +19,9 @@
 
 ## Connect to RDS instance
 
-- Request an endpoint (DNS name) for the instance from the Database administrator
-- Use the **DescribeDBInstances API** and get the endpoint (DNS name) for the database instance
+1. Request an endpoint **(DNS name)** for the instance from the Database administrator
+2. Use the **DescribeDBInstances API** and get the endpoint (DNS name) for the database instance
+
 - It is **NOT** recommended to use **IPs** since they could change during failover
 
 ## RDS Logs
@@ -93,10 +94,6 @@ The AWS RDS Service contains several logs, such as the ones given below:
 - How it works behind the scenes:
   - A snapshot is taken from the DB
   - A new DB is restored from the snapshot in a new AZ
-
-## Combining RDS Read Replicas & RDS Multi AZ
-
-- Note: The Read Replicas can be setup as Multi AZ for Disaster Recovery
 
 ## Cross-Region Replication
 
