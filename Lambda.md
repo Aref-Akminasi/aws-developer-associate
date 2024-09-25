@@ -98,6 +98,7 @@ return user
 - We can add environment variables in the lambda configuration
 - Environment variable = key/value pair in "string" form
 - Max size: 4KB of all environment variables
+- Variables are set during deployment and will only be updated after a redeployment
 
 ## Lambda Logging & Monitoring
 

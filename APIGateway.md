@@ -196,7 +196,7 @@
 
 - Create an IAM Policy authorization and attach to User/Role
 - Authentication = IAM
-- Authroization = IAM Policy
+- Authorization = IAM Policy
 - SigV4 is used, where IAM credentials are in headers
 
 ![IAM Auth](./assets/52.png)
@@ -204,12 +204,12 @@
 ### Cognito User Pools
 
 - Cognito fully manages user lifecycle, token expiration
-- Authentication = Congnito
+- Authentication = Cognito
 - Authorization = API Gateway methods
 
 ![Cognito Auth](./assets/53.png)
 
-### Lambda Authorizer (fromerly Custom Authorizers)
+### Lambda Authorizer (formerly Custom Authorizers)
 
 - Token-based authorizer: JWT or Oauth
 - This method is used mainly when you use 3rd party authentication system
@@ -235,6 +235,8 @@
 
 - Error 504: timeout after 29 second maximum
 - Error 502: output format of a Lambda function in a proxy integration is in a different format
+- Error 403: An HTTP 403 response code means that a client is forbidden from accessing a valid URL
+
 
 ## API Gateway - Logging and tracing
 
