@@ -7,7 +7,7 @@
 - ElastiCache is to get managed in memory data storage systems Redis or Memcached
 - Caches are in-memory databases with really high performance, low latency
 - Helps reduce load off of databases for read intensive workloads
-- Helps make your application stateless
+- Helps make your application **stateless**
 - Using ElastiCache involves heavy application **code changes**
 
 ## ElastiCache - Redis vs Memcached

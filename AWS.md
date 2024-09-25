@@ -4,6 +4,8 @@
 
 [Lists](./Lists.md)
 
+[Exam Tips](./Examtips.md)
+
 # AWS
 
 ## What's AWS?
