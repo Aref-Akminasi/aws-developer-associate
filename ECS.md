@@ -10,7 +10,6 @@
 - Each task has its own task definition
 - ECS Service: manages a group of tasks
 - ECS has two Launch Types:
-- ECS has two Launch Types:
 
 | **EC2 Launch Type**                                                                | **AWS Fargate**                                              |
 | ---------------------------------------------------------------------------------- | ------------------------------------------------------------ |

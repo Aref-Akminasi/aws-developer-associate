@@ -9,7 +9,7 @@
 - Content is cached at the edge locations
 - DDoS protection (because worldwide)
 - CloudFront is a global Service
-- CloudFront is designed to cache data for **GET** and **HEAD** requests, ** NOT POST** requests
+- CloudFront is designed to cache data for **GET** and **HEAD** requests, **NOT POST** requests
 
 ## Origins (Content Sources)
 

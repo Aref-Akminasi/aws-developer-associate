@@ -79,6 +79,28 @@
 - S3
 - Any HTTP backend you want
 
+### CloudFront - Cache Policy
+
+- HTTP Headers
+- Cookies
+- Query Strings
+
+### CloudFront - Request Policy
+
+- HTTP Headers
+- Cookies
+- Query Strings
+
+### ECS - Task Definitions
+
+- Image Name
+- IAM Role
+- Port binding for Container and Host
+- Environment variables (Hardcoded, reference to SSM Parameter store or AWS secrets manager)
+- Memory and CPU required
+- Networking information
+- Logging configuration (ex: CloudWatch)
+
 ### ECS - Data Volumes
 
 - Not S3
