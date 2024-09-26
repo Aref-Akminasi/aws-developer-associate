@@ -66,6 +66,12 @@
 - CloudWatch Logs
 - Kinesis Data Firehose
 
+### S3 Event Notifications
+
+- Lambda
+- SQS
+- SNS
+
 ### CloudFront Origins (Content Sources)
 
 - ALB

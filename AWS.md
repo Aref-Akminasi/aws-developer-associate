@@ -102,8 +102,8 @@
 
 ## Common Error Codes
 
-- 401 - Returned when wrong user credentials are entered for login / no token is used for authorization
-- 403 - Returned when wrong user credentials are entered for login / no token is used for authorization
+- 401/403 - Returned when wrong user credentials are entered for login / no token is used for authorization
+- 403 - S3, make sure the bucket policy allows public reads (This is not a CORS Error)
 - 404 - Not Found
 - 429 - Throttling Error (use exponential backoff)
 - 502 - output format of a Lambda function in a proxy integration is in a different format
