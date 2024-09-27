@@ -13,6 +13,19 @@
 - Private IP Addresses
 - ECS tasks
 
+### ALB Routing
+
+- Routing tables to different **target groups**
+
+  - Routing based on path in URL (`example.com/users` & `example.com/posts`)
+  - Routing based on hostname in URL (`one.example.com` & `other.example.com`)
+  - Routing based on Query String/Query Parameters (`example.com/users?id=123&order=false`)
+  - Routing based on HTTP Headers
+  - Routing based on a cookie value (ex: `version=beta` this will route to the beta target group)
+  - Routing based on Source IP address
+
+- Routing based on Geo-location is **not** possible
+
 ### NLB Target Groups
 
 - EC2 instances
@@ -85,7 +98,7 @@
 - Cookies
 - Query Strings
 
-### CloudFront - Request Policy
+### CloudFront - Origin Request Policy
 
 - HTTP Headers
 - Cookies

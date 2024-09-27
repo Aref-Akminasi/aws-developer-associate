@@ -134,7 +134,7 @@
 
 - Caching reduces the number of calls made to the backend
 - Default TTL: 300sec (min: 0s, max: 3600s)
-- Caches are defined per stage
+- **Caches are defined per stage, there is no global cache between all stages**
 - Possible to override cache setting set on the stage per method (GET/POST, etc...)
 - Cache encryption option
 - Cache capaciy between 0.5GB to 237GB
@@ -236,7 +236,6 @@
 - Error 504: timeout after 29 second maximum
 - Error 502: output format of a Lambda function in a proxy integration is in a different format
 - Error 403: An HTTP 403 response code means that a client is forbidden from accessing a valid URL
-
 
 ## API Gateway - Logging and tracing
 

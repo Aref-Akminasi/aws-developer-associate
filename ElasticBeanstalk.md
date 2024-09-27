@@ -131,7 +131,7 @@
 - Add the configuration through the files in your .zip file **not through CLI**
 - Requirements:
   - Place your configuration files in the **.ebextensions/** directory in the root of source code
-  - YAML or JSON should be the content of the file
+  - **YAML or JSON** should be the content of the file
   - Each configuration file should have a **.config** extensions (ex: logging.config)
   - Configuration files can be used to modify Elastic Beanstalk default settings using the **option_settings** section within the .config files
 - option settings example
@@ -150,13 +150,6 @@ option_settings:
 ### Periodic tasks configuration file
 
 - Your application is going to run periodic tasks, use **cron.yaml** file
-
-### Installing packages
-
-- Problem: You need to ensure that custom software is installed on the backend linux servers launched as part of the Elastic Beanstalk environment
-- Solution:
-  1. Create a YAML file with the required package names to be installed on the server
-  2. Place the file in .ebextensions folder in your Application Source Bundle
 
 ## Elastic Beanstalk - Migrations
 
