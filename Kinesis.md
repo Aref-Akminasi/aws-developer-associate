@@ -17,6 +17,7 @@
 - Records at the same shard are processed in the order they were added
 - Records that shares the same partition goes to the same shard (ordering)
 - the consumer for a specific shard, and for records with the same partition key, will be the same.
+- Order is guaranteed in the same partition key, but not between different partition keys even if in the same shard
 
 ## Kinesis Data Streams - ProvisionedThroughputExceeded Error
 

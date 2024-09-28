@@ -207,6 +207,15 @@
 - ELB
 - Elastic Beanstalk
 
+### X-Ray - Required segment fields
+
+- Name
+- Id
+- Trace_id
+- Start_time
+- End_time
+- In_progress
+
 ### OpenTelemetry destinations
 
 - AWS X-Ray

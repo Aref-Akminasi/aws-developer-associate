@@ -71,7 +71,7 @@
 
 - As example exporting to an S3 may take up to **12 hours**, it is not real-time or near-real time
 
-### Use CloudWatch Logs Subscription to:
+### Use CloudWatch Logs Subscription Filter to:
 
 - Get a **real-time** log events from CloudWatch logs
 - Filters which logs are events delivered to your destination
