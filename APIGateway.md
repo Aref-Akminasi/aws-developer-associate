@@ -22,7 +22,7 @@
 
 - Lambda Function: invoke Lambda Function
 - HTTP endpoint
-- AWS Service: ex: start an AWS Step function workflow, send a message to SQS
+- AWS Service: ex: start an AWS Step function workflow, send a message to SQS, connect with DynamoDB
 
 ## API Gateway - Endpoint Types
 

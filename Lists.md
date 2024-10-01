@@ -1,5 +1,11 @@
 [Back](./AWS.md)
 
+### Support CORS
+
+- Lambda function URL
+- API Gateway
+- S3
+
 ### The following supports SNI
 
 - ALB
@@ -72,6 +78,17 @@
 - Elastic Beanstalk environments
 - Global Accelerator accelerator
 - Route 53 record in the same hosted zone
+
+### Route 53 - Routing Policies
+
+- IP-based Routing: IP or IP range
+- Simple
+- Multi-value
+- Weighted
+- Latency
+- Failover
+- Geolocation
+- Geo-proximity
 
 ### VPC Flow logs can be sent to
 
@@ -273,11 +290,49 @@
 - DynamoDB Streams
 - and more...
 
+### DynamoDB Streams records can be sent to
+
+- Kinesis Data Streams
+- Kinesis Client Library (KCL)
+- AWS Lambda
+
 ### API Gateway - Targets
 
 - Lambda Function: invoke Lambda Function
 - HTTP endpoint
 - AWS Service: ex: start an AWS Step function workflow, send a message to SQS
+
+### API Gateway - Correct order for API keys and usage plans
+
+1. Create one or more APIs
+2. Configure the methods to require an API key
+3. Deploy API to stages
+4. Generate or import API keys to distribute
+5. Create the usage plan with the desired throttle and quota limits
+6. Associate API stages and API keys with the usage plan
+
+### CodeDeploy - Deploy new applications versions to
+
+- EC2 Instances
+- ECS
+- Lambda functions
+- On-premises server
+
+### CodeDeploy - lifecycle for EC2
+
+1. ApplicationStop
+2. DownloadBundle
+3. BeforeInstall
+4. Install
+5. AfterInstall
+6. ApplicationStart
+7. ValidateService
+
+### CodeDeploy lifecycle for Lambda
+
+- BeforeAllowTraffic (supports lambda validation functions)
+- AllowTraffic
+- AfterAllowTraffic (supports lambda validation functions)
 
 ### CUP - Access to AWS resources
 

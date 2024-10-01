@@ -141,7 +141,7 @@
 ### Solutions
 
 - Exponential backoff
-- Use distributed partition keys
+- Use distributed partition keys (ex: write sharding)
 - If it is RCU issue, we can use **DynamoDB Accelerator (DAX)**
 
 ## DynamoDB - Writing Operations

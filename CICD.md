@@ -93,7 +93,7 @@ version: 0.2
 
 env:
   variables:
-    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+    JAVA_HOME: '/usr/lib/jvm/java-8-openjdk-amd64'
   parameter-store:
     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
 
@@ -123,7 +123,7 @@ artifacts:
 
 cache:
   paths:
-    - "/root/.m2/**/*"
+    - '/root/.m2/**/*'
 ```
 
 ## CodeBuild - Troubleshooting
@@ -150,6 +150,13 @@ cache:
 - A developer can test and debug the code locally and reference the code from a S3 bucket
 - Install the AWS CodeDeploy agent locally to validate the deployment. Specify the S3 bucket where the code package is located
 
+## Deploy new applications versions to:
+
+- EC2 Instances
+- ECS
+- Lambda functions
+- On-premises servers
+
 ## CodeDeploy lifecycle for EC2
 
 1. ApplicationStop
@@ -165,13 +172,6 @@ cache:
 1. BeforeAllowTraffic (supports lambda validation functions)
 2. AllowTraffic
 3. AfterAllowTraffic (supports lambda validation functions)
-
-- Deploy new applications versions to:
-
-  - EC2 Instances
-  - ECS
-  - Lambda functions
-  - On-premises servers
 
 ## CodeDeploy - EC2/On-premises Platform
 
