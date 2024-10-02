@@ -76,8 +76,8 @@
 
 ## Athena - Performance Improvement
 
-- Use columnar data for less scan
-- Partition datasets in S3 for easy querying
+- Use columnar data
+- Partition datasets in S3
 - Use larger files
 - Compress data
 

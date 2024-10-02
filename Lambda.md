@@ -373,7 +373,7 @@ MyLambdaFunction:
     Code:
       S3Bucket: my-bucket
       S3Key: my-function.zip
-      S3ObjectVersion: "Some String"
+      S3ObjectVersion: 'Some String'
     Role: arn:aws:iam::123456789012:role/execution_role
 ```
 
@@ -426,7 +426,7 @@ MyLambdaFunction:
   | Programming language    | JavaScript                                                | Node.js, Python                                                                                         |
   | Good for nr of requests | Milions of requests per second                            | Thousands of requests per second                                                                        |
   | Ability to change       | Viewer request/response                                   | Viewer requests/response and origin request/response                                                    |
-  | Execution time          | Less than 1ms                                             | 5 - 10 sec                                                                                              |
+  | **Max Execution time**  | Less than 1ms                                             | 5 - 10 sec                                                                                              |
   | Max memory              | 2MB                                                       | 128MB - 10GB                                                                                            |
   | Feature From            | Native feature from CloudFront, manage code in CloudFront | Feature from Lambda Service, add the function in **us-east-1** region and CloudFront will distribute it |
   | Network access          | No                                                        | Yes                                                                                                     |

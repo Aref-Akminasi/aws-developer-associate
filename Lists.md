@@ -339,12 +339,29 @@
 - API Gateway
 - ALB
 
+### CUP - Lambda Triggers
+
+- Authentication Events
+- Sign-up
+- Messages
+- Token Creation
+
 ### Step functions - Start workflow via
 
 - AWS Console
 - SDK
 - API Gateway
 - EventBridge
+
+### Step Functions - States
+
+- Choice
+- Parallel
+- Map: Dynamically iterate steps
+- Pass
+- Wait
+- Success
+- Fail
 
 ### AppSync - Fetch data from
 
@@ -367,6 +384,13 @@
 - Saving/Searching CloudWatch logs
 - Saving/Searching KDS and KDF data
 
+### Athena - Performance improvement
+
+- Use columnar data
+- Partition datasets in S3
+- Use larger files
+- Compress data
+
 ### MSK - Consumers
 
 - Kinesis Data Analytics for Apache Flink
@@ -379,3 +403,9 @@
 - ELB
 - CloudFront
 - API Gateway
+
+### Support for WebSocket
+
+- ALB
+- API Gateway
+- AppSync

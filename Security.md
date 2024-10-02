@@ -98,7 +98,6 @@
 - KMS encryption is optional
 - Has version tracking to see previous versions
 - Security through IAM
-- No secret rotation out of the box (can enable rotation using Lambda triggered by EventBridge every X days)
 - **Make sure the service consuming the parameter has access to SSM and to KMS if the secret is encrypted (in order to decrypt it)**
 
 ## SSM - Integrations

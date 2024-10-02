@@ -77,7 +77,10 @@
 
 ## CIP - Role Based Control
 
-- Amazon Cognito identity pools assign your authenticated users a set of temporary, limited-privilege credentials to access your AWS resources. The permissions for each user are controlled through IAM roles that you create.
+- Cognito assigns the user to an IAM role based on their authentication status (authenticated or unauthenticated) and possibly other factors (like groups, tags, or custom rules).
+- The role determines the permissions (what actions the user can perform and what AWS resources they can access).
+- After Cognito assigns the appropriate IAM role, it requests temporary credentials for the user from AWS Security Token Service (STS).
+- You can create **two roles** one for **authenticated users** and one for **guest users**
 - Rules are evaluated in sequential order & **IAM role** for first matching rule is used, unless a **CustomRoleArn** is specified to override the order
 
 ### Auth with 3rd party services happening via CUP
@@ -101,5 +104,5 @@
 | --------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | **Primary Use**             | Authentication / Creating an account                                                | Authorization                                                          |
 | **Access to AWS Resources** | Through API Gateway or ALB                                                          | Directly access to AWS resources (ex: S3, DynamoDB) or via API Gateway |
-| **Returns**                 | JWT Token                                                                           | IAM Credentials                                                        |
+| **Returns**                 | JWT Token                                                                           | IAM Credentials (Role based control)                                   |
 | **Guest Users**             | Support via OnUnauthenticatedRequest on the load balancer (but use CIP in the exam) | Native Support                                                         |
