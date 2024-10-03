@@ -318,6 +318,9 @@ return user
 - Solution: Increase the number of shards of the Kinesis Data Stream and Increase the memory of the Lambda function
 - Note: **iterator age** represents the amount of time (in milliseconds) between the moment a record is added to the Kinesis data stream and the moment that record is read and processed by your AWS Lambda function.
 
+- Q: You have a stock market trading application. It sends real-time data to AWS Kinesis which is then connected to a Lambda function to process and sort the information before it saves to a DynamoDB table. Customers then consume this table via a dashboard. As soon as the market opens, your customers complain that not all data is delivered to them. Which Lambda CloudWatch metric should you look at first to resolve this problem?
+- Solution: Iterator Age
+
 ## Lambda - CloudFormation
 
 ### Inline

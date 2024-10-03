@@ -55,6 +55,7 @@
 ## CodeBuild - Basics
 
 - Build instructions: Code file **buildspec.yml** at the root level of the code files, or insert manually in console
+- You can store **Buildspec** file in Amazon S3 bucket in same region as that of build project
 
 ## CodeBuild - How it works
 

@@ -27,6 +27,10 @@
 
 - To retag docker images in Amazon ECR, it is not required to pull or push these images again to the ECR depository. The **--image-tag option of the put-image command** can be used to retag the existing image in the repository.
 
+## EC2 Tasks - credentials access
+
+- Containers running on your container instances are **allowed** for accessing the credentials supplied to the container instance profile
+
 ## ECS IAM Roles
 
 - EC2 Instance Profile (EC2 Launch Type **only**):
@@ -195,6 +199,7 @@
 
 ## Elastic Container Registry (ECR)
 
+- You can access the Amazon ECR image repository with Amazon EC2 or AWS Fargate launch types
 - store container images, privately or publicly
 - User must have the required permissions to push/pull Docker images to/from ECR repository
 

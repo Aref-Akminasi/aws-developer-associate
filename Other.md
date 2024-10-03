@@ -160,3 +160,23 @@
 # AWS Glue
 
 - AWS Glue is a fully managed extract, transform, and load (ETL) service provided by Amazon Web Services (AWS). It helps users prepare and load data for analytics and business intelligence (BI). AWS Glue automates the process of discovering, cataloging, cleaning, and transforming data from various sources, making it available for analysis and machine learning.
+
+# AWS CodeStar
+
+- You can quickly **develop, build and deploy** applications on AWS
+
+# AWS OpsWorks
+
+- Uses **Chef and Puppet** to automate how servers are configured
+- Use OpsWorks for Chef recipes
+
+# Amazon CodeWhisperer
+
+-  machine learning-powered code generator
+
+# Cloud9
+
+- Cloud based IDE
+
+# AWS WAF
+With AWS WAF, you can create security rules that control bot traffic and block common attack patterns such as SQL injection or cross-site scripting (XSS).

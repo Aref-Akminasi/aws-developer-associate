@@ -65,6 +65,7 @@
 - The GenerateDataKey API returns the same key in two forms:
   - Plaintext key: Used for encrypting your data.
   - Encrypted key: Stored securely for future decryption. When you need to decrypt the data, you provide the encrypted key to KMS, and KMS gives you back the plaintext key.
+- The data is encrypted using a **plaintext Data Key** The Data Key is then further encrypted using a **plaintext Master Key**
 - The **Customer Master Key (CMK)** is only used to **encrypt** the **data key (DEK)**, not your actual data. The data key (DEK) is what you use to encrypt the data.
 - The **GenerateDataKeyWithoutPlaintext API** is for generating the encrypted data key without needing the plaintext key immediately (you can retrieve it later for use).
 - AWS provides an **Encryption SDK** that handles Envelope Encryption for you, so you don’t have to manage it manually.

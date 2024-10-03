@@ -147,6 +147,13 @@
 
 - You can configure **permission sets** in AWS IAM Identity Center to grant access to other accounts, allowing you to easily assign a set of permissions to users across AWS accounts without managing individual IAM roles directly.
 
+## IAM - Policy Simulator
+
+- resources must be included in the simulator
+- resource policy needs to be selected for that resource
+
+- Note: You **CAN'T** type, copy or attach the policys
+
 # AWS STS
 
 - STS Allows to grant limited and temporary access to AWS resources (up to 1 hour)
